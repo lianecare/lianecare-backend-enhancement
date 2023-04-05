@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block blockbots %}<meta name="robots" content="index,follow">{% endblock %}
+
+{% block content %}
+  <div class="banner-home">
+    <div class="container">
+      <div class="col-lg-6">
+        <div class="content-wrapper">
+          <h1 class="title mb-3">{% trans "Diventa <br>Caregiver PRO" %}</h1>
+          <h3 class="subtitle mb-4">{% trans "Trova lavoro ed entra in contatto con chi ha bisogno di te" %}</h3>
+          <a href="{% url "solace:caregiver_signup" %}"
+             class="btn btn-primary btn-big">{% trans "Iscriviti a LianeCare" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-1 bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h2 class="title">
+            {% blocktrans %}
+              LianeCare è la piattaforma che fa
+              <strong>incontrare i <span class="text-primary">Caregivers</span> in cerca di lavoro</strong> e
+              <strong>formazione</strong> con le persone che hanno bisogno di ricevere
+              <strong class="text-primary">assistenza qualificata</strong> adatta alle loro esigenze.
+            {% endblocktrans %}
+          </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-2 pt-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="wrapper">
+            <div class="content">
+              <div class="title mb-3" style="font-size: 2.5rem">{% trans "Diventa Caregiver PRO con LianeCare" %}</div>
+              <div class="text">{% trans "Iscriviti alla piattaforma per iniziare a ricevere offerte di lavoro come badante, assistente familiare, colf, babysitter o pet-sitter." %}</div>
+            </div>
+            <a class="btn btn-outline-primary btn-big"
+               href="{% url "solace:caregiver_signup" %}">{% trans "Iscriviti ora" %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servizi" class="bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          {% blocktrans %}
+            <h4>Chi ha bisogno di supporto in casa sta cercando professionisti <span class="text-primary">come te</span>
+            </h4>
+          {% endblocktrans %}
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="servizio">
+                <img srcset="{% static 'images/badante_600x337.jpg' %} 600w, {% static 'images/badante_735x412.jpg' %} 735w, {% static 'images/badante_959x538.jpg' %} 959w"
+                     size="(max-width: 575px) 543px, (max-width: 767px) 735px, (max-width: 991px) 959px, 600px"
+                     src="{% static 'images/badante_600x337.jpg' %}" alt="Trava la badante giusta per te."
+                     class="img-fluid">
+                <h3 class="title">{% trans "Badante" %}</h3>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="servizio">
+                <img srcset="{% static 'images/bisogni_speciali_600x337.jpg' %} 600w, {% static 'images/bisogni_speciali_735x412.jpg' %} 735w, {% static 'images/bisogni_speciali_959x538.jpg' %} 959w"
+                     size="(max-width: 575px) 543px, (max-width: 767px) 735px, (max-width: 991px) 959px, 600px"
+                     src="{% static 'images/bisogni_speciali_600x337.jpg' %}"
+                     alt="Persone per aiutare chi ne ha più bisogno."
+                     class="img-fluid">
+                <h3 class="title">{% trans "Bisogni speciali" %}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="servizio">
+                <img srcset="{% static 'images/babysitter_368x320.jpg' %} 368w, {% static 'images/babysitter_543x473.jpg' %} 543w, {% static 'images/babysitter_734x640.jpg' %} 734w, {% static 'images/babysitter_959x835.jpg' %} 959w"
+                     size="(max-width: 575px) 543px, (max-width: 767px) 734px, (max-width: 991px) 959px, 368px"
+                     src="{% static 'images/babysitter_368x320.jpg' %}"
+                     alt="Babysitting"
+                     class="img-fluid">
+                <h3 class="title">{% trans "Babysitter" %}</h3>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="servizio">
+                <picture>
+                  <img srcset="{% static 'images/pet-sitter_368x320.jpg' %} 368w, {% static 'images/pet-sitter_543x473.jpg' %} 543w, {% static 'images/pet-sitter_734x640.jpg' %} 734w, {% static 'images/pet-sitter_959x835.jpg' %} 959w"
+                       size="368px, (max-width: 575px) 543px, (max-width: 767px) 734px, (max-width: 991px) 959px"
+                       src="{% static 'images/pet-sitter_368x320.jpg' %}"
+                       alt="Pet-sitter"
+                       class="img-fluid">
+                </picture>
+                <h3 class="title">{% trans "Pet sitter" %}</h3>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="servizio">
+                <picture>
+                  <source media="(max-width: 375px)" srcset="{% static 'images/colf_368x320.jpg' %} 1x, {% static 'images/colf_543x473.jpg' %} 2x">
+                  <source media="(max-width: 575px)" srcset="{% static 'images/colf_543x473.jpg' %}">
+                  <source media="(max-width: 767px)" srcset="{% static 'images/colf_734x640.jpg' %}">
+                  <source media="(max-width: 991px)" srcset="{% static 'images/colf_959x835.jpg' %}">
+                  <img src="{% static 'images/colf_368x320.jpg' %}"
+                       alt="Colf"
+                       class="img-fluid">
+                </picture>
+
+                {#                <picture>#}
+                {#                  <source media="(min-width: 1250px)"#}
+                {#                          srcset="https://www.b2x.it/rest/images/2021/02/05/1396279.jpg?imageFormat=@1x 1x, https://www.b2x.it/rest/images/2021/02/05/1396279.jpg?imageFormat=@2x 2x">#}
+                {#                  <source media="(min-width: 992px)"#}
+                {#                          srcset="https://www.b2x.it/rest/images/2021/02/05/1396279.jpg?imageFormat=@1x 1x, https://www.b2x.it/rest/images/2021/02/05/1396279.jpg?imageFormat=@2x 2x">#}
+                {#                  <source media="(min-width: 768px)"#}
+                {#                          srcset="https://www.b2x.it/rest/images/2021/02/05/1396276.jpg?imageFormat=@1x 1x, https://www.b2x.it/rest/images/2021/02/05/1396276.jpg?imageFormat=@2x 2x">#}
+                {#                  <source media="(min-width: 576px)"#}
+                {#                          srcset="https://www.b2x.it/rest/images/2021/02/05/1396277.jpg?imageFormat=@1x 1x, https://www.b2x.it/rest/images/2021/02/05/1396277.jpg?imageFormat=@2x 2x">#}
+                {#                  <img alt="Crea il tuo programma."#}
+                {#                       src="https://www.b2x.it/rest/images/2021/02/05/1396278.jpg?imageFormat=@1x"#}
+                {#                       srcset="https://www.b2x.it/rest/images/2021/02/05/1396278.jpg?imageFormat=@1x 1x, https://www.b2x.it/rest/images/2021/02/05/1396278.jpg?imageFormat=@2x 2x"#}
+                {#                       class="img-fluid"></picture>#}
+
+                <h3 class="title">{% trans "Colf" %}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="come-funziona">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-title">
+            <h2>{% trans 'Trovare lavoro è più <span class="text-primary">semplice con LianeCare</span>' %}</h2>
+            <h3 class="font-weight-normal">{% trans "Ti aiutiamo ad entrare in contatto con chi ha bisogno dei tuoi servizi di assistenza" %}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-4">
+          <div class="step text-center p-4">
+            <div class="icon">
+              <img src="{% static 'images/utente.svg' %}" alt="{% trans "Iscrivi alla piattaforma" %}"
+                   class="img-fluid">
+            </div>
+            <h3 class="mb-3">{% trans "Iscriviti alla piattaforma" %}</h3>
+            <h6 class="">{% trans "Registra il tuo profilo su LianeCare e accedi subito a nuove opportunità di lavoro" %}</h6>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="step text-center p-4">
+            <div class="icon">
+              <img src="{% static 'images/diamante.svg' %}" alt="{% trans "Iscrivi alla piattaforma" %}"
+                   class="img-fluid">
+            </div>
+            <h3 class="mb-3">{% trans "Diventa Caregiver Pro" %}</h3>
+            <h6 class="">{% trans "Accedi ai corsi di formazione con i professionisti del caring di LianeCare per acquisire nuove competenze e avere più opportunità di lavoro" %}</h6>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="step text-center p-4">
+            <div class="icon">
+              <img src="{% static 'images/lettera.svg' %}" alt="{% trans "Iscrivi alla piattaforma" %}"
+                   class="img-fluid">
+            </div>
+            <h3 class="mb-3">{% trans "Ricevi le offerte" %}</h3>
+            <h6 class="">{% trans "Ricevi subito le offerte di lavoro più giuste per te in base all'area geografica e alle tue competenze" %}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-1">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="title font-weight-bold text-center mb-5">
+            {% blocktrans %}
+              Siamo il <span class="text-primary">punto di riferimento</span> delle aziende che hanno a cuore il
+              benessere dei propri dipendenti
+            {% endblocktrans %}
+          </div>
+<!--          <div class="text-center pt-4">-->
+<!--            <img class="mr-md-4 mb-4" src="{% static 'images/open-fiber-logo.png' %}" alt="Open Fiber" height="50">-->
+<!--            <img class="mb-4" src="{% static 'images/mailup_logo.png' %}" alt="MailUp" height="50">-->
+<!--          </div>-->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonianze">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <h2 class="title text-center">
+            {% trans 'Le <span class="text-primary">testimonianze</span> di chi ha già scelto LianeCare' %}
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="review">
+            <div class="title">Ottima esperienza!</div>
+            <div class="content">
+              “Lavorare per Liane in qualità di assistente è stata un'esperienza molto formativa. Il servizio è ben
+              organizzato. Consigliatissimo!”
+            </div>
+            <div class="autore">
+              Sara V.
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="review">
+            <div class="title">Eccellente!</div>
+            <div class="content">
+              “Servizio puntuale, serio e ben organizzato.”
+            </div>
+            <div class="autore">
+              Claudio P.
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="review">
+            <div class="title">Ottima esperienza!</div>
+            <div class="content">
+              "La formazione che ho ricevuto da Liane mi ha aiutato ad affrontare il mio lavoro. Mi è stata fornita una
+              cassetta degli attrezzi utile e completa!"
+            </div>
+            <div class="autore">
+              Donatella P.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-1">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h2 class="title text-center">
+            {% blocktrans %}
+              <strong>LIANECARE</strong> è il primo portale italiano dedicato ai
+              Caregiver familiari che lavorano e
+              alle aziende che vogliono
+              <strong><span class="text-primary">fare la differenza</span> nella vita dei propri
+                dipendenti</strong>.
+            {% endblocktrans %}
+          </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-2 with-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="wrapper">
+            <div class="row">
+              <div class="col-lg-8">
+                <h3 class="title mb-3">
+                  {% blocktrans %}Compila il form con i tuoi dati e crea il tuo profilo su LianeCare!{% endblocktrans %}
+                </h3>
+                <div class="text">{% blocktrans %}Diventa Caregiver Pro ed entra subito in contatto con chi è in cerca
+                  di
+                  professionisti
+                  qualificati nel settore dell'assistenza familiare.{% endblocktrans %}</div>
+                <div class="text-center text-sm-left">
+                  <a href="{% url "solace:caregiver_signup" %}"
+                     class="btn btn-outline-primary btn-big mt-lg-4 mb-4">{% trans "Iscriviti ora" %}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+
+{% block pagejs %}
+
+{% endblock pagejs %}

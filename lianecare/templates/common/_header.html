@@ -1,0 +1,95 @@
+{% load static i18n compress %}
+
+<header id="site-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <nav id="main-nav" class="navbar">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'images/lianecare_logo.png' %}"  height="" alt="LianeCare è l'app del caring">
+          </a>
+          <ul class="navbar-nav">
+            {% if account.is_authenticated %}
+              <li class="nav-item">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a class="nav-link" href="{% url 'courses:course_list' %}">
+                  <i class="fab fa-youtube text-primary" style="margin-right: 5px;"></i> {% trans "Corsi" %}
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropUser" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                  <i class="far fa-user" style="margin-right: 5px;"></i>
+                </a>
+                <div class="user-menu dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropUser">
+                  <div class="dropdown-item account-item">
+                    <a class="account-avatar" href="{% url 'users:redirect' %}">
+                      {{ account.initials }}
+                    </a>
+                    <div>
+                      <a class="account-link" href="{% url 'users:redirect' %}">
+                        <span class="account-name">{{ account.full_name }}</span>
+                      </a>
+                      {% if account.type == "STAFF" %}<br><span class="small">STAFF</span>{% endif %}
+                      {% if account.type == "PRO" %}<br><span class="small">CAREGIVER PRO</span>{% endif %}
+                    </div>
+                  </div>
+                  {% if account.type != "STAFF" %}
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'users:update' %}">
+                      <i class="fas fa-user-edit"></i>{% trans "Modifica profilo" %}</a>
+                    {% if account.type != "PRO" %}
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'solace:person_settings' %}">
+                        <i class="fas fa-cogs"></i>{% trans "Impostazioni" %}</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'solace:person_job_posts' %}">
+                        <i class="fas fa-briefcase"></i>{% trans "Job Post" %}</a>
+                    {% endif %}
+                    {% if account.type == "PRO" %}
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'solace:caregiver_settings' %}">
+                        <i class="fas fa-cogs"></i>{% trans "Impostazioni" %}</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'solace:caregiver_proposals' %}">
+                        <i class="fas fa-briefcase"></i>{% trans "Proposte di lavoro" %}</a>
+                    {% endif %}
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'solace:student_courses' %}">
+                      <i class="fab fa-youtube"></i>{% trans "I miei corsi" %}</a>
+                  {% endif %}
+                  <div class="dropdown-divider"></div>
+                  {# <a class="dropdown-item" href="{% url 'users:redirect' %}">#}
+                  {#   <i class="far fa-bell"></i>{% trans "Messaggi" %}#}
+                  {# </a>#}
+                  {# <div class="dropdown-divider"></div>#}
+                  <a class="dropdown-item" href="{% url 'account_logout' %}">
+                    <i class="fas fa-sign-out-alt"></i>{% trans "Esci" %}
+                  </a>
+                </div>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a id="sign-up-pro-link" class="btn btn-primary"
+                   href="{% url 'solace:caregiver_signup' %}">{% trans "Registrati" %}</a>
+              </li>
+              {#            <li class="nav-item">#}
+              {#              <a id="sign-up-link" class="nav-link"#}
+              {#                 href="{% url 'solace:person_signup' %}">{% trans "Registrati" %}</a>#}
+              {#            </li>#}
+              <li class="nav-item">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a class="nav-link" href="{% url 'account_login' %}">
+                  <i class="far fa-user"></i><span class="ml-2 d-none d-sm-inline">{% trans "Login" %}</span>
+                </a>
+
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+</header>

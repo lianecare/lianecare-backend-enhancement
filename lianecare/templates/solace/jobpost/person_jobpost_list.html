@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags %}
+
+{% block title %}{% trans 'Job Post utente' %}{% endblock %}
+
+{% block content %}
+  <div class="">
+    <div class="container pb-3 py-md-4">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 mb-3">
+          {% include "./../_menu_person_profile.html" with active='jobposts' %}
+        </div>
+
+        <div class="col-md-8 col-lg-9">
+          {% for jp in jobposts_list %}
+            <div class="card">
+              <div class="card-header">
+                <div class="float-right">
+                  <span class="badge badge-pill badge-orange">{% trans "Job Post" %}</span>
+                  <span class="badge badge-pill badge-primary">{{ jp.created|date:"SHORT_DATE_FORMAT" }}</span>
+                </div>
+
+                <h3 class="h6">
+                  {% if jp.category.icon %}<i class="{{ jp.category.icon }}"></i>{% endif %}{{ jp.category.name }}</h3>
+              </div>
+              <div class="card-body">
+                <div class="job-post mt-2">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <h6><b>{% trans "Servizi richiesti" %}</b></h6>
+                      <ul class="checked mb-4">
+                        {% for subcat in jp.subcategories.all %}
+                          <li>{{ subcat.name }}</li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="map">
+                      </div>
+                    </div>
+                  </div>
+
+                  {% if jp.note %}
+                    <div class="jp-note mb-4">
+                      <h6><b>{% trans "note aggiuntive" %}</b></h6>
+                      {{ jp.note }}
+                    </div>
+                  {% endif %}
+
+                  <div class="jp-footer mb-1">
+                    <div><b>{{ jp.get_when_display }}</b></div>
+                    <div><span
+                            class="title">{% trans "Esperienza minima: " %}</span><b>{{ jp.get_experience_display }}</b>
+                    </div>
+                    <div><span
+                            class="title">{% trans "Con referenze: " %}</span><b>{{ jp.has_references|yesno:'sì,non necessario' }}</b>
+                    </div>
+                  </div>
+                  <div class="edit-jp-footer">
+                    <div>
+                      <a href="{% url 'solace:person_jobpost_proposals' jp.pk %}"
+                         class="btn btn-outline-info btn-small" title="Vedi i candidati"
+                      ><i class="fas fa-users"></i>  {% trans "profili" %}</a>
+                    </div>
+                    <div>
+                      <a href="{% url 'solace:person_update_job_post' jp.pk %}"
+                         class="btn btn-outline-primary btn-small ml-1" title="Modifica il Job Post"><i
+                              class="fa fa-edit"></i> {% trans "Modifica" %}</a>
+                      <button class="suspend-jp-btn btn btn-small ml-1 {{ jp.is_active|yesno:"btn-outline-danger,btn-outline-primary" }}"
+                              type="button"
+                              data-id="{{ jp.pk }}"
+                              data-active="{{ jp.is_active|yesno:"0,1" }}"
+                              title="{{ jp.is_active|yesno:"Sospendi,Riprendi" }} il Job Post">
+                        <i class="far {{ jp.is_active|yesno:"fa-pause-circle,fa-play-circle" }}"></i> {{ jp.is_active|yesno:"Pausa,Riprendi" }}
+                      </button>
+
+                      <button type="button" class="btn btn-primary btn-small btn-danger" data-toggle="modal"
+                              data-target="#deleteJpModal"
+                              data-id="{{ jp.pk }}"><i
+                              class="far fa-trash-alt"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          {% empty %}
+            <div class="card">
+              <div class="card-body">
+                <h6>Ancora non hai pubblicato nessun Job Post, inizia subito.</h6>
+              </div>
+            </div>
+          {% endfor %}
+
+          {% include "../../common/_pagination.html" %}
+
+          <div class="controls mt-4">
+            <a href="{% url 'solace:person_detail' request.user.username %}"
+               class="btn btn-danger mb-3 mr-3">{% trans "Torna al profilo" %}</a>
+            <a href="{% url "solace:person_create_job_post" %}" class="btn btn-primary mb-3">Pubblica un annuncio</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="deleteJpModal" tabindex="-1" role="dialog" aria-labelledby="deleteJpModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{% trans "Elimina Job Post" %}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="deleteJPForm">
+                {% csrf_token %}
+                <input type="hidden" value="" name="id" id="pk">
+                <div class="form-group">
+                  <label for="status_id">Per favore indicaci la motivazione</label>
+                  <div class="form-select">
+                    <select class="form-control" name="status" id="status_id">
+                      <option value="KO_NO_NEED">{% trans 'Non ne ho più bisogno' %}</option>
+                      <option value="DELETE">{% trans 'Preferisco non dirlo' %}</option>
+                      <option value="KO_OTHER_PLATFORM">{% trans 'Ho trovato un Caregiver con altre piattaforme' %}</option>
+                      <option value="KO_OTHER">{% trans 'Ho trovato il Caregiver in altro modo' %}</option>
+                      <option value="OK_SOLACE">{% trans 'Ho trovato il Caregiver con LianeCare' %}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Annulla" %}</button>
+                  <button type="submit" class="btn btn-primary">{% trans "Invia" %}</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}
+
+{% block pagejs %}
+  <script type="text/javascript">
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    /* Pause JP */
+    $(".suspend-jp-btn").on('click', function (e) {
+      startLoading();
+      const id = $(this).data("id");
+      const active = $(this).data("active");
+      var url = "{% url 'api:jobpost-update' %}";
+      fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+        },
+        mode: 'same-origin',
+        body: JSON.stringify({'is_active': active, 'id': id})
+      }).then((resp) => resp.json())
+              .then(payload => {
+                location.reload();
+              }).catch(err => console.error('Error:', err));
+    });
+
+    $('#deleteJpModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var id = button.data('id');
+      var modal = $(this);
+      modal.find('#pk').val(id);
+    });
+
+    $("#deleteJPForm").on('submit', function (e) {
+      e.preventDefault();
+      startLoading();
+      $("#deleteJpModal").modal('hide');
+      var form = $(this);
+      var postData = $(form).serializeJSON();
+      var url = "{% url 'api:jobpost-update' %}";
+      fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+        },
+        mode: 'same-origin',
+        body: JSON.stringify(postData)
+      }).then((resp) => resp.json())
+              .then(function (data) {
+                location.reload();
+              }).catch(err => console.error('Error:', err));
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-6">
+        <h1>h1: Poppins 38px (2.375rem)</h1>
+        <h2>Title h2: Poppins 36px (2.25rem)</h2>
+        <h3>Title h3: Poppins 24px (1.5rem)</h3>
+        <h4>Title h4: Poppins 20px (1.25rem)</h4>
+        <h5>Title h5: Poppins 18px (1.125rem)</h5>
+        <h6>Title h6: Poppins 16px (1rem) </h6>
+        <p>Paragrafo Open Sans 16px</p>
+      </div>
+      <div class="col-6">
+        <h1 class="font-weight-light">Light h1: Poppins</h1>
+        <h2 class="font-weight-light">Light h2: Poppins</h2>
+        <h3 class="font-weight-light">Light h3: Poppins</h3>
+        <h4 class="font-weight-light">Light h4: Poppins</h4>
+        <h5 class="font-weight-light">Light h5: Poppins</h5>
+        <h6 class="font-weight-light">Light h6: Poppins</h6>
+        <p class="font-weight-light">Light Paragrafo Open Sans</p>
+      </div>
+      <div class="col-12">
+        <h2 class="display-1">Display 1 96px 300</h2>
+        <h2 class="display-2">Display 2 88px 300</h2>
+        <h2 class="display-3">Display 3 72px 300</h2>
+        <h2 class="display-4">Display 4 48px 300</h2>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-6 mb-5">
+        <form id="test-form" novalidate="novalidate">
+          <fieldset>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group mandatory">
+                  <label for="email">Email address</label>
+                  <input type="email" class="form-control" name="email" id="email-template">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group mandatory">
+                  <label for="emailConfirm">Confirm email address</label>
+                  <input type="email" class="form-control" name="emailConfirm" id="emailConfirm">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="password">password</label>
+                  <input type="password" class="form-control" name="password" id="password">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="passwordConfirm">Confirm password</label>
+                  <input type="password" class="form-control" name="passwordConfirm"
+                         id="passwordConfirm">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="csexRadio">Sesso</label>
+                  <div class="radio">
+                    <label class="radio-inline">
+                      <input type="radio" name="csexRadio" id="csexRadio" value="M"
+                             checked="checked">
+                      <span>M</span>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="csexRadio" id="csexRadio" value="F">
+                      <span>F</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="csexCheckbox">Sesso</label>
+                  <div class="checkbox">
+                    <label class="checkbox-inline">
+                      <input type="checkbox" name="csexCheckbox" id="csexCheckbox" value="M">
+                      <span>M</span>
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" name="csexCheckbox" id="csexCheckbox" value="F">
+                      <span>F</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group mandatory">
+                  <label for="cbirthdate">data di nascita</label>
+                  <input type="date" class="form-control datepicker" name="cbirthdate" id="cbirthdate"
+                         data-value="">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <div class="form-group">
+              <label for="select">Select</label>
+              <div class="form-select">
+                <select class="form-control" name="select" id="select" aria-required="true"
+                        aria-invalid="false">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="textarea">
+                <span>Textarea</span>
+                <small>(massimo 100 caratteri)</small>
+              </label>
+              <textarea class="form-control" rows="5" name="textarea" id="textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Email address">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button">go</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6 mandatory">
+              <label for="id_birthday">Data di nascita</label>
+              <div class="input-group">
+                <input id="id_birthday" type="date" class="form-control" name="birthday" value=""
+                       aria-label="Birthday" aria-describedby="id_birthday" placeholder="gg/mm/aaaa">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="textDisabled">
+                <span>Text disabled</span>
+              </label>
+              <input type="text" class="form-control" disabled="" name="textDisabled" id="textDisabled">
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="privacy" id="privacy">
+                  <span>Privacy flag</span>
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="privacy" id="privacy" disabled="">
+                  <span>Privacy flag disabled</span>
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="privacy" id="privacy" disabled="" checked="">
+                  <span>Privacy flag checked and disabled</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
+                         checked="">
+                  <span>Option one is this and that—be sure to include why it's great</span>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  <span>Option two can be something else and selecting it will deselect option one</span>
+                </label>
+              </div>
+              <div class="radio disabled">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"
+                         disabled="">
+                  <span>Option three is disabled</span>
+                </label>
+              </div>
+            </div>
+
+            <p>Custom Bootstrap checkboxes and radios</p>
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2" checked disabled>
+                <label class="custom-control-label" for="customCheck2">Check this custom checkbox</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheckDisabled1" disabled>
+                <label class="custom-control-label" for="customCheckDisabled1">Check this custom checkbox</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+                <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" name="radioDisabled" id="customRadioDisabled2" class="custom-control-input"
+                       disabled>
+                <label class="custom-control-label" for="customRadioDisabled2">Toggle this custom radio</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Toggle this custom radio</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <button type="submit" class="btn btn-primary">Valida form</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

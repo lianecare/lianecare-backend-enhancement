@@ -1,0 +1,15 @@
+{% load i18n %}
+<div class="sticky-top">
+  <nav class="user-nav">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link {% if active == 'profile' %}active{% endif %}"
+         href="{% url 'solace:person_update' %}">{% trans "Dati personali" %}</a>
+
+      <a class="nav-item nav-link {% if active == 'settings' %}active{% endif %}"
+         href="{% url 'solace:person_settings' %}">{% trans "Impostazioni" %}</a>
+
+      <a class="nav-item nav-link {% if active == 'jobposts' %}active{% endif %}"
+         href="{% url 'solace:person_job_posts' %}">{% trans "Job Post" %}</a>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,25 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Indirizzo e-mail confermato" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-8 py-4">
+      <h1 class="mb-5">{% trans "Indirizzo e-mail confermato" %}</h1>
+
+
+      <p> Grazie per esserti iscritto a LianeCare.</p>
+
+      <p>Il tuo account è attivo</p>
+
+      <a class="btn btn-primary" href="{% url 'account_login' %}">Accedi al tuo account</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

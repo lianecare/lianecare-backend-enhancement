@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail caregiver_tags %}
+
+{% block title %}Dettaglio proposta di lavoro{% endblock %}
+
+{% block content %}
+  {% with user=request.user category=object.jobpost.category jobpost=object.jobpost caregiverpro=object.caregiverpro profile=object.caregiverpro.more %}
+    <div class="bg-light">
+
+      <div id="breadcrumbs" class="d-none d-md-block">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <ul class="breadcrumbs">
+                <li class="item"><a
+                        href="{% url "solace:person_detail" user.username %}">{% trans "Il mio profilo" %}</a></li>
+                <li class="item"><a
+                        href="{% url "solace:person_job_posts" %}">{% trans "I miei Job Post" %}</a></li>
+                <li class="item"><a
+                        href="{% url "solace:person_jobpost_proposals" jobpost.pk %}">{{ jobpost.category }}</a></li>
+                <li class="item active">{% trans "Caregiver PRO " %}{{ caregiverpro.full_name }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="proposal" class="bg-light">
+        <div class="container py-3">
+          <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="h6">
+                        {% trans "Caregiver PRO" %}
+                      </h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="text-center">
+                        {% if profile.photo %}
+                          <img class="img-fluid rounded-circle mb-3"
+                               src="{{ profile.photo|thumbnail_url:'avatar' }}"
+                               alt="{{ profile.photo.name }}" width="80" height="80"/>
+                        {% else %}
+                          <img src="{% static 'images/default-profile.png' %}"
+                               class="img-fluid rounded-circle mb-3" width="80"
+                               height="80"/>
+                        {% endif %}
+                        <h5><a href="{% url "solace:caregiver_detail" caregiverpro.username %}" target="_blank"
+                               data-toggle="tooltip" title="
+                                {% trans "Vedi il profilo di " %}{{ caregiverpro.full_name }}">{{ caregiverpro.full_name }}</a>
+                        </h5>
+
+                        <h6 class="caregiver-age">{{ profile.get_age }} anni
+                          {% if profile.is_graduate %}
+                            <i class="is_graduate fas fa-user-md ml-2" data-toggle="tooltip" data-html="true"
+                               title="Ha un titolo di studio in ambito sanitario"></i>
+                          {% endif %}
+
+                          {% if profile.is_certificated %}
+                            <i class="is_certificated fas fa-user-nurse ml-2" data-toggle="tooltip" data-html="true"
+                               title="Ha un certificato professionale"></i>
+                          {% endif %}
+
+                          {% if profile.has_basic_course or profile.has_pro_course %}
+                            {% if profile.has_basic_course %}
+                              <i class="text-primary fas fa-certificate ml-2" data-toggle="tooltip" data-html="true"
+                                 title="Ha superato il corso base di Liane"></i>
+                            {% else %}
+                              <i class="text-orange fas fa-certificate ml-2" data-toggle="tooltip" data-html="true"
+                                 title="Ha superato il corso avanzato di Liane"></i>
+                            {% endif %}
+                          {% endif %}
+                        </h6>
+                        <h6 class="caregiver-location small">
+
+                          <span><i
+                                  class="far fa-calendar-check pr-2"></i>{% trans "Attivo da " %}{{ profile.created|date:"F Y" }}</span>
+                        </h6>
+                      </div>
+
+                      <div class="extra-jp mt-4">
+                        <div class="skill-list">
+                          {% skill_list profile %}
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-8">
+                  <div class="card">
+                    <div class="card-header card-header-light">
+                      <button class="reload-page btn btn-small btn-outline-info float-right" data-toggle="tooltip"
+                              title="Aggiorna la pagina">
+                        <i
+                                class="fas fa-sync-alt"></i></button>
+                      <h5><i class="far fa-comments"></i>{% trans "Conversazione" %}</h5>
+                    </div>
+                    <div class="card-body">
+                      {% for item in object.chat.all %}
+                        {% with you=request.user sender=item.sender %}
+                          <div class="message {% if sender == you %}right{% else %}left{% endif %}">
+                            <span class="sender">{% if sender == you %}{% trans "Tu" %}{% else %}{{ sender.first_name }}{% endif %}</span>
+                            <div>
+                              {{ item.msg }}
+                            </div>
+                            <div class="date">{{ item.created|date:"j/m/Y G:i" }}</div>
+                          </div>
+                        {% endwith %}
+                      {% empty %}
+                        <p>Invia il tuo primo messaggio.</p>
+                      {% endfor %}
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-header card-header-light">
+                      <h5>
+                        <i class="far fa-comment-dots"></i>{% trans "Invia un messaggio a" %} {{ caregiverpro.first_name }}
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <form id="message-form" method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="form-group">
+                          <label for="{{ form.msg.id_for_label }}">{{ form.msg.label }}</label>
+                          {{ form.msg }}
+                          {{ form.msg.errors }}
+                        </div>
+                        <div class="text-right">
+                          <button class="btn btn-primary" type="submit">{% trans "Invia" %}</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  {% endwith %}
+{% endblock %}
+
+{% block pagejs %}
+  <script>
+    $(document).ready(function () {
+      $(".reload-page").click(function () {
+        location.reload();
+      });
+    });
+
+    $(function () {
+      $("#message-form").validate({
+        lang: 'it',
+        rules: {
+          msg: {
+            rangelength: [10, 300]
+          }
+        },
+        errorElement: "span",
+      });
+    });
+  </script>
+{% endblock %}

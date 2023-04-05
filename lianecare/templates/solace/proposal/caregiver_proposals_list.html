@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Richieste dei Clienti" %}{% endblock %}
+
+{% block content %}
+  <div class="bg-light">
+    <div id="breadcrumbs" class="d-none d-md-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="breadcrumbs">
+              <li class="item"><a
+                      href="{% url "solace:caregiver_detail" request.user.username %}">{% trans "Profilo" %}</a></li>
+              <li class="item active">{% trans "Proposte di lavoro" %}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="proposals">
+      <div class="container py-3 py-lg-4">
+        <div class="row">
+          <div class="col-md-4 col-lg-3 mb-3">
+            {% include "./../caregiverpro/_menu_caregiver_profile.html" with active='proposals' %}
+          </div>
+          <div class="col-md-8 col-lg-9">
+            <div id="proposals-list">
+              {% for prop in proposals_list %}
+                {% with user=prop.jobpost.user category=prop.jobpost.category profile=prop.jobpost.user.personmore %}
+                  <div class="card proposal">
+
+                    <div class="card-body">
+                      <div class="row align-items-end">
+                        <div class="col-12">
+                          <div class="card-text">
+                            <span class="badge badge-pill badge-primary mb-3">{{ prop.jobpost.created|date:"SHORT_DATE_FORMAT" }}</span>
+                            <h5 class="card-title mb-2">{{ category.name }} per {{ user.first_name }}</h5>
+
+                            <div class="proposal-footer">
+                              <div><span
+                                      class="title">{% trans "Quando: " %}</span><b>{{ prop.jobpost.get_when_display }}</b>
+                              </div>
+                              <div><span
+                                      class="title ml-3">{% trans "Esperienza: " %}</span><b>{{ prop.jobpost.get_experience_display }}</b>
+                              </div>
+                              <div><span class="title ml-3">{% trans "Referenze: " %}</span><i
+                                      class="fas {{ prop.jobpost.has_references|yesno:'fa-user-check,fa-times' }}"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-8">
+                          <div class="card-text">
+                            <button class="btn btn-link collapsed" data-toggle="collapse"
+                                    data-target="#collapse{{ forloop.counter }}"
+                                    aria-expanded="false"
+                                    aria-controls="collapse{{ forloop.counter }}">Più dettagli
+                            </button>
+                            <div id="collapse{{ forloop.counter }}"
+                                 class="collapse mt-3"
+                                 aria-labelledby="proposal_{{ forloop.counter }}"
+                                 data-parent="#proposals-list">
+                              <p class="card-text">{{ prop.jobpost.note }}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 text-right mt-3">
+                          <a href="{% url "solace:ignore_proposal" prop.uuid %}" class="btn btn-danger btn-small"
+                             onclick="return confirm('Sei sicuro di voler ignorare la proposta?');">{% trans "Ignora" %}</a>
+                          <a href="{% url "solace:caregiver_proposal_detail" prop.uuid %}"
+                             class="btn btn-primary btn-small">{% trans "Contatta" %}</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                {% endwith %}
+              {% empty %}
+                <h5>{% trans "Al momento non ci sono offerte per te" %}</h5>
+              {% endfor %}
+            </div>
+
+            {% include "../../common/_pagination.html" %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

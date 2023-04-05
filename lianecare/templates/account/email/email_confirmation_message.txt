@@ -1,0 +1,16 @@
+{% extends "account/email/base_message.txt" %}
+{% load account %}
+{% load i18n %}
+
+{% block content %}
+{% autoescape off %}
+{% user_display user as user_display %}
+
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+Dopo aver confermato che questo è il tuo indirizzo email potrai accedere sul nostro sito {{ site_domain }}.
+
+Per confermare <a href="{{ activate_url }}" target="_blank">clicca qui</a>
+{% endblocktrans %}
+
+{% endautoescape %}
+{% endblock %}

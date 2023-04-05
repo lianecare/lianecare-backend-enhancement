@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load cache static i18n thumbnail embed_video_tags %}
+
+{% block title %}{% trans "Modulo: " %}{{ object.module.title }}{% endblock %}
+
+{% block content %}
+  <div id="modulo">
+    {% csrf_token %}
+    <div class="container py-3 py-lg-4">
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          {% cache 600 my_module_contents object.module %}
+            {% if object.module.video_url %}
+              {% video object.module.video_url "100% x 500" %}
+            {% endif %}
+          {% endcache %}
+
+          {% include "../quizes/modal_quiz.html" %}
+
+        </div>
+        <div class="col-lg-4">
+          <div class="module-list">
+            {% for en in enrolled_modules|dictsort:"order" %}
+              {% with module=en.module %}
+                <div id="module-{{ module.id }}" class="module module_watched">
+                  <div class="number">{{ forloop.counter }}</div>
+                  <div class="desc">
+                    {% if module.id == object.module.id %}
+                      <b>{{ module.title }}</b>
+                    {% else %}
+                      <a class="title"
+                         href="{% url 'solace:student_module_detail' en.uuid %}">{{ module.title }}</a>
+                    {% endif %}
+                    {% if module.description %}
+                      <div class="description">
+                        {{ module.description }}
+                      </div>
+                    {% endif %}
+                    {% if not en.viewed and module.id == object.module.id %}
+                      <a id="mark-as-viewed" style="display: none" class="small" href="{% url 'solace:student_module_viewed' en.uuid %}">Segna come visto e passa al successivo</a>
+                    {% endif %}
+                  </div>
+
+                  <div class="time">
+                    <span class="float-right badge badge-pill badge-orange">{{ module.minutes_text }}</span>
+                  </div>
+
+                  <div class="status {% if en.viewed  %} watched_status {% endif %}">
+                    <i class="fas fa-check {{ en.viewed|yesno:"text-primary,text-light-gray" }}"></i>
+                  </div>
+                </div>
+              {% endwith %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block pagejs %}
+<script src="https://player.vimeo.com/api/player.js" id="vimeo" type="text/javascript"></script>
+<script type="text/javascript">
+      const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      var duration_count = ''
+      var iframe = document.querySelector('iframe');
+      var player = new Vimeo.Player(iframe);
+      player.getDuration().then(function(duration){
+          duration_count = duration
+      });
+      player.on('progress', function(progress) {
+        get_percentage = progress.percent
+        console.log(progress);
+        console.log(progress.percent);
+        if (get_percentage > 0.998){
+           $("#mark-as-viewed").show()
+        }
+      })
+</script>
+{% if quiz %}
+  <script type="text/javascript">
+      const startBtn = document.getElementById('start-btn');
+      startBtn.addEventListener('click', () => {
+        window.location.href = "{% url 'quizes:quiz-detail' quiz.id %}";
+      });
+      setTimeout(()=>{
+        watched_status = $('.watched_status').length
+        watched_len = $('.module_watched').length
+        if (watched_status == watched_len){
+            $("#btn-do-test").css('display','');
+        }
+      }, 5000);
+</script>
+{% endif %}
+{% endblock %}

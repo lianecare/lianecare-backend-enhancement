@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load cache static i18n thumbnail embed_video_tags %}
+
+{% block title %}{% trans "Corso: " %}{{ object.title }}{% endblock %}
+
+{% block content %}
+  <div id="modulo">
+    {% csrf_token %}
+    <div class="container py-3 py-lg-4">
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          {% cache 600 module_contents object %}
+            {% if object.video_url %}
+              {% video object.video_url "100% x 500" %}
+            {% endif %}
+          {% endcache %}
+        </div>
+        <div class="col-lg-4">
+          <div class="module-list">
+            {% for module in course_modules|dictsort:"order" %}
+              <div id="module-{{ module.id }}" class="module">
+                <div class="number">{{ forloop.counter }}</div>
+                <div class="desc">
+                  <a class="title"
+                     href="{% url 'courses:module_detail' module.course.slug module.id %}">{{ module.title }}</a>
+                  {% if module.description %}
+                    <div class="description">
+                      {{ module.description }}
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="time">
+                  <span class="float-right badge badge-pill badge-orange">{{ module.minutes_text }}</span>
+                </div>
+
+                <div class="status">
+                  {% if module.id == object.id %}<i class="far fa-play-circle"></i>
+                  {% else %}
+                    <button id="btn-mod-status-{{ module.id }}" class="module-viewed btn btn-link"
+                            data-id="{{ module.id }}">
+                      <i class="fas fa-check {{ module.viewed|yesno:"text-primary,text-light-gray" }}"></i></button>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block pagejs %}
+  <script type="text/javascript">
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    /* Change module's status */
+    $(".module-viewed").on('click', function (e) {
+      e.preventDefault();
+
+      const id_module = $(this).data("id");
+      var url = "{% url 'api:change-viewed-module' %}";
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': csrftoken,
+          'Content-type': 'application/json',
+        },
+        mode: 'same-origin',
+        body: JSON.stringify({'id_module': id_module})
+      }).then((resp) => resp.json())
+              .then(data => {
+                console.log(data);
+                data.new_status === true ? $("#btn-mod-status-" + id_module + ' i').addClass('text-primary').removeClass('text-light-gray') : $("#btn-mod-status-" + id_module + ' i').addClass('text-light-gray').removeClass('text-primary');
+                $.toast({
+                  type: 'info',
+                  title: '{% trans "Avviso" %}',
+                  subtitle: '{% trans "Modulo aggiornato" %}',
+                  content: payload.message,
+                  delay: 3000,
+                });
+              }).catch((err) => {
+        console.log('Error:', err)
+      });
+    });
+  </script>
+{% endblock %}

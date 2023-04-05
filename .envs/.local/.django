@@ -1,0 +1,38 @@
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
+
+# django-allauth
+# ------------------------------------------------------------------------------
+DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+ACCOUNT_HTTP_PROTOCOL=https
+
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
+# Celery
+# ------------------------------------------------------------------------------
+
+# Flower
+CELERY_FLOWER_USER=flower
+CELERY_FLOWER_PASSWORD=flower
+
+# Stripe
+# ----------------------------------------------------------------
+STRIPE_PUBLISHABLE_KEY=pk_test_51IUzxPLQEUmkC5fIUJEQNn38n1dCOkfzuAbG9FwfKVNN21RGevHTp5sQVUoAunQh9ERfJADNhhrKI4qK2VLwwsUx00wZfcT8bm
+STRIPE_SECRET_KEY=sk_test_51IUzxPLQEUmkC5fIt6hQ2QF3vdVf0doELLMdEf1sjS5u9w8RJ5AsOl2srvsKsURM8heCQfoUjRL1CjoB7vAL1RRH00kfyOuvAZ
+STRIPE_ENDPOINT_SECRET=whsec_E4CnwRflR8wZ5eC9zvhHtpKoLaoqXvYr
+
+STRIPE_PRICE_MONTH_ID=price_1IXTzJLQEUmkC5fIvvit8UD9
+STRIPE_PRICE_YEAR_ID=price_1IXTzJLQEUmkC5fI014SAKVO
+
+# Email
+# ------------------------------------------------------------------------------
+
+SENDGRID_API_KEY=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
+SENDGRID_GENERATE_MESSAGE_ID=True
+SENDGRID_MERGE_FIELD_FORMAT={{{{{}}}}}
+
+SOLACE_BASEURL=http://localhost:8000

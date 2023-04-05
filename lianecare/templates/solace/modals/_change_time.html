@@ -1,0 +1,26 @@
+{% load static i18n caregiver_tags %}
+
+{# Modale per cambio/inserimento presentazione Caregiver PRO #}
+<div class="modal fade" id="timeModal" tabindex="-1" role="dialog" aria-labelledby="timeModal" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <form id="timeUpdateForm" method="post" action=".">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{% trans "Quando potresti lavorare?" %}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          {% availability_grid_mod profile.availability %}
+          <input type="hidden" value="true" name="time"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{% trans "Chiudi" %}</button>
+          <button type="submit" class="btn btn-primary">{% trans "Salva" %}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

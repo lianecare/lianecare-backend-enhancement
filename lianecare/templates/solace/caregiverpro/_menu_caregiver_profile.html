@@ -1,0 +1,15 @@
+{% load i18n %}
+<div class="sticky-top">
+  <nav class="user-nav">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link {% if active == 'profile' %}active{% endif %}"
+         href="{% url 'solace:caregiver_update' %}">{% trans "Dati personali" %}</a>
+
+      <a class="nav-item nav-link {% if active == 'settings' %}active{% endif %}"
+         href="{% url 'solace:caregiver_settings' %}">{% trans "Impostazioni" %}</a>
+
+      <a class="nav-item nav-link {% if active == 'proposals' %}active{% endif %}"
+         href="{% url 'solace:caregiver_proposals' %}">{% trans "Proposte" %}</a>
+    </div>
+  </nav>
+</div>

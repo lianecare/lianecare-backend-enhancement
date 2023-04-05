@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}Dettaglio proposta di lavoro{% endblock %}
+
+{% block content %}
+  {% with user=object.jobpost.user category=object.jobpost.category profile=object.jobpost.user.personmore %}
+    <div class="bg-light">
+      <div id="breadcrumbs" class="d-none d-sm-block">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <ul class="breadcrumbs">
+                <li class="item"><a
+                        href="{% url "solace:caregiver_detail" user.username %}">{% trans "Il mio profilo" %}</a></li>
+                <li class="item"><a
+                        href="{% url "solace:caregiver_proposals" %}">{% trans "Proposte di lavoro" %}</a></li>
+                <li class="item active">{{ category }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="proposal" class="bg-light">
+        <div class="container py-3">
+          <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="h6">
+                        {% if category.icon %}<i class="{{ category.icon }}"></i>{% endif %}{{ category.name }}
+                      </h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="text-center">
+                        {% if profile.photo %}
+                          <img class="img-fluid rounded-circle mb-3"
+                               src="{{ profile.photo|thumbnail_url:'avatar' }}"
+                               alt="{{ profile.photo.name }}" width="80" height="80"/>
+                        {% else %}
+                          <img src="{% static 'images/default-profile.png' %}"
+                               class="img-fluid rounded-circle mb-3" width="80"
+                               height="80"/>
+                        {% endif %}
+                        <h5><a href="{% url "solace:person_detail" user.username %}" data-toggle="tooltip"
+                               title="{% trans "Vedi il profilo di " %}{{ user.full_name }}">{{ user.full_name }}</a>
+                        </h5>
+                      </div>
+
+                      {% if object.jobpost.note %}
+                        <div class="desc-jp">
+                          {{ object.jobpost.note }}
+                        </div>
+                      {% endif %}
+
+                      <h6><b>{% trans "Servizi richiesti" %}</b></h6>
+                      <ul class="checked mb-3 small">
+                        {% for subcat in object.jobpost.subcategories.all %}
+                          <li>{{ subcat.name }}</li>
+                        {% endfor %}
+                      </ul>
+
+                      <div class="extra-jp">
+                        <dl>
+                          <dt>{% trans "Quando" %}</dt>
+                          <dd>{{ object.jobpost.get_when_display }}</dd>
+                          <dt>{% trans "Esperienza minima richiesta" %}</dt>
+                          <dd>{{ object.jobpost.get_experience_display }}</dd>
+                          <dt>{% trans "Referenze richieste" %}</dt>
+                          <dd>{{ object.jobpost.has_references|yesno:'sì,indifferente' }}</dd>
+                        </dl>
+                      </div>
+
+                      <span class="small mr-3">{% trans "Data di pubblicazione" %}</span><span
+                            class="badge badge-pill badge-primary mt-3">{{ object.jobpost.created|date:"SHORT_DATE_FORMAT" }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-8">
+                  <div class="card">
+                    <div class="card-header card-header-light">
+                      <button class="reload-page btn btn-small btn-outline-info float-right" data-toggle="tooltip"
+                              title="Aggiorna la pagina">
+                        <i
+                                class="fas fa-sync-alt"></i></button>
+                      <h5><i class="far fa-comments"></i>{% trans "Conversazione" %}</h5>
+                    </div>
+                    <div class="card-body">
+                      {% for item in object.chat.all %}
+                        {% with you=request.user sender=item.sender %}
+                          <div class="message {% if sender == you %}right{% else %}left{% endif %}">
+                            <span class="sender">{% if sender == you %}{% trans "Tu" %}{% else %}
+                              {{ sender.first_name }}{% endif %}</span>
+                            <div>
+                              {{ item.msg }}
+                            </div>
+                            <div class="date">{{ item.created|date:"j/m/Y G:i" }}</div>
+                          </div>
+                        {% endwith %}
+                      {% empty %}
+                        <p>Invia il tuo primo messaggio, solo così il Cliente saprà se hai interesse per la sua
+                          richiesta
+                          di lavoro.</p>
+                      {% endfor %}
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-header card-header-light">
+                      <h5><i class="far fa-comment-dots"></i>{% trans "Invia un messaggio a" %} {{ user.first_name }}
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <form id="message-form" method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="form-group">
+                          <label for="{{ form.msg.id_for_label }}">{{ form.msg.label }}</label>
+                          {{ form.msg }}
+                          {{ form.msg.errors }}
+                        </div>
+                        <div class="text-right">
+                          <button class="btn btn-primary" type="submit">{% trans "Invia" %}</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  {% endwith %}
+{% endblock %}
+
+{% block pagejs %}
+  <script>
+    $(document).ready(function () {
+      $(".reload-page").click(function () {
+        location.reload();
+      });
+    });
+
+    $(function () {
+      $("#message-form").validate({
+        lang: 'it',
+        rules: {
+          msg: {
+            rangelength: [10, 300]
+          }
+        },
+        errorElement: "span",
+      });
+    });
+  </script>
+{% endblock %}

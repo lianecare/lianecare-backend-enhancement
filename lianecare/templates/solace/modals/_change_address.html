@@ -1,0 +1,45 @@
+{% load static i18n %}
+
+{# Modale per cambio/inserimento presentazione Caregiver PRO #}
+<div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="addressModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form id="addressUpdateForm" method="post" action=".">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{% trans "La tua posizione" %}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row justify-content-center">
+            <div class="form-group col-lg-8">
+              <i class="fas fa-info-circle text-primary"></i>
+              <label for="address">Indirizzo</label><br>
+              <input type="text" name="address" value="{{ profile.address }}" class="form-control" maxlength="255"
+                     required="" id="id_address">
+            </div>
+            <input type="hidden" name="latitude" value="{{ profile.latitude }}" id="id_latitude">
+            <input type="hidden" name="longitude" value="{{ profile.longitude }}" id="id_longitude">
+            <input type="hidden" name="region" value="{{ profile.region }}" id="id_region">
+            <input type="hidden" name="postcode" value="{{ profile.postcode }}" id="id_postcode">
+            <input type="hidden" name="country" value="{{ profile.country }}" id="id_country">
+            <input type="hidden" name="city" value="{{ profile.city }}" id="id_city">
+
+            <div class="form-group col-md-2 mandatory">
+              <label for="house_number">Civico</label>
+              <input type="text" name="house_number" value="{{ profile.house_number }}" class="form-control"
+                     maxlength="255"
+                     required="" id="id_house_number">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{% trans "Chiudi" %}</button>
+          <button type="submit" class="btn btn-primary">{% trans "Salva" %}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,166 @@
+body {
+  font-weight: 400;
+  font-size: 1rem;
+  padding-top: 90px;
+  line-height: 1;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+a {
+  outline: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+p {
+  line-height: 1.4rem;
+}
+
+.nolist {
+  list-style: none !important;
+  padding-left: 0;
+}
+
+ul, ol {
+  li {
+    line-height: 1.4rem;
+  }
+}
+
+dl {
+  font-size: .875rem;
+  margin: 1rem 0;
+
+  dd, dt {
+    line-height: 1.4rem;
+  }
+
+  dt {
+
+  }
+}
+
+#main {
+  ul, ol {
+    li {
+      line-height: 1.8rem;
+    }
+  }
+
+  ul {
+    &.checked {
+      list-style: none;
+      padding-left: 10px;
+
+      li {
+        position: relative;
+        padding-left: 26px;
+
+        &:before {
+          font-family: "Font Awesome 5 Free";
+          content: '\f00c';
+          font-size: 1rem;
+          font-weight: 900;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1.8rem;
+          color: $primary;
+          position: absolute;
+          left: 0;
+
+        }
+      }
+    }
+
+  }
+}
+
+
+small,
+.small {
+  font-size: .875rem;
+}
+
+h4, h6 {
+  font-weight: 400;
+}
+
+hr {
+  //width: calc(100% - 2rem);
+  margin: 1rem 0;
+}
+
+.icon-link-pop {
+  color: $black;
+  font-family: $poppins;
+  font-weight: 300;
+  font-size: .875rem
+}
+
+.box-border {
+  border: 1px solid $light-gray;
+  box-shadow: 0 6px 12px rgba(140, 152, 164, .075);
+  background: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  @include media-breakpoint-up(md) {
+    padding: 1.5rem;
+  }
+
+  .title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+}
+
+.sticky-top {
+  top: 92px !important;
+}
+
+section {
+  padding: 3.75rem 0;
+
+  @include media-breakpoint-up(md) {
+    padding: 6.25rem 0;
+  }
+
+  &.section-small {
+    padding: 2rem 0;
+    @include media-breakpoint-up(sm) {
+      padding: 3rem 0;
+    }
+  }
+}
+
+.section-title {
+  text-align: center;
+}
+
+$colors: ("celeste": $celeste, "gray": $gray, "light-gray": $light-gray, "orange": $orange, "orange-red": $orange-red,
+  "yellow": $yellow, "pink": $pink, "cyan": $cyan, "red": $red);
+
+@each $name, $color in $colors {
+  .text-#{$name} {
+    color: $color;
+  }
+}
+
+@each $name, $color in $colors {
+  .badge-#{$name} {
+    color: #fff;
+    background-color: $color;
+  }
+}
+
+.row-lg-inverse {
+  @include media-breakpoint-down(md) {
+    flex-direction: column-reverse;
+  }
+}

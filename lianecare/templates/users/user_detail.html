@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Utente: {{ object.user.username }}{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+
+    <div class="row">
+      <div class="col-md-8">
+        {% if object == request.user %}
+          <a class="float-right" href="{% url 'users:update' %}"
+             role="button"><i class="fas fa-user-edit"></i> {% trans "Edit profile" %}</a>
+        {% endif %}
+        <h3>{{ object.full_name }}</h3>
+
+        {% if object %}
+          {% if object.photo %}
+            <img src="{{ object.photo.url }}" width="250" height="auto" alt="{{ object.photo.name }}">
+          {% else %}
+            <img src="{{ static }}persons/placeholder.png" alt="Foto profilo"/>
+          {% endif %}
+
+          città: {{ object.city }}
+
+        {% endif %}
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+
+    {% if object == request.user %}
+      <!-- Action buttons -->
+      <div class="row">
+
+        <div class="col-sm-12">
+          <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
+          <!-- Your Stuff: Custom user template urls -->
+        </div>
+
+      </div>
+      <!-- End Action buttons -->
+    {% endif %}
+
+
+  </div>
+{% endblock content %}
+

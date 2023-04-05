@@ -1,0 +1,519 @@
+[
+{
+  "model": "solace.category",
+  "pk": 1,
+  "fields": {
+    "created": "2021-01-31T19:12:34.751Z",
+    "modified": "2021-02-02T12:56:01.320Z",
+    "code": "SENIORCARE",
+    "name": "Assistenza anziani",
+    "icon": null
+  }
+},
+{
+  "model": "solace.category",
+  "pk": 2,
+  "fields": {
+    "created": "2021-02-02T12:55:25.500Z",
+    "modified": "2021-02-02T12:55:25.500Z",
+    "code": "CHILDCARE",
+    "name": "Assistenza Bambini",
+    "icon": null
+  }
+},
+{
+  "model": "solace.category",
+  "pk": 3,
+  "fields": {
+    "created": "2021-02-02T12:57:59.903Z",
+    "modified": "2021-02-02T13:00:29.488Z",
+    "code": "HOUSECARE",
+    "name": "Assistenza Casa",
+    "icon": null
+  }
+},
+{
+  "model": "solace.category",
+  "pk": 4,
+  "fields": {
+    "created": "2021-02-02T13:03:00.694Z",
+    "modified": "2021-02-02T13:03:00.694Z",
+    "code": "PETCARE",
+    "name": "Assistenza Animali",
+    "icon": null
+  }
+},
+{
+  "model": "solace.category",
+  "pk": 5,
+  "fields": {
+    "created": "2021-02-02T13:07:02.615Z",
+    "modified": "2021-02-02T13:07:02.615Z",
+    "code": "SPECIALNEEDS",
+    "name": "Bisogni speciali",
+    "icon": null
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 1,
+  "fields": {
+    "created": "2021-02-02T12:34:21.526Z",
+    "modified": "2021-02-02T12:34:21.526Z",
+    "parent": 1,
+    "code": "COMPANION",
+    "name": "Compagnia",
+    "description": "Compagnia Lettura, conversazione, ecc.",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 2,
+  "fields": {
+    "created": "2021-02-02T12:34:21.527Z",
+    "modified": "2021-02-02T12:40:08.779Z",
+    "parent": 1,
+    "code": "COOK",
+    "name": "Cucina",
+    "description": "Preparazione pasti",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 3,
+  "fields": {
+    "created": "2021-02-02T12:34:21.527Z",
+    "modified": "2021-02-02T12:34:21.527Z",
+    "parent": 1,
+    "code": "ERRANDS",
+    "name": "Spesa / Commissioni",
+    "description": "Compere, commissioni, ecc.",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 4,
+  "fields": {
+    "created": "2021-02-02T12:34:21.527Z",
+    "modified": "2021-02-02T12:34:21.527Z",
+    "parent": 1,
+    "code": "HOUSE",
+    "name": "Faccende domestiche / stiro / riordino",
+    "description": "Cura della casa",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 5,
+  "fields": {
+    "created": "2021-02-02T12:40:08.752Z",
+    "modified": "2021-02-02T12:40:08.752Z",
+    "parent": 1,
+    "code": "WALK",
+    "name": "Accompagnamento",
+    "description": "Spostamenti, ecc.",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 6,
+  "fields": {
+    "created": "2021-02-02T12:40:08.753Z",
+    "modified": "2021-02-02T12:40:08.753Z",
+    "parent": 1,
+    "code": "ADMINISTRATION",
+    "name": "Assistenza Amministrativa",
+    "description": "Bollette, dossier, ecc.",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 7,
+  "fields": {
+    "created": "2021-02-02T12:40:08.753Z",
+    "modified": "2021-02-02T12:56:01.322Z",
+    "parent": 1,
+    "code": "HEALTHCARE",
+    "name": "Assistenza sanitaria",
+    "description": "Qualifiche sanitarie obbligatorie",
+    "active": true,
+    "requirement": true
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 8,
+  "fields": {
+    "created": "2021-02-02T12:40:08.754Z",
+    "modified": "2021-02-02T12:40:17.695Z",
+    "parent": 1,
+    "code": "MEAL",
+    "name": "Assistenza durante i pasti",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 9,
+  "fields": {
+    "created": "2021-02-02T12:40:08.754Z",
+    "modified": "2021-02-02T12:40:08.754Z",
+    "parent": 1,
+    "code": "NIGHT",
+    "name": "Assistenza notturna",
+    "description": "Presso la casa del cliente",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 10,
+  "fields": {
+    "created": "2021-02-02T12:40:08.755Z",
+    "modified": "2021-02-02T12:56:01.321Z",
+    "parent": 1,
+    "code": "BATH",
+    "name": "Assistenza al bagno e all'abbigliamento",
+    "description": "Qualifiche sanitarie obbligatorie",
+    "active": true,
+    "requirement": true
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 11,
+  "fields": {
+    "created": "2021-02-02T12:55:25.519Z",
+    "modified": "2021-02-02T12:55:25.519Z",
+    "parent": 2,
+    "code": "BSITTINGONE",
+    "name": "Babysitting occasionale",
+    "description": "Imprevisti, serate, weekend, eventi occasionali, ecc.",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 12,
+  "fields": {
+    "created": "2021-02-02T12:55:25.521Z",
+    "modified": "2021-02-02T12:55:25.521Z",
+    "parent": 2,
+    "code": "BSITTINGPART",
+    "name": "Babysitting part-time",
+    "description": "Da 4 a 20 ore settimanali (doposcuola, aiuto con i compiti, ecc.)",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 13,
+  "fields": {
+    "created": "2021-02-02T12:55:25.521Z",
+    "modified": "2021-02-02T12:55:25.521Z",
+    "parent": 2,
+    "code": "BSITTINGFULL",
+    "name": "Babysitting full time",
+    "description": "A casa dalle famiglie, tata a domicilio",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 14,
+  "fields": {
+    "created": "2021-02-02T12:55:25.522Z",
+    "modified": "2021-02-02T12:55:25.522Z",
+    "parent": 2,
+    "code": "ASSISTANT",
+    "name": "Assistente all'infanzia",
+    "description": "A casa del caregiver (ha un attestato ufficiale)",
+    "active": true,
+    "requirement": true
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 15,
+  "fields": {
+    "created": "2021-02-02T12:55:25.523Z",
+    "modified": "2021-02-02T12:55:25.523Z",
+    "parent": 2,
+    "code": "AUPAIR",
+    "name": "Ragazza alla pari",
+    "description": "vivo a casa della famiglia e do una mano con le piccole faccende domestiche",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 16,
+  "fields": {
+    "created": "2021-02-02T12:55:25.527Z",
+    "modified": "2021-02-02T12:55:25.527Z",
+    "parent": 2,
+    "code": "HOMEWORK",
+    "name": "Aiuto compiti / Ripetizioni",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 17,
+  "fields": {
+    "created": "2021-02-02T12:57:59.906Z",
+    "modified": "2021-02-02T12:57:59.906Z",
+    "parent": 3,
+    "code": "HOUSEKEEPING",
+    "name": "Faccende domestiche",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 18,
+  "fields": {
+    "created": "2021-02-02T12:57:59.906Z",
+    "modified": "2021-02-02T12:57:59.906Z",
+    "parent": 3,
+    "code": "IRONING",
+    "name": "Stiro",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 19,
+  "fields": {
+    "created": "2021-02-02T12:57:59.907Z",
+    "modified": "2021-02-02T12:57:59.907Z",
+    "parent": 3,
+    "code": "COOK",
+    "name": "Cucina",
+    "description": "Preparazione pasti",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 20,
+  "fields": {
+    "created": "2021-02-02T13:00:29.469Z",
+    "modified": "2021-02-02T13:00:29.469Z",
+    "parent": 3,
+    "code": "MARKET",
+    "name": "Aiuto con la spesa",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 21,
+  "fields": {
+    "created": "2021-02-02T13:00:29.469Z",
+    "modified": "2021-02-02T13:00:29.469Z",
+    "parent": 3,
+    "code": "CONTINUOUS",
+    "name": "Assistenza continuativa",
+    "description": "Convivente",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 22,
+  "fields": {
+    "created": "2021-02-02T13:00:29.470Z",
+    "modified": "2021-02-02T13:00:29.470Z",
+    "parent": 3,
+    "code": "GARDERN",
+    "name": "Giardinaggio",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 23,
+  "fields": {
+    "created": "2021-02-02T13:00:29.470Z",
+    "modified": "2021-02-02T13:00:29.470Z",
+    "parent": 3,
+    "code": "HOUSING",
+    "name": "Custodia",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 24,
+  "fields": {
+    "created": "2021-02-02T13:03:00.698Z",
+    "modified": "2021-02-02T13:03:00.698Z",
+    "parent": 4,
+    "code": "PENSION",
+    "name": "Famiglia ospitante, pensione",
+    "description": "Pensione animale, accudire a tempo pieno a casa del caregiver pro (vacanze e altri)",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 25,
+  "fields": {
+    "created": "2021-02-02T13:03:00.699Z",
+    "modified": "2021-02-02T13:03:00.699Z",
+    "parent": 4,
+    "code": "HOME",
+    "name": "Visita a domicilio",
+    "description": "Visita regolare al domicilio dell'animale.",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 26,
+  "fields": {
+    "created": "2021-02-02T13:03:00.699Z",
+    "modified": "2021-02-02T13:03:00.699Z",
+    "parent": 4,
+    "code": "STROLL",
+    "name": "Passeggiate e giretti",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 27,
+  "fields": {
+    "created": "2021-02-02T13:07:02.619Z",
+    "modified": "2021-02-02T13:07:02.619Z",
+    "parent": 5,
+    "code": "CHRONIC",
+    "name": "Patologie croniche",
+    "description": "Tumore, malattia cardio vascolare, diabete, dipendenze, obesità, ecc.",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 28,
+  "fields": {
+    "created": "2021-02-02T13:07:02.620Z",
+    "modified": "2021-02-02T13:07:02.620Z",
+    "parent": 5,
+    "code": "DSA",
+    "name": "Bambini DSA",
+    "description": "Disturbi specifici dell'apprendimento , dislessia",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 29,
+  "fields": {
+    "created": "2021-02-02T13:07:02.620Z",
+    "modified": "2021-02-02T13:07:02.620Z",
+    "parent": 5,
+    "code": "DEGENERATIVE",
+    "name": "Patologie degenerative",
+    "description": "Demenza, parkinson, alzheimer, sla, sclerosi multipla",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 30,
+  "fields": {
+    "created": "2021-02-02T13:07:02.620Z",
+    "modified": "2021-02-02T13:07:02.620Z",
+    "parent": 5,
+    "code": "AUTISM",
+    "name": "Autismo",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 31,
+  "fields": {
+    "created": "2021-02-02T13:07:02.621Z",
+    "modified": "2021-02-02T13:07:02.621Z",
+    "parent": 5,
+    "code": "VISUAL",
+    "name": "Disabilità visiva",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 32,
+  "fields": {
+    "created": "2021-02-02T13:07:02.623Z",
+    "modified": "2021-02-02T13:07:02.623Z",
+    "parent": 5,
+    "code": "SLEEP",
+    "name": "Disturbi del sonno",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+},
+{
+  "model": "solace.subcategory",
+  "pk": 33,
+  "fields": {
+    "created": "2021-02-02T13:07:02.623Z",
+    "modified": "2021-02-02T13:07:02.623Z",
+    "parent": 5,
+    "code": "OTHER",
+    "name": "Altro",
+    "description": "",
+    "active": true,
+    "requirement": false
+  }
+}
+]

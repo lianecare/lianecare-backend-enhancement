@@ -1,0 +1,135 @@
+{% load static i18n thumbnail %}
+
+{# Modale per cambio/inserimento presentazione Caregiver PRO #}
+<div class="modal fade" id="skillModal" tabindex="-1" role="dialog" aria-labelledby="skillModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form id="skillUpdateForm" method="post" action=".">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{% trans "Le tue abilità" %}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row justify-content-center">
+            <div class="form-group col-lg-4">
+              <label for="id_nationality">{% trans 'Nazionalità' %}</label>
+              <input type="text" name="nationality" class="form-control" maxlength="100" id="id_nationality"
+                     value="{{ profile.nationality }}">
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="id_phone">{% trans 'Telefono' %}</label>
+              <input type="text" name="phone" value="{{ profile.phone }}" class="form-control" maxlength="50"
+                     id="id_phone">
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center">
+            <div class="form-group col-lg-4">
+              <label for="id_is_graduate">{% trans 'Possiedi una laurea in ambito sanitario?' %}</label>
+              <div class="form-select">
+                <select name="is_graduate" class="form-control valid" id="id_is_graduate" aria-invalid="false">
+                  <option value="">{% trans 'Non mostrare il campo' %}</option>
+                  <option value="true" {% if profile.is_graduate is True %} selected{% endif %}>{% trans 'Sì' %}</option>
+                  <option value="false" {% if profile.is_graduate is False %}
+                          selected{% endif %}>{% trans 'No' %}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="id_is_certificated"><i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                         title="es. OSS (Operatore Socio Sanitario)"></i> {% trans 'Possiedi una certificazione in ambito sanitario?' %}</label>
+              <div class="form-select">
+                <select name="is_certificated" class="form-control" id="id_is_certificated">
+                  <option value="">{% trans 'Non mostrare il campo' %}</option>
+                  <option value="true" {% if profile.is_certificated is True %}
+                          selected{% endif %}>{% trans 'Sì' %}</option>
+                  <option value="false" {% if profile.is_certificated is False %}
+                          selected{% endif %}>{% trans 'No' %}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center">
+            <div class="form-group col-lg-4">
+              <label for="id_first_aid">{% trans 'Hai un attestato di Primo Soccorso?' %}</label>
+              <div class="form-select">
+                <select name="first_aid" class="form-control valid" id="id_first_aid" aria-invalid="false">
+                  <option value="">{% trans 'Non mostrare il campo' %}</option>
+                  <option value="true" {% if profile.first_aid is True %} selected{% endif %}>{% trans 'Sì' %}</option>
+                  <option value="false" {% if profile.first_aid is False %}
+                          selected{% endif %}>{% trans 'No' %}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="id_child_trainer">{% trans "Sei un formatore ufficiale per l'infanzia?" %}</label>
+              <div class="form-select">
+                <select name="child_trainer" class="form-control" id="id_child_trainer">
+                  <option value="">{% trans 'Non mostrare il campo' %}</option>
+                  <option value="true" {% if profile.child_trainer is True %}
+                          selected{% endif %}>{% trans 'Sì' %}</option>
+                  <option value="false" {% if profile.child_trainer is False %}
+                          selected{% endif %}>{% trans 'No' %}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center">
+            <div class="form-group col-lg-4">
+              <label for="id_driving_license">{% trans 'Hai la patente di guida?' %}</label>
+              <div class="form-select">
+                <select name="driving_license" class="form-control" id="id_driving_license">
+                  <option value="">{% trans 'Non mostrare il campo' %}</option>
+                  <option value="true" {% if profile.driving_license is True %}
+                          selected{% endif %}>{% trans 'Sì' %}</option>
+                  <option value="false" {% if profile.driving_license is False %}
+                          selected{% endif %}>{% trans 'No' %}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="id_has_car">{% trans 'Sei automunito?' %}</label>
+              <div class="form-select">
+                <select name="has_car" class="form-control" id="id_has_car">
+                  <option value="">{% trans 'Non mostrare il campo' %}</option>
+                  <option value="true" {% if profile.has_car is True %}
+                          selected{% endif %}>{% trans 'Sì' %}</option>
+                  <option value="false" {% if profile.has_car is False %}
+                          selected{% endif %}>{% trans 'No' %}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center">
+            <div class="form-group col-lg-4">
+              <label for="id_is_smoker">{% trans 'Fumi?' %}</label>
+              <div class="form-select">
+                <select name="is_smoker" class="form-control" id="id_is_smoker">
+                  <option value="">{% trans 'Non mostrare il campo' %}</option>
+                  <option value="true" {% if profile.is_smoker is True %}
+                          selected{% endif %}>{% trans 'Sì' %}</option>
+                  <option value="false" {% if profile.is_smoker is False %}
+                          selected{% endif %}>{% trans 'No' %}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-lg-4">
+
+            </div>
+          </div>
+          <input type="hidden" value="0" name="time"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{% trans "Chiudi" %}</button>
+          <button type="submit" class="btn btn-primary">{% trans "Salva" %}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

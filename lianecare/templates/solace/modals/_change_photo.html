@@ -1,0 +1,55 @@
+{% load static i18n thumbnail %}
+
+{# Modale per cambio/inserimento presentazione Caregiver PRO #}
+<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="photoUpdateForm" method="post" action="." enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{% trans "Foto profilo" %}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex flex-column">
+            <div class="img-thumb mb-3">
+              {% if object.photo %}
+                <img class="img-fluid preview-img" src="{{ object.photo|thumbnail_url:'profile' }}"
+                     alt="{{ object.photo.name }}"/>
+              {% else %}
+                <img src="{% static 'images/default-profile.png' %}" class="img-fluid img-profile"
+                     alt="{% trans 'Aggiungi una foto profilo' %}"/>
+              {% endif %}
+            </div>
+
+            <div>
+              <div class="img-file mb-3">
+                {{ form.photo.errors }}
+                <input type="file" name="photo" accept="image/*" id="id_photo" onchange="readURLImage(this);">
+              </div>
+
+              <div class="img-delete mb-3">
+                {% if object.photo %}
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="photo-clear" id="photo-clear_id">
+                        <span class="important"><i class="far fa-trash-alt"></i> {% trans "Svuota" %}</span>
+                      </label>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{% trans "Chiudi" %}</button>
+          <button type="submit" class="btn btn-primary">{% trans "Salva" %}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

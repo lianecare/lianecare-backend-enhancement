@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Corsi di formazione per Caregiver" %}{% endblock %}
+
+
+{% block content %}
+  <div id="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="breadcrumbs">
+            <li class="item"><a href="{% url "home" %}">Home</a></li>
+            <li class="item active">{% trans "Corsi" %}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="courses">
+    <div class="container py-3 py-lg-4">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="h2 font-weight-light pb-3 pb-lg-4">{% trans "Corsi di formazione" %}</h1>
+        </div>
+      </div>
+      <div class="row">
+        {% for course in object_list %}
+          <div class="col-lg-4 col-md-6">
+            <div class="course mb-5">
+              <a href="{% url 'courses:course_detail' course.slug %}">
+                {% if course.cover %}
+                  <img class="img-fluid" src="{{ course.cover|thumbnail_url:'cover' }}"
+                       alt="{{ course.cover.name }}"/>
+                {% endif %}
+                <h3 class="h4 title">{{ course.title }}</h3>
+                {% if course.course_offer %}
+                  <h6 class="price"> {{ course.course_offer }}</h6>
+                {% else %}
+                  <h6 class="price">
+                    {% if course.price > 0 %}
+                      {{ course.get_display_price }} €
+                    {% else %}
+                          <!--{% trans "Gratuito" %}-->
+                    {% endif %}
+                  </h6>
+                {% endif  %}
+              </a>
+            </div>
+          </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,189 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Crea il tuo account" %}{% endblock head_title %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+        crossorigin="anonymous"/>
+{% endblock css %}
+
+{% block content %}
+  <div class="container pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 mt-4">
+        <h1>
+          {% blocktrans %}Crea il tuo account ed entra in
+            <span class="text-primary">LianeCare</span>{% endblocktrans %}</h1>
+
+        <p>{% blocktrans %}Hai già un account? Allora per favore <a href="{{ login_url }}">accedi</a>.{% endblocktrans %}
+        </p>
+
+        <form class="mt-4" id="person_signup_form" method="post" action="{% url 'solace:person_signup' %}">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+              {{ form.first_name }}
+              {{ form.first_name.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+              {{ form.last_name }}
+              {{ form.last_name.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.city.id_for_label }}">{{ form.city.label }}</label>
+              {{ form.city }}
+              {{ form.city.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.company_code.id_for_label }}">{{ form.company_code.label }}</label>
+              {{ form.company_code }}
+              {{ form.company_code.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="id_email2">{% trans "Conferma E-mail" %}</label>
+              <input type="email" name="email2" placeholder="Conferma indirizzo e-mail" class="form-control" required="" id="id_email2">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+              {{ form.password1 }}
+              {{ form.password1.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+              {{ form.password2 }}
+              {{ form.password2.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}</label>
+              <div class="form-select">
+                {{ form.gender }}
+              </div>
+              {{ form.gender.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.birthday.id_for_label }}">{{ form.birthday.label }}</label>
+              <div class="input-group cus_dWrp">
+                <input id="{{ form.birthday.id_for_label }}" type="text" class="form-control" name="birthday"
+                       value="{{ request.POST.birthday }}" aria-label="Birthday" aria-describedby="id_birthday"
+                       placeholder="gg/mm/aaaa">
+<!--                <div class="input-group-append">-->
+<!--                  <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>-->
+<!--                </div>-->
+              </div>
+              {{ form.birthday.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group mb-0">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="privacy" id="privacy" aria-required="true">
+                  <span class="important">Ho letto e compreso la <a class="text-dark" href="{% url "privacy-policy" %}" target="_blank">Privacy Policy</a> e presto il mio consenso.
+                    <a href="{% url "consenso-informato" %}"
+                       target="_blank"><i class="fas fa-external-link-alt"></i></a></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group mb-3">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="terms" id="terms" aria-required="true">
+                  <span class="important">Accetto i <a href="{% url "terms-conditions" %}" target="_blank">termini e le condizioni</a> di utilizzo del sito.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+            <button class="btn btn-primary" type="submit">{% trans "Registrati" %}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block pagejs %}
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+          integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.it.min.js"
+          integrity="sha512-0MThRHKyDbl5nH553hVBJMo2Ma7c2c5jU2bENv92XM2SVQEcQ7vepANdKiU7DLiYH9RsqESRdDpCRVkIRGtKGQ=="
+          crossorigin="anonymous"></script>
+
+  <script type="application/javascript">
+    $(document).ready(function () {
+
+      $("#id_birthday").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        format: "dd/mm/yyyy",
+        minDate: "-18Y",
+        language: "it"
+      });
+
+      $("#person_signup_form").validate({
+        lang: 'it',
+        rules: {
+          privacy: "required",
+          terms: "required",
+          password1: "required",
+          password2: {
+            equalTo: "#id_password1"
+          },
+          email: {
+            email: true,
+          },
+          email2: {
+            equalTo: "#id_email"
+          },
+          zip_code: {
+            number: true
+          },
+          birthday: {
+            minAge: 18
+          }
+        },
+        messages: {
+          birthday: {
+            minAge: "Devi avere almeno 18 anni!"
+          }
+        },
+        errorElement: "span",
+        errorPlacement: function (error, element) {
+          if (element.attr("name") == "privacy" || element.attr("name") == "birthday" || element.attr("name") == "terms") {
+            var elem_parent = $(element).parent();
+            error.insertAfter(elem_parent);
+          } else {
+            error.insertAfter(element);
+          }
+        }
+      });
+    });
+  </script>
+{% endblock pagejs %}
+

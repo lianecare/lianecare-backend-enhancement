@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Test quiz: " %}{{ obj.name }}{% endblock %}
+
+{% block content %}
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h1 class="h3">{{ obj.name }}</h1>
+        <form id="quiz-form" class="my-3">
+          {% csrf_token %}
+          <div id="quiz-box"></div>
+
+          <div class="text-center my-4">
+            <button type="submit" class="btn btn-outline-primary">Invia</button>
+          </div>
+        </form>
+
+        <div id="result-quiz" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+
+{% block pagejs %}
+  <script type="text/javascript">
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    const quizBox = document.getElementById('quiz-box');
+    const url_quiz = "{% url 'quizes:quiz-detail' obj.id %}";
+    const list_courses_url = "{% url 'courses:course_list' %}";
+
+    fetch("{% url 'quizes:quiz-data-view' obj.id %}").then((result) => {
+      return result.json();
+    }).then((resultData) => {
+      resultData.data.forEach(el => {
+        for (const [question, answers] of Object.entries(el)) {
+          quizBox.innerHTML += `
+              <hr>
+              <div class="mb-3">
+                <b>${question}</b>
+              </div>
+            `;
+          answers.forEach(answer => {
+            quizBox.innerHTML += `
+               <div class="radio">
+                <label>
+                  <input type="radio" name="${question}" id="${question}-${answer}" value="${answer}" class="ans">
+                  <span>${answer}</span>
+                </label>
+              </div>
+              `;
+          });
+        }
+      });
+    }).catch(function (error) {
+      console.error("Error:", error.message);
+      alert(error.message);
+    });
+
+    const quizForm = document.getElementById('quiz-form');
+    const resultQuiz = document.getElementById('result-quiz');
+
+    const sendData = () => {
+      const elements = [...document.getElementsByClassName('ans')];
+      const data = {}
+
+      elements.forEach(el => {
+        if (el.checked) {
+          data[el.name] = el.value;
+        } else {
+          if (!data[el.name]) {
+            data[el.name] = null;
+          }
+        }
+      });
+
+      fetch("{% url 'quizes:save-view' obj.id %}", {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': csrftoken,
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      }).then(response => response.json())
+              .then(resultData => {
+                console.log(resultData);
+
+                if (resultData.passed == true) {
+                  resultQuiz.innerHTML += `
+                    <div class="alert alert-success text-center my-4" role="alert">
+                        <h3 class="mb-0">Complimenti hai superato il test!</h3>
+                    </div>
+                    <h4>Hai risposto correttamente a ${resultData.corret_answers} domande su ${resultData.number_answers}</h4>
+                    <div class="text-center"><a href="${list_courses_url}" class="btn btn-primary mt-5">Altri corsi</a></div>`;
+                } else {
+                  resultQuiz.innerHTML += `
+                    <div class="alert alert-danger text-center my-4" role="alert">
+                        <h3 class="mb-0">Mi spiace, non hai superato il test</h3>
+                    </div>
+                    <h4>Hai risposto correttamente a ${resultData.corret_answers} domande su ${resultData.number_answers}</h4>
+                    <div class="text-center"><a href="${url_quiz}" class="btn btn-outline-primary mt-5">Riprova</a></div>`;
+                }
+                $(quizForm).hide();
+                $(resultQuiz).show();
+              })
+              .catch(function (error) {
+                console.error("Error:", error.message);
+                alert(error.message);
+              });
+    }
+
+    quizForm.addEventListener('submit', e => {
+      e.preventDefault();
+      sendData();
+    });
+
+    /*$.ajax({
+      type: 'GET',
+      url: "{# url 'quizes:quiz-data-view' obj.id #}",
+      success: function (response) {
+        //console.log(response);
+        const data = response.data;
+        data.forEach(el => {
+          for (const [question, answers] of Object.entries(el)) {
+            console.log(question);
+            console.log(answers);
+            quizBox.innerHTML += `
+              <hr>
+              <div class="mb-2">
+                <b>${question}</b>
+              </div>
+            `;
+            answers.forEach(answer => {
+              quizBox.innerHTML += `
+                <div>
+                   <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${question}" >
+                    <label for="${question}">${answers}</label>
+                </div>
+              `;
+            });
+          }
+        });
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    });*/
+  </script>
+{% endblock pagejs %}

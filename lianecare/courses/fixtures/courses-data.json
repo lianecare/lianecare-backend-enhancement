@@ -1,0 +1,86 @@
+[
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "created": "2021-03-24T16:41:26.596Z",
+    "modified": "2021-05-01T14:31:32.423Z",
+    "title": "Corso Base Assistenti familiari",
+    "slug": "corso-base-assistenti-familiari",
+    "overview": "Il corso base per assistenti familiari sviluppato in partnership con <b>Cambiamenti</b> ti consentirà di:\r\n<ul class=\"checked\">\r\n<li>apprendere alcune informazioni di base per svolgere il lavoro di assistenti familiari;</li>\r\n<li>cenni sul contratto di lavoro  e il  contratto collettivo;</li>\r\n<li>capire quali sono i parametri vitali;</li>\r\n<li>comprendere l’importanza  degli aspetti psicologi del l  lavoro di cura.</li>\r\n</ul>",
+    "cover": "courses/urn_aaid_sc_US_1eeaca32-acac-4950-aac9-f80dc872f82frevision0.png",
+    "price": 0,
+    "type": "BASIC",
+    "is_active": true,
+    "product_stripe": null,
+    "price_stripe": null,
+    "is_salable": false
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 2,
+  "fields": {
+    "created": "2021-03-28T12:10:39.914Z",
+    "modified": "2021-05-01T14:35:05.495Z",
+    "title": "Corso completo per Caregiver PRO",
+    "slug": "corso-professionale-caregiver-pro",
+    "overview": "<h4>Questo corso di 9 ore per Caregiver Pro ti fornirà, attraverso il confronto con diversi esperti, tutte le informazioni necessarie per svolgere il tuo lavoro al meglio.</h4>",
+    "cover": "courses/corso-base-assistenti-famigliari.jpg",
+    "price": 1999,
+    "type": "PRO",
+    "is_active": true,
+    "product_stripe": 2,
+    "price_stripe": 3,
+    "is_salable": true
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 1,
+  "fields": {
+    "created": "2021-03-24T16:41:26.770Z",
+    "modified": "2021-03-24T16:41:26.770Z",
+    "course": 1,
+    "title": "Corso di formazione Assistenti Familiari",
+    "description": "",
+    "video_url": "https://vimeo.com/518287530",
+    "minutes": 1,
+    "seconds": 0,
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 2,
+  "fields": {
+    "created": "2021-03-29T14:51:17.083Z",
+    "modified": "2021-05-01T14:35:05.499Z",
+    "course": 2,
+    "title": "Curare e prendersi cura",
+    "description": "",
+    "video_url": "https://vimeo.com/529789598",
+    "minutes": 29,
+    "seconds": 2,
+    "order": 2,
+    "is_active": true
+  }
+},
+  {
+    "model": "courses.module",
+    "pk": 3,
+    "fields": {
+      "created": "2021-03-29T14:51:17.084Z",
+      "modified": "2021-05-01T14:35:05.502Z",
+      "course": 2,
+      "title": "Un approccio olistico alla persona",
+      "description": "",
+      "video_url": "https://vimeo.com/529789598",
+      "minutes": 30,
+      "seconds": 42,
+      "order": 1,
+      "is_active": true
+    }
+  }
+]

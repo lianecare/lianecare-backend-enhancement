@@ -1,0 +1,719 @@
+{% extends "base.html" %}
+{% load static i18n l10n thumbnail caregiver_tags %}
+
+{% block title %}Caregiver - {{ object.username }}{% endblock %}
+
+{% block content %}
+  {% with profile=object.more %}
+    <div id="caregiver-pro-profile" class="bg-light">
+      <div class="container py-3">
+        <div class="row justify-content-center">
+          <div class="col-xl-10 col-lg-12">
+            <div class="d-flex flex-column align-items-center justify-content-center w-100">
+
+              {% if profile.photo %}
+                <img class="img-fluid img-profile" src="{{ profile.photo|thumbnail_url:'profile' }}"
+                     alt="{{ profile.photo.name }}" width="150" height="150"/>
+              {% else %}
+                <img src="{% static 'images/default-profile.png' %}" class="img-fluid img-profile" width="150"
+                     height="150"
+                     alt="{% trans 'Aggiungi una foto profilo' %}"/>
+              {% endif %}
+              {% if object == request.user %}
+                {% comment %}<button class="btn btn-link edit-icon" data-toggle="modal" data-target="#photoModal">
+                  <i class="fas fa-sync-alt" data-toggle="tooltip" title="Cambia foto"></i></button>{% endcomment %}
+                <a class="small mt-3" href="{% url 'solace:caregiver_update' %}">
+                  <i class="fas fa-user-edit"></i> {% trans "modifica" %}</a>
+              {% endif %}
+
+              <h1 class="caregiver-name">{{ object.full_name }}</h1>
+              <h3 class="caregiver-age">{{ profile.get_age }} anni
+                {% if profile.is_graduate %}
+                  <i class="is_graduate fas fa-user-md ml-2" data-toggle="tooltip" data-html="true"
+                     title="Ha un titolo di studio in ambito sanitario"></i>
+                {% endif %}
+
+                {% if profile.is_certificated %}
+                  <i class="is_certificated fas fa-user-nurse ml-2" data-toggle="tooltip" data-html="true"
+                     title="Ha un certificato professionale"></i>
+                {% endif %}
+
+                {% if profile.has_basic_course or profile.has_pro_course %}
+                  {% if profile.has_basic_course %}
+                    <i class="text-primary fas fa-certificate ml-2" data-toggle="tooltip" data-html="true"
+                       title="Ha superato il corso base di Liane"></i>
+                  {% else %}
+                    <i class="text-orange fas fa-certificate ml-2" data-toggle="tooltip" data-html="true"
+                       title="Ha superato il corso avanzato di Liane"></i>
+                  {% endif %}
+                {% endif %}
+              </h3>
+              <h4 class="caregiver-location">
+                <span class="pr-3"><i class="fas fa-map-marker-alt pr-2"></i>{{ profile.city }}</span>
+                <span><i
+                        class="far fa-calendar-check pr-2"></i>{% trans "Attivo da " %}{{ profile.created|date:"F Y" }}</span>
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center my-4">
+          <div class="col-xl-10 col-lg-12">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                 role="tab" aria-controls="nav-profile" aria-selected="false">{% trans "Profilo" %}</a>
+              {#              <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab"#}
+              {#                 aria-controls="nav-reviews" aria-selected="false">{% trans "Recensioni" %}</a>#}
+            </div>
+
+            <div class="tab-content mt-3" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-profile" role="tabpanel"
+                   aria-labelledby="nav-profile-tab">
+                <div class="row">
+                  <div class="col-lg-4">
+
+                    {# PROGRESS BAR #}
+                    {% if object == request.user %}
+                      <div class="card profile-progress">
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between">
+                            <p>{% trans "Completa il tuo profilo" %}</p>
+                          </div>
+
+                          <div class="progress">
+                            {% with status_profile=profile.get_percentage_of_profile %}
+                              <div class="progress-bar bg-info" role="progressbar" style="width: {{ status_profile }}%;"
+                                   aria-valuenow="{{ status_profile }}"
+                                   aria-valuemin="0" aria-valuemax="100">{{ status_profile }}%
+                              </div>
+                            {% endwith %}
+                          </div>
+                          {% if not profile.has_pro_course %}
+                            <div class="mt-3">
+                              <h5>Per ottenere maggiore visibilità completa il tuo profilo superando il corso
+                                avanzato</h5>
+                              <a class="btn btn-info mt-3"
+                                 href="{% url "courses:course_list" %}">{% trans "Acquista il corso" %}</a>
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    {% endif %}
+
+                    {# SKILLS #}
+                    <div class="card">
+                      <div class="card-header">
+                        {% if object == request.user %}
+                          <button class="btn btn-link edit-icon" data-toggle="modal" data-target="#skillModal">
+                            <i class="far fa-edit" data-toggle="tooltip" title="Modifica"></i></button>
+                        {% endif %}
+                        <h3 class="h6">{{ object.full_name }}</h3>
+                      </div>
+                      <div class="card-body">
+                        <h4 class="card-title small mb-2">{% trans "Sul Caregiver pro" %}</h4>
+
+                        <div class="skill-list">
+                          {% skill_list profile %}
+                        </div>
+
+                        <h4 class="card-title small mt-4 mb-2">{% trans "Fiducia" %}</h4>
+                        <ul class="pro-list nolist">
+                          <li>
+                            {% if object.is_authenticated %}
+                              <i class="fas fa-at text-primary"></i>{% trans "Email verificata" %}
+                            {% else %}
+                              <i class="fas fa-at text-gray"></i>{% trans "Email non verificata" %}
+                            {% endif %}
+                          </li>
+                          {% if profile.identity_checked is not None %}
+                            <li>
+                              {% if profile.identity_checked %}
+                                <i class="far fa-id-badge text-primary"></i>{% trans "indentità verificata" %}
+                              {% else %}
+                                <i class="far fa-id-badge text-gray"></i>{% trans "indentità non verificata" %}
+                              {% endif %}
+                            </li>
+                          {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {# MAPPA #}
+                    <div class="card">
+                      <div class="card-header card-header-light">
+                        {% if object == request.user %}
+                          <button class="btn btn-link edit-icon" data-toggle="modal" data-target="#addressModal">
+                            <i class="far fa-edit" data-toggle="tooltip" title="Modifica"></i></button>
+                        {% endif %}
+                        <h3 class="h6"><i
+                                class="fas fa-map-marker-alt"></i>{% trans "La posizione di " %}{{ object.first_name }}
+                        </h3>
+                      </div>
+                      <div class="card-body">
+                        <div id="mapid"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-8">
+                    {# SERVICES #}
+                    <div class="card">
+                      <div class="card-header card-header-light">
+                        <h3 class="h6"><i class="fas fa-concierge-bell"></i>
+                          {% trans "Servizi offerti da " %}{{ object.first_name }}</h3>
+                      </div>
+                      <div class="card-body">
+                        <div id="services-list">
+                          {% for service in services %}
+                            <div class="card service">
+                              <div class="card-header" id="service_{{ forloop.counter }}">
+                                {% if object == request.user %}
+                                  <span class="float-right badge badge-pill {{ service.is_active|yesno:"badge-info,badge-danger" }}">{{ service.is_active|yesno:"Attivo,Sospeso" }}</span>
+                                {% endif %}
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link {% if not forloop.first %}collapsed{% endif %}"
+                                          data-toggle="collapse"
+                                          data-target="#collapse{{ forloop.counter }}"
+                                          aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                                          aria-controls="collapse{{ forloop.counter }}">
+                                    {{ service.category.name }}
+                                  </button>
+                                </h5>
+                              </div>
+
+                              <div id="collapse{{ forloop.counter }}"
+                                   class="collapse {% if forloop.first %}show{% endif %}"
+                                   aria-labelledby="service_{{ forloop.counter }}"
+                                   data-parent="#services-list">
+                                <div class="card-body">
+                                  <h6 class="small text-uppercase text-primary mt-1">Servizi proposti</h6>
+                                  <ul>
+                                    {% for subcat in service.subcategories.all %}
+                                      <li><b>{{ subcat.name }}</b><br>{{ subcat.description }}</li>
+                                    {% endfor %}
+                                  </ul>
+
+                                  {% if service.note %}
+                                    <div class="service-note">
+                                      <h5 class="small text-uppercase text-primary mb-1">Note</h5>
+                                      {{ service.note }}
+                                    </div>
+                                  {% endif %}
+
+                                  <div class="service-footer mb-1">
+                                    <div><span
+                                            class="title">{% trans "Esperienza: " %}</span><b>{{ service.experience }} {% trans "anni" %}</b>
+                                    </div>
+                                    <div><span class="title">{% trans "Referenze: " %}</span><i
+                                            class="fas {{ service.has_references|yesno:'fa-user-check,fa-times' }}"></i>
+                                    </div>
+                                    <div><span class="title">{% trans "Prezzo: " %}</span><b>{{ service.price }}
+                                      €/<small>ora</small></b>
+                                    </div>
+                                  </div>
+
+                                  {% if object == request.user %}
+                                    <div class="edit-service-footer">
+                                      {#                                      <button class="edit-service-btn btn btn-small btn-outline-primary ml-1"#}
+                                      {#                                              type="button"#}
+                                      {#                                              data-id="{{ service.pk }}"#}
+                                      {#                                              title="Modifica il servizio">#}
+                                      {#                                        <i class="fa fa-edit"></i>#}
+                                      {#                                      </button>#}
+                                      <button class="suspend-service-btn btn btn-small btn-outline-primary ml-1"
+                                              type="button"
+                                              data-id="{{ service.pk }}"
+                                              data-active="{{ service.is_active|yesno:"0,1" }}"
+                                              title="{{ service.is_active|yesno:"Sospendi,Riprendi" }} il servizio">
+                                        <i class="far {{ service.is_active|yesno:"fa-pause-circle,fa-play-circle" }}"></i> {{ service.is_active|yesno:"Pausa,Riprendi" }}
+                                      </button>
+                                      <button class="edit-service-btn btn btn-small btn-outline-primary ml-1" type="button"
+                                              data-id="{{ service.pk }}"
+                                              data-category="{{ service.category.id }}"
+                                              title="Elimina il servizio">
+                                        <i class="far fa-edit"></i>
+                                      </button>
+                                      <button class="remove-service-btn btn btn-small btn-danger ml-1" type="button"
+                                              data-id="{{ service.pk }}"
+                                              title="Elimina il servizio">
+                                        <i class="far fa-trash-alt"></i>
+                                      </button>
+                                    </div>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          {% endfor %}
+                        </div>
+
+                        {% if object == request.user and categories %}
+                          <button class="btn btn-primary mt-4" data-toggle="modal" data-target="#serviceModal">
+                            <i class="fas fa-plus pr-2"></i>{% trans "Servizio" %}</button>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    {# DISPONIBILITA' #}
+                    <div class="card">
+                      <div class="card-header card-header-light">
+                        {% if object == request.user %}
+                          <button class="btn btn-link edit-icon" data-toggle="modal" data-target="#timeModal">
+                            <i class="far fa-edit" data-toggle="tooltip" title="Modifica"></i></button>
+                        {% endif %}
+                        <h5 class="h6"><i class="far fa-calendar-alt"></i>{% trans "Disponibilità" %}</h5>
+                      </div>
+                      <div class="card-body">
+                        <div id="time-wrapper">
+                          {% availability_grid profile.availability %}
+                        </div>
+                      </div>
+                    </div>
+                    {# BIO #}
+                    <div class="card">
+                      <div class="card-header card-header-light">
+                        {% if object == request.user %}
+                          <button class="btn btn-link edit-icon" data-toggle="modal" data-target="#bioModal">
+                            <i class="far fa-edit" data-toggle="tooltip" title="Modifica"></i></button>
+                        {% endif %}
+                        <h3 class="h6"><i
+                                class="far fa-user"></i>{% trans "Qualcosa in più su " %}{{ object.first_name }}</h3>
+                      </div>
+                      <div class="card-body">
+                        <div class="caregiver-presentation">
+                          {{ profile.bio|linebreaksbr|default:"Non hai inserito alcuna presentazione." }}</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              {#              <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">#}
+              {#                <h5>{% trans "Recensioni ricevute" %}</h5>#}
+              {#              </div>#}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include "../modals/_change_bio.html" %}
+    {% include "../modals/_change_skill.html" %}
+    {% include "../modals/_change_address.html" %}
+    {% include "../modals/_change_photo.html" %}
+    {% include "../modals/_change_time.html" %}
+    {% include "../modals/_add_service.html" %}
+  {% endwith %}
+{% endblock content %}
+{% block pagejs %}
+<script type="text/javascript">
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    /* Leaflet map */
+    var map = L.map('mapid', {
+      zoomControl: false,
+      scrollWheelZoom: false,
+      dragging: false
+    }).setView([{{ object.more.latitude|unlocalize}}, {{object.more.longitude|unlocalize}}], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.marker([{{ object.more.latitude|unlocalize}}, {{object.more.longitude|unlocalize}}]).addTo(map);
+    var circle = L.circle([{{ object.more.latitude|unlocalize}}, {{object.more.longitude|unlocalize}}], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.2,
+      radius: 200
+    }).addTo(map);
+
+    /* Get subcategories for category */
+    $("#id_category").on('change', function (e) {
+      e.preventDefault();
+      startLoading();
+      let id_category = $(this).val();
+      var url = "{% url 'api:get_subcategories' %}";
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': csrftoken,
+          'Content-type': 'application/json',
+        },
+        mode: 'same-origin',
+        body: JSON.stringify({'id_category': id_category, 'forJobPost': false})
+      }).then((resp) => resp.json())
+              .then(data => {
+                hideLoading();
+                $('#sub-cat-wrapper').html(data.list_html);
+                $('#hide-row').show();
+              }).catch((err) => {
+        console.log('Error:', err)
+      });
+    });
+
+    /** Modali */
+    $("#photoUpdateForm").on('submit', function (e) {
+      e.preventDefault();
+
+      let input = document.getElementById('id_photo');
+      let formData = new FormData();
+      formData.append('photo', input.files[0]);
+      console.log(formData);
+      $("#photoModal").modal('hide');
+
+      var url = "{% url 'api:caregiver_patch' object.username %}";
+      fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+        },
+        mode: 'same-origin',  // Do not send CSRF token to another domain.
+        body: formData
+      }).then((resp) => resp.json())
+              .then(data => {
+                location.reload();
+              }).catch((err) => {
+        console.log('Error:', err)
+      });
+    });
+
+    $("#bioUpdateForm").on('submit', function (e) {
+      e.preventDefault();
+      $("#bioModal").modal('hide');
+      startLoading();
+      var form = $(this);
+      var postData = $(form).serializeJSON();
+      var url = "{% url 'api:caregiver_patch' object.username %}";
+      fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+        },
+        mode: 'same-origin',  // Do not send CSRF token to another domain.
+        body: JSON.stringify(postData)
+      }).then((resp) => resp.json())
+              .then(function (data) {
+                hideLoading();
+                location.reload();
+                $('.caregiver-presentation').html((data.bio).replace(/\n/g, '<br />'));
+              }).catch(err => console.error('Error:', err));
+    });
+
+    $("#skillUpdateForm").on('submit', function (e) {
+      e.preventDefault();
+      $("#skillModal").modal('hide');
+      startLoading();
+      var form = $(this);
+      var postData = $(form).serializeJSON();
+
+      var url = "{% url 'api:skill_update' %}";
+      fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+        },
+        mode: 'same-origin',  // Do not send CSRF token to another domain.
+        body: JSON.stringify(postData)
+      }).then((resp) => resp.json())
+              .then(function (payload) {
+                hideLoading();
+                location.reload();
+                $.toast({
+                  type: 'info',
+                  title: '{% trans "Avviso" %}',
+                  subtitle: '{% trans "Proprio ora" %}',
+                  content: payload.message,
+                  delay: 3000,
+                });
+              }).catch(err => console.error('Error:', err));
+    });
+
+    // Disponibilità
+    $("#timeUpdateForm").on('submit', function (e) {
+      e.preventDefault();
+      $("#timeModal").modal('hide');
+      startLoading();
+
+      var postData = $(this).serializeJSON({checkboxUncheckedValue: "false", useIntKeysAsArrayIndex: true});
+      var url = "{% url 'api:skill_update' %}";
+      fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+        },
+        mode: 'same-origin',  // Do not send CSRF token to another domain.
+        body: JSON.stringify(postData)
+      }).then((resp) => resp.json())
+              .then(payload => {
+                hideLoading();
+                location.reload();
+                $.toast({
+                  type: 'info',
+                  title: '{% trans "Avviso" %}',
+                  subtitle: '{% trans "Proprio ora" %}',
+                  content: payload.message,
+                  delay: 3000,
+                });
+              }).catch(err => console.error('Error:', err));
+    });
+
+    $(document).ready(function () {
+      initAutocomplete(
+        "#id_address",
+        '#id_latitude',
+        '#id_longitude',
+        '#id_house_number',
+        '#id_postcode',
+        '#id_city',
+        '#id_region',
+        '#id_country',
+        '#id_address'
+      );
+    });
+
+    (function checkicon() {
+      if (jQuery("#id_address").value != '') {
+        jQuery('.ap-icon-pin').hide();
+        jQuery('.ap-icon-clear').show();
+      }
+    })();
+
+    // Preview uploaded images
+    function readURLImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('.img-thumb img').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    /* Ajax update service */
+    $(".edit-service-btn").on('click', function (e) {
+        id_category = $(this).attr("data-category")
+        service_id = $(this).attr("data-id")
+        $("#edit_servic_id").val(service_id)
+        e.preventDefault();
+        startLoading();
+        var url = "{% url 'api:get_subcategories' %}";
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-type': 'application/json',
+          },
+          mode: 'same-origin',
+          body: JSON.stringify({'id_category': id_category, 'forJobPost': false, 'service_id': service_id})
+        }).then((resp) => resp.json())
+                .then(data => {
+                  hideLoading();
+                  $('#edit_sub-cat-wrapper').html(data.list_html);
+                  $("#id_experience_ed").val(data.service_other_detail.year_of_exp)
+                  $("#id_price_ed").val(data.service_other_detail.price)
+                  $('#id_has_references_ed option[value="'+data.service_other_detail.has_references+'"]').attr("selected", "selected");
+                  $("#id_max_distance_ed").val(data.service_other_detail.max_distance)
+                  $("#id_note_ed").val(data.service_other_detail.note)
+                  $("#editserviceModal").modal('show');
+                  $('#edit_hide-row').show();
+                }).catch((err) => {
+          console.log('Error:', err)
+        });
+    });
+
+    /* Ajax delete service */
+    $(".remove-service-btn").on('click', function (e) {
+      startLoading();
+      const id = $(this).data("id");
+      var url = "{% url 'api:service-update' %}";
+
+      fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+        },
+        mode: 'same-origin',
+        body: JSON.stringify({'id': id})
+      }).then((resp) => resp.json())
+              .then(payload => {
+                hideLoading();
+                location.reload();
+                $.toast({
+                  type: 'info',
+                  title: '{% trans "Avviso" %}',
+                  subtitle: '{% trans "Proprio ora" %}',
+                  content: "Servizio eliminato",
+                  delay: 3000,
+                });
+              }).catch(err => console.error('Error:', err));
+    });
+
+    /* Ajax pause service */
+    $(".suspend-service-btn").on('click', function (e) {
+      startLoading();
+      const id = $(this).data("id");
+      const active = $(this).data("active");
+      var url = "{% url 'api:service-update' %}";
+      fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+        },
+        mode: 'same-origin',
+        body: JSON.stringify({'is_active': active, 'id': id})
+      }).then((resp) => resp.json())
+              .then(payload => {
+                hideLoading();
+                location.reload();
+                $.toast({
+                  type: 'info',
+                  title: '{% trans "Avviso" %}',
+                  subtitle: '{% trans "Proprio ora" %}',
+                  content: "Servizio aggiornato",
+                  delay: 3000,
+                });
+              }).catch(err => console.error('Error:', err));
+    });
+
+    /* READY */
+    $(document).ready(function () {
+      // Preview photo
+      $("#id_photo").change(function () {
+        readURLImage(this);
+      });
+
+      $("#serviceCreateForm").validate({
+        lang: 'it',
+        rules: {
+          parent: "required",
+          price: "required",
+          experience: "required",
+          has_references: "required",
+          "subcategories[]": {
+            required: true
+          }
+        },
+        errorElement: "span",
+        errorPlacement: function (error, element) {
+          if (element.attr("name") == "price") {
+            var elem_parent = $(element).parent();
+            error.insertAfter(elem_parent);
+          } else if (element.attr("name") == "subcategories[]") {
+            error.insertAfter($('.subcat-wrapper'));
+          } else {
+            error.insertAfter(element);
+          }
+
+        },
+        submitHandler: function (form) {
+          var postData = $(form).serializeJSON();
+          //console.log(postData);
+          startLoading();
+          $("#serviceModal").modal('hide');
+
+          var url = "{% url 'api:service-list' %}";
+          fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json',
+              'X-CSRFToken': csrftoken,
+            },
+            mode: 'same-origin',  // Do not send CSRF token to another domain.
+            body: JSON.stringify(postData)
+          }).then((resp) => resp.json())
+                  .then(function (data) {
+                    hideLoading();
+                    location.reload();
+                  }).catch(err => console.error('Error:', err));
+        }
+      });
+      <!--   Services update   -->
+      $("#serviceUpdateForm").validate({
+        lang: 'it',
+        rules: {
+          parent: "required",
+          price: "required",
+          experience: "required",
+          has_references: "required",
+          "subcategories[]": {
+            required: true
+          }
+        },
+        errorElement: "span",
+        errorPlacement: function (error, element) {
+          if (element.attr("name") == "price") {
+            var elem_parent = $(element).parent();
+            error.insertAfter(elem_parent);
+          } else if (element.attr("name") == "subcategories[]") {
+            error.insertAfter($('.subcat-wrapper'));
+          } else {
+            error.insertAfter(element);
+          }
+
+        },
+        submitHandler: function (form) {
+          var postData = $(form).serializeJSON();
+          //console.log(postData);
+          startLoading();
+          $("#serviceModal").modal('hide');
+          var url = "{% url 'api:service-update' %}";
+          fetch(url, {
+            method: 'PATCH',
+            headers: {
+              'Content-type': 'application/json',
+              'X-CSRFToken': csrftoken,
+            },
+            mode: 'same-origin',  // Do not send CSRF token to another domain.
+            body: JSON.stringify(postData)
+          }).then((resp) => resp.json())
+                  .then(function (data) {
+                    hideLoading();
+                    location.reload();
+                  }).catch(err => console.error('Error:', err));
+        }
+      });
+      /* Pulisce gli elementi nel modal alla chiusura. */
+      $('#serviceModal').on('hidden.bs.modal', function (e) {
+        $('#serviceCreateForm')[0].reset();
+        $('#sub-cat-wrapper').html('');
+        $('#hide-row').hide();
+        $('#serviceCreateForm').find("span.error").hide();
+        $('#serviceCreateForm').find(".form-control").removeClass('error');
+      });
+
+      $("#addressUpdateForm").validate({
+        lang: 'it',
+        rules: {
+          address: {
+            check_address: true,
+          }
+        },
+        errorElement: "span",
+        submitHandler: function (form) {
+          var postData = $(form).serializeJSON();
+          $("#addressModal").modal('hide');
+
+          var url = "{% url 'api:caregiver_patch' object.username %}";
+          fetch(url, {
+            method: 'PATCH',
+            headers: {
+              'Content-type': 'application/json',
+              'X-CSRFToken': csrftoken,
+            },
+            mode: 'same-origin',  // Do not send CSRF token to another domain.
+            body: JSON.stringify(postData)
+          }).then((resp) => resp.json())
+                  .then(function (data) {
+                    location.reload();
+                  }).catch(err => console.error('Error:', err));
+        }
+      });
+    });
+  </script>
+{% endblock pagejs %}

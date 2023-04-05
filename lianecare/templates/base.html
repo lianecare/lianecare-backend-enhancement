@@ -1,0 +1,182 @@
+{% load static i18n compress %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:"it" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}LianeCare è la piattaforma per i Caregivers in cerca di lavoro{% endblock %}</title>
+  <meta name="description"
+        content="{% block meta_description %}LianeCare fa incontrare i Caregivers in cerca di lavoro o formazione con chi ha bisogno di ricevere assistenza qualificata.{% endblock %}">
+
+  {% block blockbots %}
+    <meta name="robots" content="none,noarchive">{% endblock %}
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+
+<!--  <link rel="icon" href="{% static 'images/favicons/lianecare-favicon-32x32.png' %}">-->
+  <link rel="icon" href="{% static 'images/favicons/liane_1000x1000.jpg' %}">
+
+  {% block css %}
+    <!-- Your stuff: Third-party CSS libraries go here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    {% compress css %}
+      <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+      <!-- This file stores project-specific CSS -->
+      <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    {% endcompress %}
+  {% endblock %}
+
+  {% if not debug %}
+    <script type="text/javascript">
+      var _iub = _iub || [];
+      _iub.csConfiguration = {
+        "enableRemoteConsent": true,
+        "askConsentAtCookiePolicyUpdate": true,
+        "consentOnContinuedBrowsing": false,
+        "whitelabel": false,
+        "lang": "it",
+        "siteId": 1923233,
+        "cookiePolicyId": 24824783,
+        "banner": {"acceptButtonDisplay": true, "customizeButtonDisplay": true, "position": "float-top-center"}
+      };
+    </script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MTJ7L3J');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ?
+                  n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '216598699070677');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=216598699070677&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Hotjar Tracking Code for https://solace.lianecare.com -->
+    <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:2611140,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+  {% endif %}
+</head>
+
+<body>
+
+{% block header %}
+  {% include "./common/_header.html" with account=request.user %}
+{% endblock header %}
+
+<div id="main">
+  {% block content %}
+    <p>Use this document as a way to quick start any new project.</p>
+  {% endblock content %}
+
+  <div id="wait"></div>
+</div> <!-- /container -->
+
+{% block footer %}
+  {% include "./common/_footer.html" with account=request.user %}
+{% endblock footer %}
+
+{% block modal %}{% endblock modal %}
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+{% block javascript %}
+  <!-- Vendor dependencies bundled as one file-->
+  {% compress js %}
+    <script src="{% static 'js/vendors.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.serializejson.js' %}"></script>
+    <script src="{% static 'js/toast.min.js' %}"></script>
+  {% endcompress %}
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/8.2.2/js/autoComplete.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+          integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+          crossorigin=""></script>
+  <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTfGk4p_1ODKjs_LtOU2bnDGena_At-1I&callback=gmapsInitDone&libraries=places">
+  </script>
+  <!-- place project specific Javascript in this file -->
+  {% compress js %}
+    <script src="{% static 'js/project.js' %}"></script>
+  {% endcompress %}
+{% endblock javascript %}
+
+<!-- Project specific JS -->
+{% block pagejs %}{% endblock pagejs %}
+
+{% if messages %}
+  <script>
+    {% for message in messages %}
+      $.toast({
+        type: {% if message.tags %}'{{ message.tags }}'{% else %}'info'{% endif %},
+        title: '{% trans "Avviso" %}',
+        subtitle: '{% trans "Proprio ora" %}',
+        content: '{{message}}',
+        delay: 3000,
+      });
+    {% endfor %}
+  </script>
+{% endif %}
+
+<script>
+  var GMAPS_INIT_DONE = false;
+  function gmapsInitDone(){
+    console.log("google maps init done");
+    GMAPS_INIT_DONE = true;
+  }
+</script>
+
+</body>
+</html>
+

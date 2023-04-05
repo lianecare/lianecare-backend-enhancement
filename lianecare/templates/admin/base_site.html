@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('LianeCare administration') }}{% endblock %}
+
+{% block branding %}
+  <h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+      <img src="{% static 'images/solace_by_lianecare_tw.png' %}" alt="{{ site_header|default:_('LianeCare Backend') }}" width="142"
+           height="50">
+    </a>
+  </h1>
+{% endblock %}
+
+{% block extrahead %}
+    <link rel="icon" href="{% static 'images/favicons/lianecare-favicon-32x32.png' %}">
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

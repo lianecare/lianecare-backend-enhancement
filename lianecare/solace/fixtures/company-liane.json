@@ -1,0 +1,18 @@
+[
+{
+  "model": "solace.company",
+  "pk": "f458e298-2ee8-412b-a1d3-3cbcb2e3841f",
+  "fields": {
+    "created": "2021-02-14T17:33:39.652Z",
+    "modified": "2021-02-14T17:33:39.652Z",
+    "code": "1l8c28ke",
+    "name": "Liane Srl",
+    "address": "Piazza dei Servili, 1",
+    "city": "Roma",
+    "postcode": "00153",
+    "referent": "",
+    "email": null,
+    "license_number": 100
+  }
+}
+]

@@ -1,0 +1,1538 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-08 08:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/settings/base.py:40
+msgid "Italian"
+msgstr ""
+
+#: lianecare/courses/apps.py:7
+msgid "Courses"
+msgstr ""
+
+#: lianecare/courses/models.py:16
+msgid "Titolo"
+msgstr ""
+
+#: lianecare/courses/models.py:20
+msgid "Prezzo"
+msgstr ""
+
+#: lianecare/courses/models.py:21 lianecare/courses/models.py:43
+msgid "Attivo"
+msgstr ""
+
+#: lianecare/courses/models.py:25
+msgid "Corso"
+msgstr ""
+
+#: lianecare/courses/models.py:26 lianecare/templates/common/_header.html:25
+msgid "Corsi"
+msgstr ""
+
+#: lianecare/courses/models.py:41
+msgid "Durata in minuti"
+msgstr ""
+
+#: lianecare/courses/models.py:47
+msgid "Modulo"
+msgstr ""
+
+#: lianecare/courses/models.py:48
+msgid "Moduli"
+msgstr ""
+
+#: lianecare/courses/models.py:75
+msgid "transactional_code"
+msgstr ""
+
+#: lianecare/solace/enums.py:6
+msgid "Babysitter"
+msgstr ""
+
+#: lianecare/solace/enums.py:7
+msgid "House cleaning"
+msgstr ""
+
+#: lianecare/solace/enums.py:8
+msgid "Companion care"
+msgstr ""
+
+#: lianecare/solace/enums.py:9
+msgid "Cooking/Meal preparation"
+msgstr ""
+
+#: lianecare/solace/enums.py:11
+msgid "Groceries/Errands"
+msgstr ""
+
+#: lianecare/solace/enums.py:12
+msgid "Small household chores"
+msgstr ""
+
+#: lianecare/solace/enums.py:13
+msgid "Remote language support"
+msgstr ""
+
+#: lianecare/solace/enums.py:16 lianecare/templates/pages/home.html:86
+#: lianecare/templates/pages/home.html:190
+msgid "Pet sitter"
+msgstr ""
+
+#: lianecare/solace/enums.py:17
+msgid "Remote tutoring"
+msgstr ""
+
+#: lianecare/solace/enums.py:21
+msgid "Middle School"
+msgstr ""
+
+#: lianecare/solace/enums.py:22
+msgid "Diploma"
+msgstr ""
+
+#: lianecare/solace/enums.py:23
+msgid "Three-year degree"
+msgstr ""
+
+#: lianecare/solace/enums.py:24
+msgid "Master Degree"
+msgstr ""
+
+#: lianecare/solace/enums.py:25
+msgid "Master I Level"
+msgstr ""
+
+#: lianecare/solace/enums.py:26
+msgid "Master II Level"
+msgstr ""
+
+#: lianecare/solace/enums.py:27
+msgid "Specialization Course"
+msgstr ""
+
+#: lianecare/solace/enums.py:28
+msgid "Other qualifications"
+msgstr ""
+
+#: lianecare/solace/enums.py:29
+msgid "PhD"
+msgstr ""
+
+#: lianecare/solace/enums.py:34
+msgid "Female"
+msgstr ""
+
+#: lianecare/solace/enums.py:35
+msgid "Male"
+msgstr ""
+
+#: lianecare/solace/enums.py:40
+#: lianecare/templates/solace/modals/_add_service.html:64
+#: lianecare/templates/solace/modals/_change_skill.html:37
+#: lianecare/templates/solace/modals/_change_skill.html:50
+#: lianecare/templates/solace/modals/_change_skill.html:64
+#: lianecare/templates/solace/modals/_change_skill.html:77
+#: lianecare/templates/solace/modals/_change_skill.html:92
+#: lianecare/templates/solace/modals/_change_skill.html:104
+#: lianecare/templates/solace/modals/_change_skill.html:119
+msgid "No"
+msgstr ""
+
+#: lianecare/solace/enums.py:41
+msgid "Yes"
+msgstr ""
+
+#: lianecare/solace/enums.py:42
+msgid "(Unknown)"
+msgstr ""
+
+#: lianecare/solace/enums.py:47
+msgid "Google"
+msgstr ""
+
+#: lianecare/solace/enums.py:48
+msgid "Youtube"
+msgstr ""
+
+#: lianecare/solace/enums.py:49
+msgid "Parenting Group or Forum"
+msgstr ""
+
+#: lianecare/solace/enums.py:50
+msgid "Facebook"
+msgstr ""
+
+#: lianecare/solace/enums.py:51
+msgid "Linkedin"
+msgstr ""
+
+#: lianecare/solace/enums.py:52
+msgid "Banner Ad"
+msgstr ""
+
+#: lianecare/solace/enums.py:53
+msgid "Friends or Family"
+msgstr ""
+
+#: lianecare/solace/enums.py:54
+msgid "Press Coverage (News, Magazine, Blog)"
+msgstr ""
+
+#: lianecare/solace/enums.py:55
+msgid "Other"
+msgstr ""
+
+#: lianecare/solace/enums.py:60
+msgid "Add"
+msgstr ""
+
+#: lianecare/solace/enums.py:61
+msgid "Adhd"
+msgstr ""
+
+#: lianecare/solace/enums.py:62
+msgid "Aspergers"
+msgstr ""
+
+#: lianecare/solace/enums.py:63
+msgid "Asthma"
+msgstr ""
+
+#: lianecare/solace/enums.py:64
+msgid "Autism"
+msgstr ""
+
+#: lianecare/solace/enums.py:65
+msgid "Blindness / Visual Impairment"
+msgstr ""
+
+#: lianecare/solace/enums.py:66
+msgid "Cancer"
+msgstr ""
+
+#: lianecare/solace/enums.py:67
+msgid "Celiac"
+msgstr ""
+
+#: lianecare/solace/enums.py:68
+msgid "Cerebral Palsy"
+msgstr ""
+
+#: lianecare/solace/enums.py:69
+msgid "Cystic Fibrosis"
+msgstr ""
+
+#: lianecare/solace/enums.py:70
+msgid "Deafness"
+msgstr ""
+
+#: lianecare/solace/enums.py:71
+msgid "Developmental Delays"
+msgstr ""
+
+#: lianecare/solace/enums.py:72
+msgid "Diabetes"
+msgstr ""
+
+#: lianecare/solace/enums.py:73
+msgid "Down Syndrome"
+msgstr ""
+
+#: lianecare/solace/enums.py:74
+msgid "Dwarfism"
+msgstr ""
+
+#: lianecare/solace/enums.py:75
+msgid "Dyslexia"
+msgstr ""
+
+#: lianecare/solace/enums.py:76
+msgid "Epilepsy"
+msgstr ""
+
+#: lianecare/solace/enums.py:77
+msgid "Fetal Alcohol Syndrome"
+msgstr ""
+
+#: lianecare/solace/enums.py:78
+msgid "Food Allergies"
+msgstr ""
+
+#: lianecare/solace/enums.py:79
+msgid "Heart Defects"
+msgstr ""
+
+#: lianecare/solace/enums.py:80
+msgid "Mental Illness"
+msgstr ""
+
+#: lianecare/solace/enums.py:81
+msgid "Mobility Challenges"
+msgstr ""
+
+#: lianecare/solace/enums.py:82
+msgid "Multiple Sclerosis"
+msgstr ""
+
+#: lianecare/solace/enums.py:83
+msgid "Muscular Dystrophy"
+msgstr ""
+
+#: lianecare/solace/enums.py:84
+msgid "Obesity"
+msgstr ""
+
+#: lianecare/solace/enums.py:85
+msgid "Seizure Disorder"
+msgstr ""
+
+#: lianecare/solace/enums.py:86
+msgid "Sensory Integration Disorder"
+msgstr ""
+
+#: lianecare/solace/enums.py:87
+msgid "Speech Delay"
+msgstr ""
+
+#: lianecare/solace/forms.py:17 lianecare/solace/forms.py:112
+#: lianecare/solace/models/people.py:66 lianecare/solace/models/people.py:103
+#: lianecare/solace/models/service.py:12 lianecare/solace/models/service.py:28
+msgid "Nome"
+msgstr ""
+
+#: lianecare/solace/forms.py:19 lianecare/solace/forms.py:113
+msgid "Cognome"
+msgstr ""
+
+#: lianecare/solace/forms.py:20 lianecare/solace/models/people.py:34
+#: lianecare/solace/models/people.py:105
+#: lianecare/solace/models/professionals.py:65
+msgid "Città"
+msgstr ""
+
+#: lianecare/solace/forms.py:21 lianecare/solace/forms.py:115
+#: lianecare/solace/models/people.py:21 lianecare/solace/models/people.py:68
+#: lianecare/solace/models/professionals.py:36
+msgid "Sesso"
+msgstr ""
+
+#: lianecare/solace/forms.py:22 lianecare/solace/forms.py:116
+#: lianecare/solace/models/people.py:22 lianecare/solace/models/people.py:67
+#: lianecare/solace/models/professionals.py:37
+msgid "Data di nascita"
+msgstr ""
+
+#: lianecare/solace/forms.py:24
+msgid "Codice Azienda"
+msgstr ""
+
+#: lianecare/solace/forms.py:42
+msgid "Il codice azienda non è valido"
+msgstr ""
+
+#: lianecare/solace/forms.py:91
+msgid "Eventuali patologie"
+msgstr ""
+
+#: lianecare/solace/forms.py:114 lianecare/solace/models/people.py:33
+#: lianecare/solace/models/people.py:104
+#: lianecare/solace/models/professionals.py:64
+msgid "Indirizzo"
+msgstr ""
+
+#: lianecare/solace/forms.py:118
+msgid "Come ci hai conosciuto?"
+msgstr ""
+
+#: lianecare/solace/forms.py:164
+#: lianecare/templates/solace/modals/_change_skill.html:97
+msgid "Sei autominito?"
+msgstr ""
+
+#: lianecare/solace/forms.py:165
+#: lianecare/templates/solace/modals/_change_skill.html:85
+msgid "Hai la patente di guida?"
+msgstr ""
+
+#: lianecare/solace/forms.py:166
+#: lianecare/templates/solace/modals/_change_skill.html:112
+msgid "Fumi?"
+msgstr ""
+
+#: lianecare/solace/forms.py:167
+msgid "Possiedi una laurea in ambito medico?"
+msgstr ""
+
+#: lianecare/solace/forms.py:168
+msgid "Possiedi una certificazione in ambito medico?"
+msgstr ""
+
+#: lianecare/solace/forms.py:169
+msgid "Attestato ufficiale Formatore per l'infanzia"
+msgstr ""
+
+#: lianecare/solace/forms.py:170
+#: lianecare/solace/templatetags/caregiver_tags.py:42
+msgid "Attestato di Primo Soccorso"
+msgstr ""
+
+#: lianecare/solace/models/people.py:23
+msgid "Biografia famigliare"
+msgstr ""
+
+#: lianecare/solace/models/people.py:35
+#: lianecare/solace/models/professionals.py:66
+msgid "CAP"
+msgstr ""
+
+#: lianecare/solace/models/people.py:36
+msgid "The postcode is not valid."
+msgstr ""
+
+#: lianecare/solace/models/people.py:38
+#: lianecare/solace/models/professionals.py:69
+msgid "Regione"
+msgstr ""
+
+#: lianecare/solace/models/people.py:39
+#: lianecare/solace/models/professionals.py:70
+msgid "Nazione"
+msgstr ""
+
+#: lianecare/solace/models/people.py:45
+msgid "Persona"
+msgstr ""
+
+#: lianecare/solace/models/people.py:46
+msgid "Persone"
+msgstr ""
+
+#: lianecare/solace/models/people.py:69
+msgid "Patologie"
+msgstr ""
+
+#: lianecare/solace/models/people.py:74
+msgid "Membro famigliare"
+msgstr ""
+
+#: lianecare/solace/models/people.py:75
+#: lianecare/templates/solace/person_update.html:95
+msgid "Membri famigliari"
+msgstr ""
+
+#: lianecare/solace/models/people.py:96
+msgid "Dipendente"
+msgstr ""
+
+#: lianecare/solace/models/people.py:97
+msgid "Dipendenti"
+msgstr ""
+
+#: lianecare/solace/models/people.py:102 lianecare/solace/models/service.py:11
+#: lianecare/solace/models/service.py:27
+msgid "Codice"
+msgstr ""
+
+#: lianecare/solace/models/people.py:106
+msgid "Codice postale"
+msgstr ""
+
+#: lianecare/solace/models/people.py:107
+msgid "Referente"
+msgstr ""
+
+#: lianecare/solace/models/people.py:108
+msgid "Email"
+msgstr ""
+
+#: lianecare/solace/models/people.py:109
+msgid "n. license"
+msgstr ""
+
+#: lianecare/solace/models/people.py:113
+msgid "Compagnia"
+msgstr ""
+
+#: lianecare/solace/models/people.py:114
+msgid "Compagnie"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:38
+#: lianecare/templates/solace/modals/_change_skill.html:23
+msgid "Telefono"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:39
+#: lianecare/templates/solace/modals/_change_skill.html:18
+msgid "Nazionalità"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:42
+#: lianecare/templates/solace/modals/_change_bio.html:18
+msgid "Presentazione"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:51
+msgid "Automunita?"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:52
+msgid "Ha la patente?"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:53
+msgid "Hai una laurea in ambito medico?"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:54
+msgid "Hai una certificazione in ambito medico?"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:56
+msgid "Fuma?"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:57
+msgid "Primo soccorso"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:58
+#: lianecare/solace/templatetags/caregiver_tags.py:45
+msgid "Formatore per l'infanzia"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:60
+msgid "Identità verificata?"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:67
+msgid "Il codice postale non è valido."
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:71
+msgid "Latitudine"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:72
+msgid "Longitudine"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:119
+#: lianecare/templates/common/_footer.html:21
+msgid "Caregiver PRO"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:120
+msgid "Caregivers PRO"
+msgstr ""
+
+#: lianecare/solace/models/professionals.py:126
+msgid "Devi avere almeno 18 anni per registrarti come Caregiver PRO."
+msgstr ""
+
+#: lianecare/solace/models/service.py:13
+msgid "Icona"
+msgstr ""
+
+#: lianecare/solace/models/service.py:14 lianecare/solace/models/service.py:30
+msgid "Attiva?"
+msgstr ""
+
+#: lianecare/solace/models/service.py:18
+msgid "Categoria"
+msgstr ""
+
+#: lianecare/solace/models/service.py:19
+msgid "Categorie"
+msgstr ""
+
+#: lianecare/solace/models/service.py:29
+msgid "Descrizione"
+msgstr ""
+
+#: lianecare/solace/models/service.py:31
+msgid "Certificazioni?"
+msgstr ""
+
+#: lianecare/solace/models/service.py:36
+msgid "Sottocategoria"
+msgstr ""
+
+#: lianecare/solace/models/service.py:37
+msgid "Sottocategorie"
+msgstr ""
+
+#: lianecare/solace/models/service.py:46
+msgid "Services"
+msgstr ""
+
+#: lianecare/solace/models/service.py:47
+msgid "Anni di esperienza"
+msgstr ""
+
+#: lianecare/solace/models/service.py:48
+msgid "Prezzo medio"
+msgstr ""
+
+#: lianecare/solace/models/service.py:49
+msgid "Referenze?"
+msgstr ""
+
+#: lianecare/solace/models/service.py:50
+msgid "Distanza max (km)"
+msgstr ""
+
+#: lianecare/solace/models/service.py:51
+#: lianecare/templates/solace/modals/_add_service.html:84
+msgid "Note aggiuntive"
+msgstr ""
+
+#: lianecare/solace/models/service.py:52
+msgid "Attivo?"
+msgstr ""
+
+#: lianecare/solace/models/service.py:56
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:253
+msgid "Servizio"
+msgstr ""
+
+#: lianecare/solace/models/service.py:57
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:52
+msgid "Servizi"
+msgstr ""
+
+#: lianecare/solace/models/service.py:63
+msgid "Necessità"
+msgstr ""
+
+#: lianecare/solace/models/service.py:68
+msgid "Job Post"
+msgstr ""
+
+#: lianecare/solace/models/service.py:69
+msgid "Job Posts"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:18
+#: lianecare/solace/templatetags/caregiver_tags.py:148
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:216
+msgid "anni"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:24
+msgid "Fuma"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:24
+msgid "Non fuma"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:28
+msgid "Ha la patente di guida"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:28
+msgid "Non ha la patente di guida"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:32
+msgid "Ha un mezzo"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:32
+msgid "Non ha un mezzo"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:33
+msgid "Formazione"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:36
+msgid "Ha una laurea in ambito sanitario"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:39
+msgid "Ha una certificazione"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:48
+msgid "Corso base Liane"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:64
+#: lianecare/solace/templatetags/caregiver_tags.py:89
+msgid "Mattina"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:64
+#: lianecare/solace/templatetags/caregiver_tags.py:89
+msgid "Pomeriggio"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:64
+#: lianecare/solace/templatetags/caregiver_tags.py:89
+msgid "Sera"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:64
+#: lianecare/solace/templatetags/caregiver_tags.py:89
+msgid "Notte"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:69
+#: lianecare/solace/templatetags/caregiver_tags.py:94
+msgid "LUN"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:69
+#: lianecare/solace/templatetags/caregiver_tags.py:94
+msgid "MAR"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:69
+#: lianecare/solace/templatetags/caregiver_tags.py:94
+msgid "MER"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:69
+#: lianecare/solace/templatetags/caregiver_tags.py:94
+msgid "GIO"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:69
+#: lianecare/solace/templatetags/caregiver_tags.py:94
+msgid "VEN"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:69
+#: lianecare/solace/templatetags/caregiver_tags.py:94
+msgid "SAB"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:69
+#: lianecare/solace/templatetags/caregiver_tags.py:94
+msgid "DOM"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:141
+msgid "Servizi proposti"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:148
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:216
+msgid "Esperienza: "
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:149
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:218
+msgid "Referenze: "
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:150
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:221
+msgid "Prezzo: "
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:150
+msgid "ora"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:152
+msgid "Modifica il servizio"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:154
+msgid "Sospendi il servizio"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:154
+msgid "Pausa"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:154
+msgid "Riprendi"
+msgstr ""
+
+#: lianecare/solace/templatetags/caregiver_tags.py:156
+msgid "Elimina il servizio"
+msgstr ""
+
+#: lianecare/solace/views.py:87 lianecare/users/views.py:36
+msgid "Infos successfully updated"
+msgstr ""
+
+#: lianecare/templates/account/account_inactive.html:5
+#: lianecare/templates/account/account_inactive.html:8
+msgid "Account Inactive"
+msgstr ""
+
+#: lianecare/templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr ""
+
+#: lianecare/templates/account/email.html:7
+msgid "Account"
+msgstr ""
+
+#: lianecare/templates/account/email.html:10
+msgid "E-mail Addresses"
+msgstr ""
+
+#: lianecare/templates/account/email.html:13
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: lianecare/templates/account/email.html:27
+msgid "Verified"
+msgstr ""
+
+#: lianecare/templates/account/email.html:29
+msgid "Unverified"
+msgstr ""
+
+#: lianecare/templates/account/email.html:31
+msgid "Primary"
+msgstr ""
+
+#: lianecare/templates/account/email.html:37
+msgid "Make Primary"
+msgstr ""
+
+#: lianecare/templates/account/email.html:38
+msgid "Re-send Verification"
+msgstr ""
+
+#: lianecare/templates/account/email.html:39
+msgid "Remove"
+msgstr ""
+
+#: lianecare/templates/account/email.html:46
+msgid "Warning:"
+msgstr ""
+
+#: lianecare/templates/account/email.html:46
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: lianecare/templates/account/email.html:51
+msgid "Add E-mail Address"
+msgstr ""
+
+#: lianecare/templates/account/email.html:56
+msgid "Add E-mail"
+msgstr ""
+
+#: lianecare/templates/account/email.html:66
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: lianecare/templates/account/email/email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"You're receiving this e-mail because user %(user_display)s has given your e-"
+"mail address to register an account on %(site_domain)s.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s"
+msgstr ""
+
+#: lianecare/templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: lianecare/templates/account/email_confirm.html:6
+#: lianecare/templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: lianecare/templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that\n"
+"      <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for "
+"user %(user_display)s."
+msgstr ""
+
+#: lianecare/templates/account/email_confirm.html:23
+msgid "Confirm"
+msgstr ""
+
+#: lianecare/templates/account/email_confirm.html:31
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please\n"
+"      <a href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: lianecare/templates/account/login.html:7
+#: lianecare/templates/account/login.html:11
+#: lianecare/templates/account/login.html:36
+msgid "Sign In"
+msgstr ""
+
+#: lianecare/templates/account/login.html:34
+msgid "Forgot Password?"
+msgstr ""
+
+#: lianecare/templates/account/login.html:46
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"        of your existing third party accounts. Or, <a href=\"%(signup_url)s"
+"\">sign up</a>\n"
+"        for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: lianecare/templates/account/login.html:61
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"        <a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: lianecare/templates/account/logout.html:5
+#: lianecare/templates/account/logout.html:8
+#: lianecare/templates/account/logout.html:17
+msgid "Sign Out"
+msgstr ""
+
+#: lianecare/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: lianecare/templates/account/password_change.html:6
+#: lianecare/templates/account/password_change.html:9
+#: lianecare/templates/account/password_change.html:14
+#: lianecare/templates/account/password_reset_from_key.html:5
+#: lianecare/templates/account/password_reset_from_key.html:8
+#: lianecare/templates/account/password_reset_from_key_done.html:4
+#: lianecare/templates/account/password_reset_from_key_done.html:7
+msgid "Change Password"
+msgstr ""
+
+#: lianecare/templates/account/password_reset.html:7
+#: lianecare/templates/account/password_reset.html:11
+#: lianecare/templates/account/password_reset_done.html:6
+#: lianecare/templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr ""
+
+#: lianecare/templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: lianecare/templates/account/password_reset.html:21
+msgid "Reset My Password"
+msgstr ""
+
+#: lianecare/templates/account/password_reset.html:24
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: lianecare/templates/account/password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: lianecare/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr ""
+
+#: lianecare/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: lianecare/templates/account/password_reset_from_key.html:18
+msgid "change password"
+msgstr ""
+
+#: lianecare/templates/account/password_reset_from_key.html:21
+#: lianecare/templates/account/password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr ""
+
+#: lianecare/templates/account/password_set.html:6
+#: lianecare/templates/account/password_set.html:9
+#: lianecare/templates/account/password_set.html:14
+msgid "Set Password"
+msgstr ""
+
+#: lianecare/templates/account/signup.html:6
+msgid "Signup"
+msgstr ""
+
+#: lianecare/templates/account/signup.html:9
+#: lianecare/templates/account/signup.html:19
+#: lianecare/templates/solace/caregiverpro/caregiver_signup.html:110
+#: lianecare/templates/solace/caregiverpro/caregiver_signup1.html:107
+#: lianecare/templates/solace/caregiverpro/caregiver_signup2.html:103
+#: lianecare/templates/solace/caregiverpro/caregiver_signup_autocomplete.html:108
+#: lianecare/templates/solace/person_signup.html:98
+msgid "Sign Up"
+msgstr ""
+
+#: lianecare/templates/account/signup.html:11
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: lianecare/templates/account/signup_closed.html:5
+#: lianecare/templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: lianecare/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: lianecare/templates/account/verification_sent.html:5
+#: lianecare/templates/account/verification_sent.html:8
+#: lianecare/templates/account/verified_email_required.html:5
+#: lianecare/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: lianecare/templates/account/verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: lianecare/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: lianecare/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: lianecare/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: lianecare/templates/admin/base_site.html:4
+msgid "LianeCare administration"
+msgstr ""
+
+#: lianecare/templates/admin/base_site.html:10
+msgid "LianeCare Backend"
+msgstr ""
+
+#: lianecare/templates/base.html:106
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:392
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:420
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:508
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:533
+msgid "Avviso"
+msgstr ""
+
+#: lianecare/templates/base.html:107
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:393
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:421
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:509
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:534
+msgid "Proprio ora"
+msgstr ""
+
+#: lianecare/templates/common/_footer.html:6
+msgid "Lianecare"
+msgstr ""
+
+#: lianecare/templates/common/_footer.html:8
+msgid "About"
+msgstr ""
+
+#: lianecare/templates/common/_footer.html:9
+msgid "Careers"
+msgstr ""
+
+#: lianecare/templates/common/_footer.html:10
+msgid "Blog"
+msgstr ""
+
+#: lianecare/templates/common/_footer.html:11
+#: lianecare/templates/common/_footer.html:17
+#: lianecare/templates/common/_footer.html:23
+#: lianecare/templates/common/_footer.html:29
+msgid "Terms and conditons"
+msgstr ""
+
+#: lianecare/templates/common/_footer.html:15
+msgid "Customers"
+msgstr ""
+
+#: lianecare/templates/common/_footer.html:27
+msgid "Assitance"
+msgstr ""
+
+#: lianecare/templates/common/_header.html:43
+msgid "Modifica profilo"
+msgstr ""
+
+#: lianecare/templates/common/_header.html:46
+msgid "I miei corsi"
+msgstr ""
+
+#: lianecare/templates/common/_header.html:49
+msgid "Messaggi"
+msgstr ""
+
+#: lianecare/templates/common/_header.html:53
+msgid "Disconnetti"
+msgstr ""
+
+#: lianecare/templates/common/_header.html:60
+#: lianecare/templates/solace/caregiverpro/caregiver_signup.html:12
+#: lianecare/templates/solace/caregiverpro/caregiver_signup1.html:12
+#: lianecare/templates/solace/caregiverpro/caregiver_signup2.html:12
+#: lianecare/templates/solace/caregiverpro/caregiver_signup_autocomplete.html:12
+msgid "Registrati come PRO"
+msgstr ""
+
+#: lianecare/templates/common/_header.html:63
+msgid "Registrati"
+msgstr ""
+
+#: lianecare/templates/common/_header.html:67
+msgid "Accedi"
+msgstr ""
+
+#: lianecare/templates/courses/course_detail.html:4
+#: lianecare/templates/courses/module_detail.html:4
+msgid "Corso: "
+msgstr ""
+
+#: lianecare/templates/courses/course_detail.html:43
+msgid "Inizia il corso"
+msgstr ""
+
+#: lianecare/templates/courses/course_list.html:4
+msgid "Corsi di formazione per Caregiver"
+msgstr ""
+
+#: lianecare/templates/courses/course_list.html:12
+msgid "Corsi di formazione"
+msgstr ""
+
+#: lianecare/templates/courses/course_list.html:26
+msgid "Gratuito"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:14
+msgid "Find a Caregiver Pro"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:19
+msgid "Find a customer"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:25
+msgid "Find trusted caregivers for your every need"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:31
+msgid "Hai bisogno di?"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:38
+#: lianecare/templates/pages/home.html:236
+msgid "Post a job"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:45
+msgid "Meet new customers in your area"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:46
+msgid "Sign up for a free profile to start growing your business."
+msgstr ""
+
+#: lianecare/templates/pages/home.html:47
+msgid "Get started"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:71
+msgid "Badante"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:76
+msgid "Baby sitter"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:81
+msgid "Tutoring"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:91
+#: lianecare/templates/pages/home.html:195
+msgid "Faccende domestiche"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:96
+#: lianecare/templates/pages/home.html:200
+msgid "Commissioni varie"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:104
+msgid "Counseling"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:116
+msgid "How it works"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:117
+msgid "We help you find the right person for you"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:125
+msgid "Post a job post"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:126
+msgid "Publish a job post with your needs"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:127
+msgid "Share your needs, where and when."
+msgstr ""
+
+#: lianecare/templates/pages/home.html:133
+msgid "Caregivers"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:134
+msgid "Browse through the profiles we offer you"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:135
+msgid "Find the candidate that best suits your needs."
+msgstr ""
+
+#: lianecare/templates/pages/home.html:141
+#: lianecare/templates/pages/home.html:142
+msgid "Choose and hire"
+msgstr ""
+
+#: lianecare/templates/pages/home.html:143
+msgid "Agree on terms, methods and hire the right person for you."
+msgstr ""
+
+#: lianecare/templates/pages/home.html:225
+msgid "Post a job post now!"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:23
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:77
+#: lianecare/templates/solace/modals/_change_photo.html:23
+#: lianecare/templates/solace/person_detail.html:17
+#: lianecare/templates/solace/person_update.html:71
+msgid "Aggiungi una foto profilo"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:40
+msgid "Attivo da "
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:50
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:30
+#: lianecare/templates/solace/person_update.html:37
+msgid "Profilo"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:54
+msgid "Recensioni"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:66
+msgid "Completa il tuo profilo"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:68
+msgid "modifica"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:92
+msgid "Sul Caregiver pro"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:98
+msgid "Fiducia"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:102
+msgid "Email verificata"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:104
+msgid "Email non verificata"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:110
+msgid "indentità verificata"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:112
+msgid "indentità non verificata"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:129
+msgid "Qualcosa in più su "
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:143
+msgid "La posizione di "
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:163
+msgid "Disponibilità"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:176
+msgid "Servizi offerti da "
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_detail.html:262
+msgid "Recensioni ricevute"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_signup.html:6
+#: lianecare/templates/solace/caregiverpro/caregiver_signup1.html:6
+#: lianecare/templates/solace/caregiverpro/caregiver_signup2.html:6
+#: lianecare/templates/solace/caregiverpro/caregiver_signup_autocomplete.html:6
+msgid "Caregiver PRO registrazione"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_signup.html:14
+#: lianecare/templates/solace/caregiverpro/caregiver_signup1.html:14
+#: lianecare/templates/solace/caregiverpro/caregiver_signup2.html:14
+#: lianecare/templates/solace/caregiverpro/caregiver_signup_autocomplete.html:14
+#, python-format
+msgid ""
+"Hai già un account da Caregiver PRO? Allora <a href=\"%(login_url)s\">esegui "
+"l'accesso</a>\n"
+"          ."
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:4
+msgid "Aggiornamento dati Caregiver PRO"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:16
+#: lianecare/templates/solace/person_update.html:21
+msgid "Dati personali"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:69
+#: lianecare/templates/solace/modals/_change_photo.html:10
+#: lianecare/templates/solace/person_update.html:63
+msgid "Foto profilo"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:91
+#: lianecare/templates/solace/modals/_change_photo.html:39
+#: lianecare/templates/solace/person_update.html:85
+msgid "Svuota"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:101
+msgid "Qualità"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:154
+msgid "Indietro"
+msgstr ""
+
+#: lianecare/templates/solace/caregiverpro/caregiver_update.html:155
+#: lianecare/templates/solace/person_update.html:157
+msgid "Aggiorna"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:10
+msgid "Inserisci un servizio"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:18
+msgid "Tipo di servizio"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:21
+#: lianecare/templates/solace/modals/_add_service.html:60
+msgid "Seleziona"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:39
+msgid "Anni di esperienza?"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:46
+msgid "La tua tariffa oraria"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:57
+msgid "Hai delle referenze?"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:62
+#: lianecare/templates/solace/modals/_change_skill.html:35
+#: lianecare/templates/solace/modals/_change_skill.html:48
+#: lianecare/templates/solace/modals/_change_skill.html:62
+#: lianecare/templates/solace/modals/_change_skill.html:75
+#: lianecare/templates/solace/modals/_change_skill.html:90
+#: lianecare/templates/solace/modals/_change_skill.html:102
+#: lianecare/templates/solace/modals/_change_skill.html:117
+msgid "Sì"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:72
+msgid "Distanza max in km"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:92
+#: lianecare/templates/solace/modals/_change_address.html:33
+#: lianecare/templates/solace/modals/_change_bio.html:26
+#: lianecare/templates/solace/modals/_change_photo.html:49
+#: lianecare/templates/solace/modals/_change_skill.html:130
+#: lianecare/templates/solace/modals/_change_time.html:20
+msgid "Chiudi"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_add_service.html:93
+#: lianecare/templates/solace/modals/_change_address.html:34
+#: lianecare/templates/solace/modals/_change_bio.html:27
+#: lianecare/templates/solace/modals/_change_photo.html:50
+#: lianecare/templates/solace/modals/_change_skill.html:131
+#: lianecare/templates/solace/modals/_change_time.html:21
+msgid "Salva"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_address.html:10
+msgid "La tua posizione"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_bio.html:10
+msgid "La tua presentazione"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_skill.html:10
+msgid "Le tue abilità"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_skill.html:31
+msgid "Possiedi una laurea in ambito sanitario?"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_skill.html:34
+#: lianecare/templates/solace/modals/_change_skill.html:46
+#: lianecare/templates/solace/modals/_change_skill.html:61
+#: lianecare/templates/solace/modals/_change_skill.html:73
+#: lianecare/templates/solace/modals/_change_skill.html:88
+#: lianecare/templates/solace/modals/_change_skill.html:100
+#: lianecare/templates/solace/modals/_change_skill.html:115
+msgid "Non mostrare il campo"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_skill.html:43
+msgid "Possiedi una certificazione in ambito sanitario?"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_skill.html:58
+msgid "Hai un attestato di Primo Soccorso?"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_skill.html:70
+msgid "Sei un formatore ufficiale per l'infanzia?"
+msgstr ""
+
+#: lianecare/templates/solace/modals/_change_time.html:10
+msgid "Quando potresti lavorare?"
+msgstr ""
+
+#: lianecare/templates/solace/person_detail.html:22
+#: lianecare/templates/solace/person_form.html:4
+#: lianecare/templates/solace/person_form.html:10
+#: lianecare/templates/users/user_detail.html:13
+msgid "Edit profile"
+msgstr ""
+
+#: lianecare/templates/solace/person_form.html:19
+msgid "Update"
+msgstr ""
+
+#: lianecare/templates/solace/person_signup.html:6
+#: lianecare/templates/solace/person_signup.html:12
+msgid "Create your account"
+msgstr ""
+
+#: lianecare/templates/solace/person_signup.html:14
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>\n"
+"          ."
+msgstr ""
+
+#: lianecare/templates/solace/person_update.html:4
+msgid "Aggiornamento dati utente"
+msgstr ""
+
+#: lianecare/templates/solace/person_update.html:24
+#: lianecare/templates/solace/person_update.html:164
+msgid "Impostazioni"
+msgstr ""
+
+#: lianecare/templates/solace/person_update.html:132
+#: lianecare/templates/solace/person_update.html:156
+msgid "Cancella"
+msgstr ""
+
+#: lianecare/templates/solace/person_update.html:150
+msgid "Aggiungi un membro della famiglia"
+msgstr ""
+
+#: lianecare/templates/solace/person_update.html:199
+msgid "Elimina"
+msgstr ""
+
+#: lianecare/users/apps.py:7
+msgid "Users"
+msgstr ""
+
+#: lianecare/users/forms.py:17
+msgid "This username has already been taken."
+msgstr ""

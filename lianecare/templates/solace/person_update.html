@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags thumbnail %}
+
+{% block title %}{% trans 'Aggiornamento dati utente' %}{% endblock %}
+
+{% block css %}
+  {{ block.super }}
+  {{ formset.media.css }}
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+        crossorigin="anonymous"/>
+{% endblock css %}
+
+{% block content %}
+  <div class="bg-light">
+    <div class="container pb-3 py-md-4">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 mb-3">
+          {% include "./_menu_person_profile.html" with active='profile' %}
+        </div>
+
+        <div class="col-md-8 col-lg-9">
+          <form id="person-update-form" method="post" enctype="multipart/form-data"
+                action="{% url 'solace:person_update' %}">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="box-border">
+              <h6 class="title"><i class="far fa-user"></i> {% trans "Profilo" %}</h6>
+
+              <div class="row justify-content-center mb-3">
+                <div class="col-lg-4">
+                  <p><b>{% trans "Nome e cognome" %}</b><br>{{ object.user.full_name }}</p>
+                </div>
+                <div class="col-lg-4">
+                  <p><b>{% trans "Email" %}</b><br>{{ object.user.email }}</p>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="form-group col-lg-6">
+                  <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                     title="Inserisci il tuo indirizzo e poi selezionalo tra le scelte proposte."></i>
+                  <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+                  {{ form.address }}
+                  {{ form.address.errors }}
+                </div>
+                {{ form.latitude }}
+                {{ form.longitude }}
+                {{ form.region }}
+                {{ form.postcode }}
+                {{ form.country }}
+                {{ form.city }}
+
+                <div class="form-group col-lg-2">
+                  <label for="{{ form.house_number.id_for_label }}">{{ form.house_number.label }}</label>
+                  {{ form.house_number }}
+                  {{ form.house_number.errors }}
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="form-group col-lg-8">
+                  <label for="{{ form.family_bio.id_for_label }}">{{ form.family_bio.label }}</label>
+                  {{ form.family_bio }}
+                  {{ form.family_bio.errors }}
+                </div>
+              </div>
+            </div>
+
+            <div class="box-border">
+              <h6 class="title"><i class="fas fa-portrait"></i> {% trans "Foto profilo" %}</h6>
+              <div class="d-flex flex-column flex-lg-row">
+                <div class="img-thumb mr-4 mb-3">
+                  {% if object.photo %}
+                    <img src="{{ object.photo.url }}" class="img-fluid img-thumbnail" width="150"
+                         alt="{{ object.photo.name }}">
+                  {% else %}
+                    <img src="{% static 'images/default-profile.png' %}" class="img-fluid img-thumbnail"
+                         alt="{% trans 'Aggiungi una foto profilo' %}" width="150"/>
+                  {% endif %}
+                </div>
+
+                <div class="img-file">
+                  {{ form.photo.errors }}
+                  <input type="file" name="photo" accept="image/*" id="id_photo" onchange="readURLImage(this);">
+                </div>
+                <div class="img-delete ml-auto">
+                  {% if object.photo %}
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="photo-clear" id="photo-clear_id">
+                          <span class="important"><i class="far fa-trash-alt"></i> {% trans "Svuota" %}</span>
+                        </label>
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <div class="box-border">
+              <h6 class="title"><i class="fas fa-users"></i> {% trans "Membri famigliari" %}</h6>
+
+              <div id="members">
+                {{ formset.management_form }}
+                {% for subform in formset.forms %}
+                  <div class="member" id="member-{{ forloop.counter0 }}">
+                    {% for hidden in subform.hidden_fields %}
+                      {{ hidden }}
+                    {% endfor %}
+
+                    <div class="row align-items-start">
+                      <div class="col-xl-10 col-lg-9">
+                        <div class="form-row">
+                          <div class="form-group col-lg-4 mandatory">
+                            <label for="{{ subform.name.id_for_label }}">{{ subform.name.label }}</label>
+                            {{ subform.name }}
+                            {{ subform.name.errors }}
+                          </div>
+                          <div class="form-group col-lg-4 mandatory">
+                            <label for="{{ subform.gender.id_for_label }}">{{ subform.gender.label }}</label>
+                            <div class="form-select">
+                              {{ subform.gender }}
+                            </div>
+                            {{ subform.gender.errors }}
+                          </div>
+                          <div class="form-group col-lg-4 mandatory">
+                            <label for="{{ subform.birthday.id_for_label }}">{{ subform.birthday.label }}</label>
+                            {{ subform.birthday }}
+                            {{ subform.birthday.errors }}
+                          </div>
+
+                          <div class="form-group col-lg-12">
+                            <label for="{{ subform.diagnosis.id_for_label }}">{{ subform.diagnosis.label }}</label>
+                            {{ subform.diagnosis }}
+                            {{ subform.diagnosis.errors }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-3">
+                        {% if formset.can_delete %}
+                          <div class="form-group text-right">
+                            <div class="checkbox">
+                              <label>
+                                {{ subform.DELETE }}
+                                <span class="important"><i
+                                        class="far fa-trash-alt"></i> {% trans "Cancella" %}</span>
+                              </label>
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+              <a id="add-member" class="btn btn-link"><i
+                      class="fas fa-plus"></i> {% trans "Aggiungi un membro della famiglia" %}
+              </a>
+            </div>
+            <div class="control-group text-right">
+              <div class="controls mt-5">
+                <a href="{% url 'solace:person_detail' object.user.username %}"
+                   class="btn btn-danger">{% trans "Torna al profilo" %}</a>
+                <button type="submit" class="btn btn-primary">{% trans "Aggiorna" %}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div id="empty-form" style="display:none">
+          <div class="member">
+            {% for hidden in formset.empty_form.hidden_fields %}
+              {{ hidden }}
+            {% endfor %}
+
+            <div class="row align-items-start">
+              <div class="col-xl-10 col-lg-9">
+                <div class="form-row">
+                  <div class="form-group col-lg-4 mandatory">
+                    <label for="{{ formset.empty_form.id_for_label }}">{{ formset.empty_form.name.label }}</label>
+                    {{ formset.empty_form.name }}
+                    {{ formset.empty_form.name.errors }}
+                  </div>
+                  <div class="form-group col-lg-4 mandatory">
+                    <label for="{{ formset.empty_form.gender.id_for_label }}">{{ formset.empty_form.gender.label }}</label>
+                    <div class="form-select">
+                      {{ formset.empty_form.gender }}
+                    </div>
+                    {{ formset.empty_form.gender.errors }}
+                  </div>
+                  <div class="form-group col-lg-4 mandatory">
+                    <label for="{{ formset.empty_form.birthday.id_for_label }}">{{ formset.empty_form.birthday.label }}</label>
+                    {{ formset.empty_form.birthday }}
+                    {{ formset.empty_form.birthday.errors }}
+                  </div>
+                  <div class="form-group col-lg-12">
+                    <label for="{{ formset.empty_form.diagnosis.id_for_label }}">{{ formset.empty_form.diagnosis.label }}</label>
+                    {{ formset.empty_form.diagnosis }}
+                    {{ formset.empty_form.diagnosis.errors }}
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3">
+                <div class="form-group text-right">
+                  <a class="btn btn-link" onclick="removeMember(this);" href="javascript:void(0);"><i
+                          class="far fa-trash-alt"></i> {% trans "Elimina" %}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block pagejs %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+          integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.it.min.js"
+          integrity="sha512-0MThRHKyDbl5nH553hVBJMo2Ma7c2c5jU2bENv92XM2SVQEcQ7vepANdKiU7DLiYH9RsqESRdDpCRVkIRGtKGQ=="
+          crossorigin="anonymous"></script>
+  <script type="application/javascript">
+
+    $(document).ready(function () {
+      initAutocomplete(
+        "#id_address",
+        '#id_latitude',
+        '#id_longitude',
+        '#id_house_number',
+        '#id_postcode',
+        '#id_city',
+        '#id_region',
+        '#id_country',
+        '#id_address'
+      );
+    });
+
+    // Preview uploaded images
+    function readURLImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('.img-thumb img').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // Remove member
+    function removeMember(elem) {
+      var form_idx = $('#id_family_members-TOTAL_FORMS').val();
+      console.log(form_idx);
+      $('#id_family_members-TOTAL_FORMS').val(parseInt(form_idx) - 1);
+      $(elem).parents('.member').get(0).remove();
+    };
+
+    (function checkicon() {
+      if (jQuery("#id_address").value != '') {
+        jQuery('.ap-icon-pin').hide();
+        jQuery('.ap-icon-clear').show();
+      }
+    })();
+
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        format: "dd/mm/yyyy",
+        language: "it"
+      });
+
+      $("#id_{{ form.photo.name }}").change(function () {
+        readURLImage(this);
+      });
+
+      // Add new family member
+      $("#add-member").click(function () {
+        var form_idx = $('#id_family_members-TOTAL_FORMS').val();
+        var $member = $("#empty-form").clone().html().replace(/__prefix__/g, form_idx);
+        //$member.attr("id", "member-"+'')
+        $($member).appendTo('#members');
+        $('.django-select2').djangoSelect2();
+
+        $(".datepicker").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          format: "dd/mm/yyyy",
+          language: "it"
+        });
+
+        $('#id_family_members-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+      });
+
+      $("#person-update-form").validate({
+        lang: 'it',
+        rules: {
+          address: {
+            check_address: true,
+          }
+        },
+        errorElement: "span",
+      });
+
+    });
+  </script>
+
+  {{ formset.media.js }}
+{% endblock pagejs %}

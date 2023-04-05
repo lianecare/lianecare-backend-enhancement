@@ -1,0 +1,182 @@
+{% load static i18n %}
+
+{# Modale per cambio/inserimento presentazione Caregiver PRO #}
+<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="serviceModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form id="serviceCreateForm" method="post" action=".">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{% trans "Inserisci un servizio" %}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row justify-content-center">
+            <div class="form-group col-lg-4">
+              <label for="id_parent">{% trans "Tipo di servizio" %}</label>
+              <div class="form-select">
+                <select name="category" class="form-control" required id="id_category">
+                  <option selected>{% trans "Seleziona" %}</option>
+                  {% for cat in categories %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row my-3 my-md-4">
+            <div id="sub-cat-wrapper"></div>
+          </div>
+
+          <div id="hide-row" style="display: none;">
+            <div class="form-row">
+              <div class="form-group col-md-6 col-lg-4">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Quanti anni di esperienza hai in questo settore? Indica 0 se hai appena iniziato ma vuoi imparare."></i>
+                <label for="id_experience">{% trans "Anni di esperienza?" %}</label>
+                <input class="form-control" type="number" value="" id="id_experience" name="experience" min="0"
+                       max="50">
+              </div>
+              <div class="form-group col-md-6 col-lg-4">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Indica la tua tariffa oraria"></i>
+                <label for="id_price">{% trans "La tua tariffa oraria" %}</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" value="" id="id_price" min="1" name="price">
+                  <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 col-lg-4">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Puoi fornire numeri di vecchi clienti che possono confermare le tue abilità?"></i>
+                <label for="id_has_references">{% trans 'Hai delle referenze?' %}</label>
+                <div class="form-select">
+                  <select name="has_references" class="form-control" id="id_has_references">
+                    <option value="">{% trans 'Seleziona' %}</option>
+                    <option value="true" {% if object.has_references is True %}
+                            selected{% endif %}>{% trans 'Sì' %}</option>
+                    <option value="false" {% if object.has_references is False %}
+                            selected{% endif %}>{% trans 'No' %}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-6 col-lg-4">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Indicaci i km max che saresti disposto a fare per arrivare dal cliente."></i>
+                <label for="id_max_distance">{% trans "Distanza max in km" %}</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" value="10" id="id_max_distance" min="1" max="50"
+                         name="max_distance">
+                  <div class="input-group-append">
+                    <span class="input-group-text">Km</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-12 col-lg-8">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Inserisci altre informazioni se utili per spiegare i servizi offerti o la tua tariffa oraria."></i>
+                <label for="id_note">{% trans "Note aggiuntive" %}</label>
+                <textarea name="note" cols="40" rows="3" class="form-control" id="id_note"></textarea>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" value="{{ object.id }}" name="caregiver">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{% trans "Chiudi" %}</button>
+          <button type="submit" class="btn btn-primary">{% trans "Salva" %}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="modal fade" id="editserviceModal" tabindex="-1" role="dialog" aria-labelledby="serviceModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form id="serviceUpdateForm" method="post" action=".">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{% trans "Modifica servizio" %}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row my-3 my-md-4">
+            <div id="edit_sub-cat-wrapper"></div>
+          </div>
+
+          <div id="edit_hide-row" style="display: none;">
+            <div class="form-row">
+              <div class="form-group col-md-6 col-lg-4">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Quanti anni di esperienza hai in questo settore? Indica 0 se hai appena iniziato ma vuoi imparare."></i>
+                <label for="id_experience">{% trans "Anni di esperienza?" %}</label>
+                <input class="form-control" type="number" value="" id="id_experience_ed" name="experience" min="0"
+                       max="50">
+              </div>
+              <input type="hidden" name="id" value="" id="edit_servic_id">
+              <div class="form-group col-md-6 col-lg-4">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Indica la tua tariffa oraria"></i>
+                <label for="id_price">{% trans "La tua tariffa oraria" %}</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" value="" id="id_price_ed" min="1" name="price">
+                  <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 col-lg-4">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Puoi fornire numeri di vecchi clienti che possono confermare le tue abilità?"></i>
+                <label for="id_has_references">{% trans 'Hai delle referenze?' %}</label>
+                <div class="form-select">
+                  <select name="has_references" class="form-control" id="id_has_references_ed">
+                    <option value="">{% trans 'Seleziona' %}</option>
+                    <option value="true" {% if object.has_references is True %}
+                            selected{% endif %}>{% trans 'Sì' %}</option>
+                    <option value="false" {% if object.has_references is False %}
+                            selected{% endif %}>{% trans 'No' %}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-6 col-lg-4">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Indicaci i km max che saresti disposto a fare per arrivare dal cliente."></i>
+                <label for="id_max_distance">{% trans "Distanza max in km" %}</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" value="10" id="id_max_distance_ed" min="1" max="50"
+                         name="max_distance">
+                  <div class="input-group-append">
+                    <span class="input-group-text">Km</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-12 col-lg-8">
+                <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                   title="Inserisci altre informazioni se utili per spiegare i servizi offerti o la tua tariffa oraria."></i>
+                <label for="id_note">{% trans "Note aggiuntive" %}</label>
+                <textarea name="note" cols="40" rows="3" class="form-control" id="id_note_ed"></textarea>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" value="{{ object.id }}" name="caregiver">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{% trans "Chiudi" %}</button>
+          <button type="submit" class="btn btn-primary">{% trans "Salva" %}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

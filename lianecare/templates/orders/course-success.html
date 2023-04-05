@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Ordine confermato" %}{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 text-center">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>{{ account.name }}Grazie per aver acquistato il corso</h2>
+        <h4>"{{ description }}"</h4>
+
+        <a class="btn btn-outline-primary mt-5" href="{% url 'solace:student_courses' %}">{% trans "I miei corsi" %}</a>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+

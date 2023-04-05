@@ -1,0 +1,1961 @@
+[
+{
+  "model": "quizes.quiz",
+  "pk": 1,
+  "fields": {
+    "created": "2021-04-09T22:27:23.028Z",
+    "modified": "2021-06-14T15:02:19.758Z",
+    "name": "Test corso base",
+    "course": 1,
+    "numbers_of_questions": 10,
+    "minimum_score": 70
+  }
+},
+{
+  "model": "quizes.quiz",
+  "pk": 2,
+  "fields": {
+    "created": "2021-04-09T22:36:16.224Z",
+    "modified": "2021-07-14T14:13:04.146Z",
+    "name": "Test corso Caregiver PRO",
+    "course": 2,
+    "numbers_of_questions": 34,
+    "minimum_score": 70
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 1,
+  "fields": {
+    "created": "2021-04-09T22:28:35.989Z",
+    "modified": "2021-06-14T15:16:45.492Z",
+    "text": "Cosa deve contenere il contratto di lavoro per essere efficace?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 2,
+  "fields": {
+    "created": "2021-04-09T22:29:24.321Z",
+    "modified": "2021-04-09T22:29:24.321Z",
+    "text": "Il contratto di lavoro va",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 3,
+  "fields": {
+    "created": "2021-04-09T22:29:55.599Z",
+    "modified": "2021-04-16T14:30:43.276Z",
+    "text": "Cosa è il contratto di job sharing?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 4,
+  "fields": {
+    "created": "2021-04-09T22:30:36.575Z",
+    "modified": "2021-04-09T22:30:36.575Z",
+    "text": "Quali sono i parametri vitali?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 5,
+  "fields": {
+    "created": "2021-04-09T22:31:06.524Z",
+    "modified": "2021-04-09T22:31:06.524Z",
+    "text": "Quali sono i valori della pressione normali in un adulto?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 6,
+  "fields": {
+    "created": "2021-04-09T22:31:36.696Z",
+    "modified": "2021-04-09T22:31:36.696Z",
+    "text": "Con quali strumenti si misura la pressione arteriosa?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 7,
+  "fields": {
+    "created": "2021-04-09T22:32:41.403Z",
+    "modified": "2021-04-09T22:32:41.403Z",
+    "text": "Come instaurare un legame di fiducia tra operatore e assistito?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 8,
+  "fields": {
+    "created": "2021-04-09T22:33:18.197Z",
+    "modified": "2021-04-09T22:33:18.197Z",
+    "text": "Cosa è l'empatia?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 9,
+  "fields": {
+    "created": "2021-04-09T22:33:59.074Z",
+    "modified": "2021-04-16T14:31:18.264Z",
+    "text": "Cosa sono i neuroni a specchio?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 10,
+  "fields": {
+    "created": "2021-04-09T22:34:43.698Z",
+    "modified": "2021-06-14T15:12:52.543Z",
+    "text": "Come si può sviluppare la capacità empatica?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 11,
+  "fields": {
+    "created": "2021-04-09T22:35:16.678Z",
+    "modified": "2021-04-09T22:35:16.678Z",
+    "text": "Cosa è il burn-out?",
+    "quiz": 1
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 12,
+  "fields": {
+    "created": "2021-04-11T18:52:52.265Z",
+    "modified": "2021-04-11T18:52:52.265Z",
+    "text": "Quali azioni possono essere messe in atto per prevenire il burn out?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 13,
+  "fields": {
+    "created": "2021-04-11T18:53:55.660Z",
+    "modified": "2021-04-11T18:53:55.660Z",
+    "text": "L'empatia è la conseguenza di un meccanismo cerebrale. Quale?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 14,
+  "fields": {
+    "created": "2021-04-11T18:54:49.664Z",
+    "modified": "2021-04-11T18:54:49.664Z",
+    "text": "Che cosa intendiamo per ascolto attivo o empatico?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 15,
+  "fields": {
+    "created": "2021-04-11T18:55:24.712Z",
+    "modified": "2021-04-11T18:55:24.712Z",
+    "text": "La comunicazione è espressa:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 16,
+  "fields": {
+    "created": "2021-04-11T18:55:58.868Z",
+    "modified": "2021-04-11T18:55:58.868Z",
+    "text": "Per l’art. 40 del Codice Penale:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 17,
+  "fields": {
+    "created": "2021-04-11T18:57:18.749Z",
+    "modified": "2021-04-11T18:57:18.749Z",
+    "text": "Quando l'assiste risponde di IMPERIZIA?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 18,
+  "fields": {
+    "created": "2021-04-11T18:58:04.719Z",
+    "modified": "2021-04-23T07:07:39.967Z",
+    "text": "Nella relazione di cura, l’assistente quale zona occupa nella relazione con l'assistito?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 19,
+  "fields": {
+    "created": "2021-04-11T18:58:42.724Z",
+    "modified": "2021-04-11T18:58:42.724Z",
+    "text": "Quali sono i bisogni al vertice della piramide di Maslow?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 20,
+  "fields": {
+    "created": "2021-04-11T18:59:45.863Z",
+    "modified": "2021-04-11T18:59:45.863Z",
+    "text": "Che cosa intendiamo per atteggiamento di oggettivazione che può produrre malessere nella persona che assistiamo?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 21,
+  "fields": {
+    "created": "2021-04-11T19:00:26.282Z",
+    "modified": "2021-04-11T19:00:26.282Z",
+    "text": "Aver cura della prossimità implica:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 22,
+  "fields": {
+    "created": "2021-04-11T19:01:24.489Z",
+    "modified": "2021-04-11T19:01:24.489Z",
+    "text": "Cosa significa che la professione dell'assistente è high touch?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 23,
+  "fields": {
+    "created": "2021-04-11T19:02:01.661Z",
+    "modified": "2021-04-11T19:02:01.661Z",
+    "text": "Chi risponde per un fatto compiuto da una persona incapace di intendere e di volere?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 24,
+  "fields": {
+    "created": "2021-04-11T19:02:59.795Z",
+    "modified": "2021-04-11T19:02:59.795Z",
+    "text": "Chi è il sorvegliante?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 25,
+  "fields": {
+    "created": "2021-04-11T19:03:53.197Z",
+    "modified": "2021-04-11T19:03:53.197Z",
+    "text": "Quando vestiamo una persona che abbia un arto plegico o paralizzato è importante:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 26,
+  "fields": {
+    "created": "2021-04-11T19:04:20.798Z",
+    "modified": "2021-04-11T19:04:20.798Z",
+    "text": "Quali tra questi non è un parametro vitale?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 27,
+  "fields": {
+    "created": "2021-04-11T19:04:58.981Z",
+    "modified": "2021-04-11T19:04:58.981Z",
+    "text": "Per avere una buona comunicazione con la persona che assistiamo è necessario:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 28,
+  "fields": {
+    "created": "2021-04-11T19:05:48.622Z",
+    "modified": "2021-07-16T12:51:38.012Z",
+    "text": "Quale tra queste affermazioni rispetto alla conservazione dei detersivi è falsa?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 29,
+  "fields": {
+    "created": "2021-04-11T19:06:20.650Z",
+    "modified": "2021-04-11T19:06:20.650Z",
+    "text": "La temperatura della stanza deve stare:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 30,
+  "fields": {
+    "created": "2021-04-11T19:07:07.002Z",
+    "modified": "2021-04-11T19:07:07.002Z",
+    "text": "Il nuovo contratto di lavoro prevede che l'inquadramento di questa categoria di lavoratori avvenga in:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 31,
+  "fields": {
+    "created": "2021-04-11T19:07:41.669Z",
+    "modified": "2021-04-11T19:07:41.669Z",
+    "text": "Secondo il contratto collettivo il riposo settimanale è di:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 32,
+  "fields": {
+    "created": "2021-04-11T19:08:23.727Z",
+    "modified": "2021-04-11T19:08:23.727Z",
+    "text": "Quali sono i valori normativi della pressione arteriosa?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 33,
+  "fields": {
+    "created": "2021-04-11T19:09:26.948Z",
+    "modified": "2021-04-11T19:09:26.948Z",
+    "text": "Il modello biopsicosociale afferma che:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 34,
+  "fields": {
+    "created": "2021-04-11T19:09:59.927Z",
+    "modified": "2021-04-11T19:09:59.927Z",
+    "text": "Quale tra queste rientrano tra le disabilità sensoriali?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 35,
+  "fields": {
+    "created": "2021-04-11T19:10:33.355Z",
+    "modified": "2021-04-11T19:10:33.355Z",
+    "text": "La disabilità può essere:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 36,
+  "fields": {
+    "created": "2021-04-11T19:11:08.339Z",
+    "modified": "2021-07-14T13:32:24.137Z",
+    "text": "Quale tra queste affermazioni è falsa?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 37,
+  "fields": {
+    "created": "2021-04-11T19:11:57.372Z",
+    "modified": "2021-04-11T19:11:57.372Z",
+    "text": "Quale tra queste affermazioni è falsa?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 38,
+  "fields": {
+    "created": "2021-04-11T19:12:39.380Z",
+    "modified": "2021-04-11T19:12:39.380Z",
+    "text": "Rogers individua una triade di atteggiamenti fondamentali e facilitanti perché si creano rapporti e processi interpersonali costruttivi e si realizzi un processo d’aiuto. Quali sono?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 39,
+  "fields": {
+    "created": "2021-04-11T19:13:36.236Z",
+    "modified": "2021-04-11T19:13:36.236Z",
+    "text": "Per considerazione positiva incondizionata si intende:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 40,
+  "fields": {
+    "created": "2021-04-11T19:14:32.993Z",
+    "modified": "2021-04-11T19:14:32.993Z",
+    "text": "Che cos'è il PUA?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 41,
+  "fields": {
+    "created": "2021-04-11T19:15:22.160Z",
+    "modified": "2021-04-11T19:15:22.160Z",
+    "text": "I CDCD sono:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 42,
+  "fields": {
+    "created": "2021-04-11T19:16:40.417Z",
+    "modified": "2021-04-11T19:16:40.417Z",
+    "text": "Nella finestra di Johari l’io aperto o area pubblica rappresenta:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 43,
+  "fields": {
+    "created": "2021-04-11T19:17:39.879Z",
+    "modified": "2021-04-11T19:17:39.879Z",
+    "text": "Nel primo colloquio conoscitivo è consigliabile per l’assistente familiare condividere:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 44,
+  "fields": {
+    "created": "2021-04-11T19:18:19.955Z",
+    "modified": "2021-04-11T19:18:19.955Z",
+    "text": "Per sviluppare una buona alleanza di cura con la famiglia è importante:",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.question",
+  "pk": 45,
+  "fields": {
+    "created": "2021-07-14T13:35:28.674Z",
+    "modified": "2021-07-14T13:35:28.674Z",
+    "text": "Che cosa intendiamo con il termine burn-out?",
+    "quiz": 2
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 1,
+  "fields": {
+    "created": "2021-04-09T22:28:35.993Z",
+    "modified": "2021-06-14T15:10:24.999Z",
+    "text": "Nessun elemento",
+    "correct": false,
+    "question": 1
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 2,
+  "fields": {
+    "created": "2021-04-09T22:28:35.994Z",
+    "modified": "2021-06-14T15:10:25.000Z",
+    "text": "Data inizio lavoro – Livello appartenenza – Mansione -  Categoria – Durata  – Retribuzione Orario lavorativo - Giorno riposo – Vitto e Alloggio",
+    "correct": true,
+    "question": 1
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 3,
+  "fields": {
+    "created": "2021-04-09T22:28:35.994Z",
+    "modified": "2021-04-09T22:28:35.994Z",
+    "text": "Orario di lavoro e giorno di riposo",
+    "correct": false,
+    "question": 1
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 4,
+  "fields": {
+    "created": "2021-04-09T22:29:24.326Z",
+    "modified": "2021-04-09T22:29:24.326Z",
+    "text": "Registrato",
+    "correct": false,
+    "question": 2
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 5,
+  "fields": {
+    "created": "2021-04-09T22:29:24.326Z",
+    "modified": "2021-04-09T22:29:24.326Z",
+    "text": "Comunicato all'INPS 24 ore prima dell'assunzione",
+    "correct": true,
+    "question": 2
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 6,
+  "fields": {
+    "created": "2021-04-09T22:29:24.327Z",
+    "modified": "2021-04-09T22:29:24.327Z",
+    "text": "Firmato digitalmente",
+    "correct": false,
+    "question": 2
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 7,
+  "fields": {
+    "created": "2021-04-09T22:29:55.603Z",
+    "modified": "2021-04-16T14:30:43.277Z",
+    "text": "Un contratto in cui una persona delega parte del lavoro ad altra persona.",
+    "correct": false,
+    "question": 3
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 8,
+  "fields": {
+    "created": "2021-04-09T22:29:55.603Z",
+    "modified": "2021-04-09T22:29:55.603Z",
+    "text": "Un accordo verbale tra due lavoratori",
+    "correct": false,
+    "question": 3
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 9,
+  "fields": {
+    "created": "2021-04-09T22:29:55.604Z",
+    "modified": "2021-04-09T22:29:55.604Z",
+    "text": "Un contratto scritto in cui due lavoratori sono assunti e ognuno dei due è responsabile dell’adempimento della intera obbligazione",
+    "correct": true,
+    "question": 3
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 10,
+  "fields": {
+    "created": "2021-04-09T22:30:36.580Z",
+    "modified": "2021-04-09T22:30:36.580Z",
+    "text": "Pressione arteriosa, frequenza cardiaca",
+    "correct": false,
+    "question": 4
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 11,
+  "fields": {
+    "created": "2021-04-09T22:30:36.580Z",
+    "modified": "2021-04-09T22:30:36.580Z",
+    "text": "Temperatura corporea, frequenza respiratoria, dolore",
+    "correct": false,
+    "question": 4
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 12,
+  "fields": {
+    "created": "2021-04-09T22:30:36.581Z",
+    "modified": "2021-04-09T22:30:36.581Z",
+    "text": "Tutte le risposte precedenti",
+    "correct": true,
+    "question": 4
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 13,
+  "fields": {
+    "created": "2021-04-09T22:31:06.528Z",
+    "modified": "2021-04-09T22:31:06.528Z",
+    "text": "Massima 120/130 – minima 70/80",
+    "correct": true,
+    "question": 5
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 14,
+  "fields": {
+    "created": "2021-04-09T22:31:06.528Z",
+    "modified": "2021-04-09T22:31:06.528Z",
+    "text": "Massima 180/200 – minima 120/130",
+    "correct": false,
+    "question": 5
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 15,
+  "fields": {
+    "created": "2021-04-09T22:31:06.529Z",
+    "modified": "2021-04-09T22:31:06.529Z",
+    "text": "Massima 70-80 – minima 40-60",
+    "correct": false,
+    "question": 5
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 16,
+  "fields": {
+    "created": "2021-04-09T22:31:36.700Z",
+    "modified": "2021-04-09T22:31:36.700Z",
+    "text": "Sfigmomanometro e fonendoscopio",
+    "correct": false,
+    "question": 6
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 17,
+  "fields": {
+    "created": "2021-04-09T22:31:36.701Z",
+    "modified": "2021-04-09T22:31:36.701Z",
+    "text": "Misuratore da polso o da braccio",
+    "correct": false,
+    "question": 6
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 18,
+  "fields": {
+    "created": "2021-04-09T22:31:36.701Z",
+    "modified": "2021-04-09T22:31:36.701Z",
+    "text": "Tutte le risposte precedenti",
+    "correct": true,
+    "question": 6
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 19,
+  "fields": {
+    "created": "2021-04-09T22:32:41.409Z",
+    "modified": "2021-04-09T22:32:41.409Z",
+    "text": "Conoscere storia biografica, interessi, abitudini dell'assistito",
+    "correct": true,
+    "question": 7
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 20,
+  "fields": {
+    "created": "2021-04-09T22:32:41.410Z",
+    "modified": "2021-04-09T22:32:41.410Z",
+    "text": "Non mantenere quanto promesso",
+    "correct": false,
+    "question": 7
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 21,
+  "fields": {
+    "created": "2021-04-09T22:32:41.411Z",
+    "modified": "2021-04-09T22:32:41.411Z",
+    "text": "Criticare in modo aperto le scelte fatte dall'assistito o dai suoi familiari",
+    "correct": false,
+    "question": 7
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 22,
+  "fields": {
+    "created": "2021-04-09T22:33:18.201Z",
+    "modified": "2021-04-09T22:33:18.201Z",
+    "text": "Capacità di mettersi nei panni dell’altra persona senza giudizio e riconoscendo le emozioni dell'altro",
+    "correct": true,
+    "question": 8
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 23,
+  "fields": {
+    "created": "2021-04-09T22:33:18.201Z",
+    "modified": "2021-04-09T22:33:18.201Z",
+    "text": "Essere certi di sapere cosa l’altro pensa o sta vivendo",
+    "correct": false,
+    "question": 8
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 24,
+  "fields": {
+    "created": "2021-04-09T22:33:18.202Z",
+    "modified": "2021-04-09T22:33:18.202Z",
+    "text": "Consapevolezza automatica del nostro vivere in un mondo sociale",
+    "correct": false,
+    "question": 8
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 25,
+  "fields": {
+    "created": "2021-04-09T22:33:59.078Z",
+    "modified": "2021-04-16T14:31:18.264Z",
+    "text": "Neuroni che attiviamo volontariamente ogni volta che entriamo in contatto con un'altra persona.",
+    "correct": false,
+    "question": 9
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 26,
+  "fields": {
+    "created": "2021-04-09T22:33:59.078Z",
+    "modified": "2021-04-09T22:33:59.078Z",
+    "text": "Neuroni che attiviamo volontariamente quando ci specchiamo",
+    "correct": false,
+    "question": 9
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 27,
+  "fields": {
+    "created": "2021-04-09T22:33:59.079Z",
+    "modified": "2021-04-09T22:33:59.079Z",
+    "text": "Neuroni che si attivano involontariamente e ci aiutano a dare significato a quello che accade intorno a noi",
+    "correct": true,
+    "question": 9
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 28,
+  "fields": {
+    "created": "2021-04-09T22:34:43.702Z",
+    "modified": "2021-06-14T15:12:52.545Z",
+    "text": "Non si può sviluppare, fa parte del nostro corredo genetico",
+    "correct": false,
+    "question": 10
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 29,
+  "fields": {
+    "created": "2021-04-09T22:34:43.702Z",
+    "modified": "2021-06-14T15:12:52.546Z",
+    "text": "Grazie alle relazioni e i rapporti con altre persone",
+    "correct": true,
+    "question": 10
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 30,
+  "fields": {
+    "created": "2021-04-09T22:34:43.703Z",
+    "modified": "2021-04-09T22:34:43.703Z",
+    "text": "Mettendo da parte i nostri valori, hobby, impegni a scapito del lavoro di assistenza",
+    "correct": false,
+    "question": 10
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 31,
+  "fields": {
+    "created": "2021-04-09T22:35:16.683Z",
+    "modified": "2021-04-09T22:35:16.683Z",
+    "text": "Stato di malessere psicofisico e senso di inadeguatezza",
+    "correct": false,
+    "question": 11
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 32,
+  "fields": {
+    "created": "2021-04-09T22:35:16.683Z",
+    "modified": "2021-04-09T22:35:16.683Z",
+    "text": "Insieme di sintomi che hanno gli effetti tipici del sovraccarico di stress",
+    "correct": false,
+    "question": 11
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 33,
+  "fields": {
+    "created": "2021-04-09T22:35:16.684Z",
+    "modified": "2021-04-09T22:35:16.684Z",
+    "text": "Entrambe le risposte sono vere",
+    "correct": true,
+    "question": 11
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 34,
+  "fields": {
+    "created": "2021-04-11T18:52:52.272Z",
+    "modified": "2021-04-11T18:52:52.272Z",
+    "text": "Pianificare l'alternanza tra attività lavorative gratificanti e meno gratificanti; fare formazione.",
+    "correct": true,
+    "question": 12
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 35,
+  "fields": {
+    "created": "2021-04-11T18:52:52.273Z",
+    "modified": "2021-04-11T18:52:52.273Z",
+    "text": "Porsi alti obiettivi professionali e essere animati da eccessivo entusiasmo idealistico per la professione di cura.",
+    "correct": false,
+    "question": 12
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 36,
+  "fields": {
+    "created": "2021-04-11T18:52:52.273Z",
+    "modified": "2021-04-11T18:52:52.273Z",
+    "text": "Adottare un atteggiamento di distacco emotivo nei confronti delle persone assistite.",
+    "correct": false,
+    "question": 12
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 37,
+  "fields": {
+    "created": "2021-04-11T18:53:55.665Z",
+    "modified": "2021-04-11T18:53:55.665Z",
+    "text": "La corteccia temporale",
+    "correct": false,
+    "question": 13
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 38,
+  "fields": {
+    "created": "2021-04-11T18:53:55.665Z",
+    "modified": "2021-04-11T18:53:55.665Z",
+    "text": "Le cellule epiteliali",
+    "correct": false,
+    "question": 13
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 39,
+  "fields": {
+    "created": "2021-04-11T18:53:55.665Z",
+    "modified": "2021-04-11T18:53:55.665Z",
+    "text": "I neuroni specchio",
+    "correct": true,
+    "question": 13
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 40,
+  "fields": {
+    "created": "2021-04-11T18:54:49.669Z",
+    "modified": "2021-04-11T18:54:49.669Z",
+    "text": "Per ascolto empatico o attivo si intende la capacità di ascoltare con attenzione ciò che la persona comunica, decodificarne il messaggio e rinviare il risultato della decodifica.",
+    "correct": true,
+    "question": 14
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 41,
+  "fields": {
+    "created": "2021-04-11T18:54:49.669Z",
+    "modified": "2021-04-11T18:54:49.669Z",
+    "text": "L'ascolto empatico implica che la risposta non inizi con \"almeno\".",
+    "correct": false,
+    "question": 14
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 42,
+  "fields": {
+    "created": "2021-04-11T18:54:49.669Z",
+    "modified": "2021-04-11T18:54:49.669Z",
+    "text": "Annuire con la testa indica inequivocabilmente alla persona che stiamo ascoltando in maniera attiva e empatica.",
+    "correct": false,
+    "question": 14
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 43,
+  "fields": {
+    "created": "2021-04-11T18:55:24.716Z",
+    "modified": "2021-04-11T18:55:24.716Z",
+    "text": "In larga parte dal linguaggio verbale.",
+    "correct": false,
+    "question": 15
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 44,
+  "fields": {
+    "created": "2021-04-11T18:55:24.716Z",
+    "modified": "2021-04-11T18:55:24.716Z",
+    "text": "In particolare attraverso il silenzio.",
+    "correct": false,
+    "question": 15
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 45,
+  "fields": {
+    "created": "2021-04-11T18:55:24.717Z",
+    "modified": "2021-04-11T18:55:24.717Z",
+    "text": "Per la maggior parte attraverso il linguaggio non verbale.",
+    "correct": true,
+    "question": 15
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 46,
+  "fields": {
+    "created": "2021-04-11T18:55:58.874Z",
+    "modified": "2021-04-11T18:55:58.874Z",
+    "text": "Nessuno può essere punito per un fatto preveduto dalla legge come reato, se l'evento dannoso o pericoloso, da cui dipende l’esistenza del reato, non è conseguenza della sua azione od omissione.",
+    "correct": false,
+    "question": 16
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 47,
+  "fields": {
+    "created": "2021-04-11T18:55:58.874Z",
+    "modified": "2021-04-11T18:55:58.874Z",
+    "text": "Non impedire un evento, che si ha l'obbligo giuridico di impedire, equivale a cagionarlo.",
+    "correct": false,
+    "question": 16
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 48,
+  "fields": {
+    "created": "2021-04-11T18:55:58.874Z",
+    "modified": "2021-04-11T18:55:58.874Z",
+    "text": "Entrambe le precedenti.",
+    "correct": true,
+    "question": 16
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 49,
+  "fields": {
+    "created": "2021-04-11T18:57:18.753Z",
+    "modified": "2021-04-11T18:57:18.753Z",
+    "text": "L'assistente lascia sola la persona che avrebbe dovuto sorvegliare e, in sua assenza, l'assistito cade.",
+    "correct": false,
+    "question": 17
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 50,
+  "fields": {
+    "created": "2021-04-11T18:57:18.754Z",
+    "modified": "2021-04-11T18:57:18.754Z",
+    "text": "L'assistente nello svolgimento del lavoro esegue delle pratiche in maniera impropria rispetto a come andrebbero fatte e/o in modo diverso da come gli è stato insegnato  e in conseguenza delle azioni causa danno all’assistito.",
+    "correct": true,
+    "question": 17
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 51,
+  "fields": {
+    "created": "2021-04-11T18:57:18.754Z",
+    "modified": "2021-04-11T18:57:18.754Z",
+    "text": "L'assistente pone in essere un comportamento imprudente che causa danno all’assistito (es. somministra farmaci senza prescrizione medica).",
+    "correct": false,
+    "question": 17
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 52,
+  "fields": {
+    "created": "2021-04-11T18:58:04.724Z",
+    "modified": "2021-04-11T18:58:04.724Z",
+    "text": "La distanza da mantenere è quella sociale: questa stabilisce anche il rapporto adeguato tra assistente (lavoratore) e assistito (utente).",
+    "correct": false,
+    "question": 18
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 53,
+  "fields": {
+    "created": "2021-04-11T18:58:04.724Z",
+    "modified": "2021-04-11T18:58:04.724Z",
+    "text": "Nella relazione di cura entriamo nella zona personale della persona fragile e addirittura in quella intima, ma solo dopo aver ricevuto segnali di disponibilità e consenso.",
+    "correct": true,
+    "question": 18
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 54,
+  "fields": {
+    "created": "2021-04-11T18:58:04.724Z",
+    "modified": "2021-04-11T18:58:04.724Z",
+    "text": "L'assistente occupa spazi diversi a seconda della distanza che lo separa dall'assistito.",
+    "correct": false,
+    "question": 18
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 55,
+  "fields": {
+    "created": "2021-04-11T18:58:42.728Z",
+    "modified": "2021-04-11T18:58:42.728Z",
+    "text": "I bisogni di autorealizzazione.",
+    "correct": true,
+    "question": 19
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 56,
+  "fields": {
+    "created": "2021-04-11T18:58:42.728Z",
+    "modified": "2021-04-11T18:58:42.728Z",
+    "text": "I bisogni sopravvivenza.",
+    "correct": false,
+    "question": 19
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 57,
+  "fields": {
+    "created": "2021-04-11T18:58:42.729Z",
+    "modified": "2021-04-11T18:58:42.729Z",
+    "text": "I bisogni di sicurezza.",
+    "correct": false,
+    "question": 19
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 58,
+  "fields": {
+    "created": "2021-04-11T18:59:45.867Z",
+    "modified": "2021-04-11T18:59:45.867Z",
+    "text": "Non permettere alla persona di usare le capacità che ha, sostituendoci ad essa.",
+    "correct": false,
+    "question": 20
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 59,
+  "fields": {
+    "created": "2021-04-11T18:59:45.868Z",
+    "modified": "2021-04-11T18:59:45.868Z",
+    "text": "Trattare la persona come una materia inerte sulla quale si agisce per rendere dei servizi.",
+    "correct": true,
+    "question": 20
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 60,
+  "fields": {
+    "created": "2021-04-11T18:59:45.868Z",
+    "modified": "2021-04-11T18:59:45.868Z",
+    "text": "Mandare via una persona o escluderla dall’ambiente sociale, fisicamente o psicologicamente, perché non la si giudica adatta o non sufficientemente capace.",
+    "correct": false,
+    "question": 20
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 61,
+  "fields": {
+    "created": "2021-04-11T19:00:26.288Z",
+    "modified": "2021-04-11T19:00:26.288Z",
+    "text": "Aver cura del contesto in cui la persona è immersa.",
+    "correct": true,
+    "question": 21
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 62,
+  "fields": {
+    "created": "2021-04-11T19:00:26.288Z",
+    "modified": "2021-04-11T19:00:26.288Z",
+    "text": "Aver cura delle persone che condividono l’ambiente domestico con la persona fragile.",
+    "correct": false,
+    "question": 21
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 63,
+  "fields": {
+    "created": "2021-04-11T19:00:26.288Z",
+    "modified": "2021-04-11T19:00:26.288Z",
+    "text": "Nessuna delle precedenti.",
+    "correct": false,
+    "question": 21
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 64,
+  "fields": {
+    "created": "2021-04-11T19:01:24.492Z",
+    "modified": "2021-04-11T19:01:24.492Z",
+    "text": "Comporta un elevato grado di digitalizzazione.",
+    "correct": false,
+    "question": 22
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 65,
+  "fields": {
+    "created": "2021-04-11T19:01:24.493Z",
+    "modified": "2021-04-11T19:01:24.493Z",
+    "text": "Implica un contatto continuo con la persona che richiede sostegno, orientamento e supporto.",
+    "correct": true,
+    "question": 22
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 66,
+  "fields": {
+    "created": "2021-04-11T19:01:24.493Z",
+    "modified": "2021-04-11T19:01:24.493Z",
+    "text": "La relazione si fonda sul tocco, in particolare quando non è possibile una comunicazione verbale.",
+    "correct": false,
+    "question": 22
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 67,
+  "fields": {
+    "created": "2021-04-11T19:02:01.665Z",
+    "modified": "2021-04-11T19:02:01.665Z",
+    "text": "L'incapace.",
+    "correct": false,
+    "question": 23
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 68,
+  "fields": {
+    "created": "2021-04-11T19:02:01.665Z",
+    "modified": "2021-04-11T19:02:01.665Z",
+    "text": "Chi era tenuto alla sua sorveglianza, in qualsiasi caso.",
+    "correct": false,
+    "question": 23
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 69,
+  "fields": {
+    "created": "2021-04-11T19:02:01.666Z",
+    "modified": "2021-04-11T19:02:01.666Z",
+    "text": "Il sorvegliante, salva la prova di non averne potuto impedire la consumazione.",
+    "correct": true,
+    "question": 23
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 70,
+  "fields": {
+    "created": "2021-04-11T19:02:59.799Z",
+    "modified": "2021-04-11T19:02:59.799Z",
+    "text": "Chi si trova ad assistere per un contratto o per espressione volontaria.",
+    "correct": false,
+    "question": 24
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 71,
+  "fields": {
+    "created": "2021-04-11T19:02:59.799Z",
+    "modified": "2021-04-11T19:02:59.799Z",
+    "text": "Chi si trova ad esercitare la custodia per una previsione di legge (come accade per genitori o affidatari con i figli).",
+    "correct": false,
+    "question": 24
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 72,
+  "fields": {
+    "created": "2021-04-11T19:02:59.800Z",
+    "modified": "2021-04-11T19:02:59.800Z",
+    "text": "Entrambe le precedenti.",
+    "correct": true,
+    "question": 24
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 73,
+  "fields": {
+    "created": "2021-04-11T19:03:53.201Z",
+    "modified": "2021-04-11T19:03:53.201Z",
+    "text": "Partire sia nella vestizione che nella svestizione dall’arto abile verso quello plegico.",
+    "correct": false,
+    "question": 25
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 74,
+  "fields": {
+    "created": "2021-04-11T19:03:53.202Z",
+    "modified": "2021-04-11T19:03:53.202Z",
+    "text": "Partire sia nella vestizione che nella svestizione dall’arto inabile verso quello sano.",
+    "correct": false,
+    "question": 25
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 75,
+  "fields": {
+    "created": "2021-04-11T19:03:53.202Z",
+    "modified": "2021-04-11T19:03:53.202Z",
+    "text": "Partire nella vestizione dall'arto inabile verso quello sano, mentre quando si procede alla svestizione procedere all’inverso, dall'arto sano a quello plegico o paralizzato.",
+    "correct": true,
+    "question": 25
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 76,
+  "fields": {
+    "created": "2021-04-11T19:04:20.802Z",
+    "modified": "2021-04-11T19:04:20.802Z",
+    "text": "Pressione arteriosa.",
+    "correct": false,
+    "question": 26
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 77,
+  "fields": {
+    "created": "2021-04-11T19:04:20.802Z",
+    "modified": "2021-04-11T19:04:20.802Z",
+    "text": "Dolore.",
+    "correct": false,
+    "question": 26
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 78,
+  "fields": {
+    "created": "2021-04-11T19:04:20.802Z",
+    "modified": "2021-04-11T19:04:20.802Z",
+    "text": "Saturazione.",
+    "correct": true,
+    "question": 26
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 79,
+  "fields": {
+    "created": "2021-04-11T19:04:58.985Z",
+    "modified": "2021-04-11T19:04:58.985Z",
+    "text": "Mettersi di fronte alla persona e non girati di spalle, parlando senza fretta.",
+    "correct": false,
+    "question": 27
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 80,
+  "fields": {
+    "created": "2021-04-11T19:04:58.985Z",
+    "modified": "2021-04-11T19:04:58.985Z",
+    "text": "Avere un tono di voce calmo.",
+    "correct": false,
+    "question": 27
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 81,
+  "fields": {
+    "created": "2021-04-11T19:04:58.986Z",
+    "modified": "2021-04-11T19:04:58.986Z",
+    "text": "Entrambe le precedenti.",
+    "correct": true,
+    "question": 27
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 82,
+  "fields": {
+    "created": "2021-04-11T19:05:48.626Z",
+    "modified": "2021-07-16T12:51:38.013Z",
+    "text": "I detersivi vanno conservati in un posto possibilmente chiuso: armadio o mobiletto, ed in modo che non vengano confusi e scambiati con quelli di altro genere, per es. con il cibo.",
+    "correct": true,
+    "question": 28
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 83,
+  "fields": {
+    "created": "2021-04-11T19:05:48.626Z",
+    "modified": "2021-07-16T12:51:38.014Z",
+    "text": "Può essere tolta l'etichetta, l'importante è che si riconosca sempre il contenuto della bottiglia.",
+    "correct": false,
+    "question": 28
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 84,
+  "fields": {
+    "created": "2021-04-11T19:05:48.626Z",
+    "modified": "2021-04-11T19:05:48.626Z",
+    "text": "Non va travasato il contenuto di un prodotto in un contenitore diverso; se necessario per la diluizione applicare un'etichetta con l'indicazione del contenuto.",
+    "correct": false,
+    "question": 28
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 85,
+  "fields": {
+    "created": "2021-04-11T19:06:20.653Z",
+    "modified": "2021-04-11T19:06:20.653Z",
+    "text": "Tra i 18 e i 20 gradi.",
+    "correct": true,
+    "question": 29
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 86,
+  "fields": {
+    "created": "2021-04-11T19:06:20.654Z",
+    "modified": "2021-04-11T19:06:20.654Z",
+    "text": "Sotto ai 18 gradi.",
+    "correct": false,
+    "question": 29
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 87,
+  "fields": {
+    "created": "2021-04-11T19:06:20.654Z",
+    "modified": "2021-04-11T19:06:20.654Z",
+    "text": "Tra i 20 e i 22 gradi.",
+    "correct": false,
+    "question": 29
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 88,
+  "fields": {
+    "created": "2021-04-11T19:07:07.006Z",
+    "modified": "2021-04-11T19:07:07.006Z",
+    "text": "Due categorie (una normale e una super).",
+    "correct": false,
+    "question": 30
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 89,
+  "fields": {
+    "created": "2021-04-11T19:07:07.007Z",
+    "modified": "2021-04-11T19:07:07.007Z",
+    "text": "Quattro distinte qualifiche a cui corrispondono due differenti parametri retributivi (uno normale e uno super).",
+    "correct": true,
+    "question": 30
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 90,
+  "fields": {
+    "created": "2021-04-11T19:07:07.007Z",
+    "modified": "2021-04-11T19:07:07.007Z",
+    "text": "Sulla base del titolo di studio e della professionalità posseduta.",
+    "correct": false,
+    "question": 30
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 91,
+  "fields": {
+    "created": "2021-04-11T19:07:41.673Z",
+    "modified": "2021-04-11T19:07:41.673Z",
+    "text": "36 ore e deve essere goduto per 24 ore di domenica (salvo eccezioni concordate).",
+    "correct": true,
+    "question": 31
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 92,
+  "fields": {
+    "created": "2021-04-11T19:07:41.674Z",
+    "modified": "2021-04-11T19:07:41.674Z",
+    "text": "24 ore e deve essere goduto 12 ore di domenica e 12 in altro giorno feriale.",
+    "correct": false,
+    "question": 31
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 93,
+  "fields": {
+    "created": "2021-04-11T19:07:41.674Z",
+    "modified": "2021-04-11T19:07:41.674Z",
+    "text": "È concordato tra le parti e non deve mai eccedere le 36 ore settimanali.",
+    "correct": false,
+    "question": 31
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 94,
+  "fields": {
+    "created": "2021-04-11T19:08:23.731Z",
+    "modified": "2021-04-11T19:08:23.731Z",
+    "text": "140 per la massima e 100 per la minima.",
+    "correct": false,
+    "question": 32
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 95,
+  "fields": {
+    "created": "2021-04-11T19:08:23.731Z",
+    "modified": "2021-04-11T19:08:23.731Z",
+    "text": "120 per la massima e 80 per la minima.",
+    "correct": true,
+    "question": 32
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 96,
+  "fields": {
+    "created": "2021-04-11T19:08:23.732Z",
+    "modified": "2021-04-11T19:08:23.732Z",
+    "text": "Nessuna delle precedenti.",
+    "correct": false,
+    "question": 32
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 97,
+  "fields": {
+    "created": "2021-04-11T19:09:26.952Z",
+    "modified": "2021-04-11T19:09:26.952Z",
+    "text": "La salute è determinata dall'assenza di malattia.",
+    "correct": false,
+    "question": 33
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 98,
+  "fields": {
+    "created": "2021-04-11T19:09:26.953Z",
+    "modified": "2021-04-11T19:09:26.953Z",
+    "text": "Ogni condizione di salute o di malattia è la conseguenza dell'interazione tra fattori biologici, psicologici e sociali/culturali.",
+    "correct": true,
+    "question": 33
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 99,
+  "fields": {
+    "created": "2021-04-11T19:09:26.953Z",
+    "modified": "2021-04-11T19:09:26.953Z",
+    "text": "Nessuna delle precedenti.",
+    "correct": false,
+    "question": 33
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 100,
+  "fields": {
+    "created": "2021-04-11T19:09:59.931Z",
+    "modified": "2021-04-11T19:09:59.931Z",
+    "text": "Sordità o ipoacusia.",
+    "correct": true,
+    "question": 34
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 101,
+  "fields": {
+    "created": "2021-04-11T19:09:59.931Z",
+    "modified": "2021-04-11T19:09:59.931Z",
+    "text": "Aprassia.",
+    "correct": false,
+    "question": 34
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 102,
+  "fields": {
+    "created": "2021-04-11T19:09:59.932Z",
+    "modified": "2021-04-11T19:09:59.932Z",
+    "text": "Disabilità intellettiva.",
+    "correct": false,
+    "question": 34
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 103,
+  "fields": {
+    "created": "2021-04-11T19:10:33.359Z",
+    "modified": "2021-04-11T19:10:33.359Z",
+    "text": "Congenita.",
+    "correct": false,
+    "question": 35
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 104,
+  "fields": {
+    "created": "2021-04-11T19:10:33.359Z",
+    "modified": "2021-04-11T19:10:33.359Z",
+    "text": "Acquisita",
+    "correct": false,
+    "question": 35
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 105,
+  "fields": {
+    "created": "2021-04-11T19:10:33.360Z",
+    "modified": "2021-04-11T19:10:33.360Z",
+    "text": "Entrambe le precedenti.",
+    "correct": true,
+    "question": 35
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 106,
+  "fields": {
+    "created": "2021-04-11T19:11:08.343Z",
+    "modified": "2021-04-11T19:11:08.343Z",
+    "text": "La scorretta alimentazione è stata individuata tra i quattro primari fattori di rischio per lo sviluppo di malattie croniche - insieme a fumo, alcol e inattività fisica.",
+    "correct": false,
+    "question": 36
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 107,
+  "fields": {
+    "created": "2021-04-11T19:11:08.343Z",
+    "modified": "2021-04-11T19:11:08.343Z",
+    "text": "La solitudine è un fattore di rischio per molti problemi di salute fisica, dal sonno frammentato, alla demenza, alla diminuzione della gittata cardiaca.",
+    "correct": false,
+    "question": 36
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 108,
+  "fields": {
+    "created": "2021-04-11T19:11:08.344Z",
+    "modified": "2021-04-11T19:11:08.344Z",
+    "text": "I fattori di rischio non sono in nessun modo modificabili e non possiamo agire direttamente su di essi.",
+    "correct": true,
+    "question": 36
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 109,
+  "fields": {
+    "created": "2021-04-11T19:11:57.376Z",
+    "modified": "2021-04-11T19:11:57.376Z",
+    "text": "Gli anziani sono maggiormente esposti al rischio di disidratazione per cui chi se ne prende cura deve avere cura durante la giornata di proporre con regolarità dei bicchieri di acqua.",
+    "correct": false,
+    "question": 37
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 110,
+  "fields": {
+    "created": "2021-04-11T19:11:57.376Z",
+    "modified": "2021-04-11T19:11:57.376Z",
+    "text": "Il consumo d'alcool è utile all'organismo.",
+    "correct": true,
+    "question": 37
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 111,
+  "fields": {
+    "created": "2021-04-11T19:11:57.377Z",
+    "modified": "2021-04-11T19:11:57.377Z",
+    "text": "Per una buona salute vascolare dobbiamo ridurre il consumo di alimenti ricchi di grassi saturi.",
+    "correct": false,
+    "question": 37
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 112,
+  "fields": {
+    "created": "2021-04-11T19:12:39.384Z",
+    "modified": "2021-04-11T19:12:39.384Z",
+    "text": "La compassione, l'empatia, la genuinità.",
+    "correct": false,
+    "question": 38
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 113,
+  "fields": {
+    "created": "2021-04-11T19:12:39.384Z",
+    "modified": "2021-04-11T19:12:39.384Z",
+    "text": "La genuinità, la considerazione positiva incondizionata, l'empatia.",
+    "correct": true,
+    "question": 38
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 114,
+  "fields": {
+    "created": "2021-04-11T19:12:39.385Z",
+    "modified": "2021-04-11T19:12:39.385Z",
+    "text": "La genuinità, la considerazione positiva incondizionata, la fiducia.",
+    "correct": false,
+    "question": 38
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 115,
+  "fields": {
+    "created": "2021-04-11T19:13:36.240Z",
+    "modified": "2021-04-11T19:13:36.240Z",
+    "text": "La capacità di mettersi al posto dell'altro.",
+    "correct": false,
+    "question": 39
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 116,
+  "fields": {
+    "created": "2021-04-11T19:13:36.240Z",
+    "modified": "2021-04-11T19:13:36.240Z",
+    "text": "L'assenza di giudizio.",
+    "correct": true,
+    "question": 39
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 117,
+  "fields": {
+    "created": "2021-04-11T19:13:36.240Z",
+    "modified": "2021-04-11T19:13:36.240Z",
+    "text": "La coerenza tra ciò che si sente, ciò che si fa e ciò che si è.",
+    "correct": false,
+    "question": 39
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 118,
+  "fields": {
+    "created": "2021-04-11T19:14:32.997Z",
+    "modified": "2021-04-11T19:14:32.997Z",
+    "text": "Punto Unico di Accesso - rappresenta la porta di accesso al sistema dei servizi sociali e sanitari del Municipio e del Distretto.",
+    "correct": true,
+    "question": 40
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 119,
+  "fields": {
+    "created": "2021-04-11T19:14:32.997Z",
+    "modified": "2021-04-11T19:14:32.997Z",
+    "text": "Punto Unici Ambulatoriale rappresenta la porta di accesso al sistema sanitario.",
+    "correct": false,
+    "question": 40
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 120,
+  "fields": {
+    "created": "2021-04-11T19:14:32.998Z",
+    "modified": "2021-04-11T19:14:32.998Z",
+    "text": "Nessuna delle precedenti.",
+    "correct": false,
+    "question": 40
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 121,
+  "fields": {
+    "created": "2021-04-11T19:15:22.165Z",
+    "modified": "2021-04-11T19:15:22.165Z",
+    "text": "Centri in cui si fa diagnosi di demenza.",
+    "correct": false,
+    "question": 41
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 122,
+  "fields": {
+    "created": "2021-04-11T19:15:22.166Z",
+    "modified": "2021-04-11T19:15:22.166Z",
+    "text": "Un servizio a cui si accede inviati dai medici di famiglia.",
+    "correct": false,
+    "question": 41
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 123,
+  "fields": {
+    "created": "2021-04-11T19:15:22.166Z",
+    "modified": "2021-04-11T19:15:22.166Z",
+    "text": "Entrambe le precedenti.",
+    "correct": true,
+    "question": 41
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 124,
+  "fields": {
+    "created": "2021-04-11T19:16:40.421Z",
+    "modified": "2021-04-11T19:16:40.421Z",
+    "text": "La parte di cui noi siamo consapevoli e che anche gli altri non conoscono.",
+    "correct": false,
+    "question": 42
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 125,
+  "fields": {
+    "created": "2021-04-11T19:16:40.421Z",
+    "modified": "2021-04-11T19:16:40.421Z",
+    "text": "La parte di cui noi siamo consapevoli e che anche gli altri conoscono di noi.",
+    "correct": true,
+    "question": 42
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 126,
+  "fields": {
+    "created": "2021-04-11T19:16:40.421Z",
+    "modified": "2021-04-11T19:16:40.421Z",
+    "text": "Quella nostra parte che non conosciamo ma che gli altri riescono a vedere di noi.",
+    "correct": false,
+    "question": 42
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 127,
+  "fields": {
+    "created": "2021-04-11T19:17:39.882Z",
+    "modified": "2021-04-11T19:17:39.882Z",
+    "text": "Le proprie competenze professionali, le precedenti esperienze lavorative, esponendo eventuali referenze.",
+    "correct": true,
+    "question": 43
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 128,
+  "fields": {
+    "created": "2021-04-11T19:17:39.883Z",
+    "modified": "2021-04-11T19:17:39.883Z",
+    "text": "Le proprie necessità di vita e di conciliazione con gli impegni extra lavorativi, dimostrandosi al contempo aperta ad imparare e ad operare nel rispetto dello stile di vita della nuova famiglia e dell'assistito.",
+    "correct": false,
+    "question": 43
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 129,
+  "fields": {
+    "created": "2021-04-11T19:17:39.883Z",
+    "modified": "2021-04-11T19:17:39.883Z",
+    "text": "Entrambe le precedenti.",
+    "correct": false,
+    "question": 43
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 130,
+  "fields": {
+    "created": "2021-04-11T19:18:19.958Z",
+    "modified": "2021-04-11T19:18:19.958Z",
+    "text": "Far leva sulle energie positive della famiglia e cercare un'alleanza con i familiari.",
+    "correct": true,
+    "question": 44
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 131,
+  "fields": {
+    "created": "2021-04-11T19:18:19.959Z",
+    "modified": "2021-04-11T19:18:19.959Z",
+    "text": "Prenderci cura solo dell'assistito.",
+    "correct": false,
+    "question": 44
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 132,
+  "fields": {
+    "created": "2021-04-11T19:18:19.959Z",
+    "modified": "2021-04-11T19:18:19.959Z",
+    "text": "Dettare soluzioni per la gestione dei problemi.",
+    "correct": false,
+    "question": 44
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 133,
+  "fields": {
+    "created": "2021-07-14T13:35:28.678Z",
+    "modified": "2021-07-14T13:35:28.678Z",
+    "text": "Una condizione di stress che deriva dall'attivazione dell'organismo rispetto alle molteplici richieste ambientali (o psicologiche). È una normale dinamica di attivazione e rilassamento che l’individuo mette in atto per ripristinare il suo normale equilibrio.",
+    "correct": false,
+    "question": 45
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 134,
+  "fields": {
+    "created": "2021-07-14T13:35:28.679Z",
+    "modified": "2021-07-14T13:35:28.679Z",
+    "text": "Uno stato di malessere psico-fisico che può condurre ad una vera e propria malattia i cui sintomi si assimilano a quelli tipici da iperstress: esaurimento delle capacità fisiche ed emozionali, sviluppo di atteggiamenti cinici e distaccati nelle relazioni quotidiane, senso di inefficienza ed inadeguatezza, sviluppo di disturbi psicosomatici.",
+    "correct": true,
+    "question": 45
+  }
+},
+{
+  "model": "quizes.answer",
+  "pk": 135,
+  "fields": {
+    "created": "2021-07-14T13:35:28.679Z",
+    "modified": "2021-07-14T13:35:28.679Z",
+    "text": "La condizione a cui sono esposti solo coloro che non godono di adeguati periodi di riposo dal lavoro.",
+    "correct": false,
+    "question": 45
+  }
+}
+]

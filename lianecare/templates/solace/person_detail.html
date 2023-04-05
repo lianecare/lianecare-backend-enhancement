@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}Profilo utente: {{ object.user.username }}{% endblock %}
+
+{% block content %}
+  <div id="person-profile" class="bg-light">
+    <div class="container py-4">
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <div class="sticky-top">
+            <div class="d-flex flex-column align-items-center">
+              {% if object.photo %}
+                <img class="img-fluid img-profile" src="{{ object.photo|thumbnail_url:'profile' }}"
+                     alt="{{ object.photo.name }}" width="150" height="150"/>
+              {% else %}
+                <img src="{% static 'images/default-profile.png' %}" class="img-fluid img-profile" width="150"
+                     height="150"
+                     alt="{% trans 'Aggiungi una foto profilo' %}"/>
+              {% endif %}
+
+              <h1 class="person-name">{{ object.user.full_name }}</h1>
+              <h4 class="location">
+                <span class="pr-3"><i class="fas fa-map-marker-alt pr-2"></i>{{ object.city }}</span>
+                <span><i
+                        class="far fa-calendar-check pr-2"></i>{% trans "Attivo da " %}{{ object.created|date:"F Y" }}</span>
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          {% for jp in job_posts %}
+            <div class="card">
+              <div class="card-header">
+                <div class="float-right">
+                  <span class="badge badge-pill badge-orange">{% trans "Job Post" %}</span>
+                  <span class="badge badge-pill badge-primary">{{ jp.created|date:"SHORT_DATE_FORMAT" }}</span>
+                </div>
+
+                <h3 class="h6">
+                  {% if jp.category.icon %}<i class="{{ jp.category.icon }}"></i>{% endif %}{{ jp.category.name }}</h3>
+              </div>
+              <div class="card-body">
+                <div class="job-post mt-2">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <h6><b>{% trans "Servizi richiesti" %}</b></h6>
+                      <ul class="checked mb-4">
+                        {% for subcat in jp.subcategories.all %}
+                          <li>{{ subcat.name }}</li>
+                        {% endfor %}
+                      </ul>
+
+                    </div>
+                    <div class="col-md-5">
+                      <div class="map">
+
+                      </div>
+                    </div>
+                  </div>
+
+                  {% if jp.note %}
+                    <div class="jp-note mb-4">
+                      <h6><b>{% trans "note aggiuntive" %}</b></h6>
+                      {{ jp.note }}
+                    </div>
+                  {% endif %}
+
+                  <div class="jp-footer mb-1">
+                    <div><b>{{ jp.get_when_display }}</b></div>
+                    <div><span
+                            class="title">{% trans "Esperienza minima: " %}</span><b>{{ jp.get_experience_display }}</b>
+                    </div>
+                    <div><span
+                            class="title">{% trans "Con referenze: " %}</span><b>{{ jp.has_references|yesno:'sì,non necessario' }}</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+          <div class="card">
+            <div class="card-header card-header-light">
+              <h3 class="h6"><i class="fas fa-users"></i>{% trans "Membri della famiglia" %}</h3>
+            </div>
+            <div class="card-body">
+              <table class="table table-responsive-md">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Età</th>
+                  <th scope="col">Sesso</th>
+                  <th scope="col">Patologie</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for member in object.user.family_members.all %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{% if member.get_age == -1 %}{% trans "in attesa" %}{% elif member.get_age == 0 %}
+                      {% trans "meno di un anno" %}{% else %}{{ member.get_age }}{% trans ' anni' %}{% endif %}</td>
+                    <td><span
+                            class="badge badge-pill badge-{% if member.gender == 'MALE' %}info{% else %}danger{% endif %}">{{ member.get_gender_display }}</span>
+                    </td>
+                    <td>{{ member.get_diagnosis|default:""|join:" // " }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header card-header-light">
+              <h3 class="h6"><i class="far fa-user"></i>{% trans "Bio famigliare" %}</h3>
+            </div>
+            <div class="card-body">
+              <div class="presentation">
+                {{ object.family_bio|linebreaksbr|default:"Non hai inserito alcuna presentazione." }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock content %}

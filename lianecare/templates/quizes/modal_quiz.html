@@ -1,0 +1,38 @@
+<!-- Button trigger modal -->
+{% if quiz and not test_passed %}
+  <div class="mt-5 text-right" id="btn-do-test" style="display: none">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#quizModal">
+      Fai il test
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="quizModal" tabindex="-1" role="dialog" aria-labelledby="quizModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ quiz.name }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><b>Numero di domande</b>: {{ quiz.numbers_of_questions }}</p>
+          <p><b>Punteggio minimo per superare l'esame</b>: {{ quiz.minimum_score }}%</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+          <button id="start-btn" type="button" data-quiz-id="{{ quiz.id }}" class="btn btn-primary">Inizia il test
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if test_passed %}
+  <div class="alert alert-primary mt-3 text-center" role="alert">
+    <h4 class="mb-0">Corso superato</h4>
+  </div>
+{% endif %}

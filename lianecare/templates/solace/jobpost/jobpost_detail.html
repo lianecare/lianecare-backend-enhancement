@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}Dettaglio proposta di lavoro{% endblock %}
+
+{% block content %}
+
+  <div class="bg-light">
+    <div id="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="breadcrumbs">
+              <li class="item"><a
+                      href="{% url "solace:person_detail" user.username %}">{% trans "Il mio profilo" %}</a></li>
+              <li class="item"><a
+                      href="{% url "solace:person_job_posts" %}">{% trans "I miei Job Post" %}</a></li>
+              <li class="item active">{{ jobpost.category }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="proposal" class="bg-light">
+      <div class="container py-3">
+        <div class="row justify-content-center">
+          <div class="col-xl-10 col-lg-12">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="h6">
+                      {% if jobpost.category.icon %}
+                        <i class="{{ jobpost.category.icon }}"></i>{% endif %}{{ jobpost.category.name }}
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                    {% if jobpost.note %}
+                      <h6><b>{% trans "Descrizione" %}</b></h6>
+                      <div class="desc-jp">
+                        {{ jobpost.note }}
+                      </div>
+                    {% endif %}
+
+                    <h6><b>{% trans "Servizi richiesti" %}</b></h6>
+                    <ul class="checked mb-3 small">
+                      {% for subcat in jobpost.subcategories.all %}
+                        <li>{{ subcat.name }}</li>
+                      {% endfor %}
+                    </ul>
+
+                    <div class="extra-jp">
+                      <dl>
+                        <dt>{% trans "Quando" %}</dt>
+                        <dd>{{ jobpost.get_when_display }}</dd>
+                        <dt>{% trans "Esperienza minima richiesta" %}</dt>
+                        <dd>{{ jobpost.get_experience_display }}</dd>
+                        <dt>{% trans "Referenze richieste" %}</dt>
+                        <dd>{{ jobpost.has_references|yesno:'sì,indifferente' }}</dd>
+                      </dl>
+                    </div>
+
+                    <span class="small mr-3">{% trans "Data di pubblicazione" %}</span><span
+                          class="badge badge-pill badge-primary mt-3">{{ jobpost.created|date:"SHORT_DATE_FORMAT" }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-8">
+                {% for proposal in object_list %}
+                  {% with user=proposal.caregiverpro profile=proposal.caregiverpro.caregiverpromore %}
+                    <div class="card proposal">
+                      <div class="card-body">
+                        <div class="row align-items-end">
+                          <div class="col-md-6">
+                            <div class="float-left mr-3">
+                              {% if profile.photo %}
+                                <img class="img-fluid rounded-circle"
+                                     src="{{ profile.photo|thumbnail_url:'avatar' }}"
+                                     alt="{{ profile.photo.name }}" width="50" height="50"/>
+                              {% else %}
+                                <img src="{% static 'images/default-profile.png' %}"
+                                     class="img-fluid rounded-circle" width="50"
+                                     height="50"/>
+                              {% endif %}
+                            </div>
+
+                            <div class="card-text">
+                              <h5 class="card-title mb-2">{{ user.full_name }}</h5>
+                              <a href="{% url 'solace:caregiver_detail' user.username %}?job_id={{ jobpost.pk }}" target="_blank">Vedi il
+                                profilo</a>
+                            </div>
+                          </div>
+                          <div class="col-md-6 text-right">
+                            <a href="{% url "solace:ignore_proposal" proposal.uuid %}?empl=true"
+                               class="btn btn-danger btn-small"
+                               onclick="return confirm('Sei sicuro di voler ignorare la proposta?');">{% trans "Ignora" %}</a>
+                            <a href="{% url "solace:person_proposal_detail" proposal.uuid %}"
+                               class="btn btn-primary btn-small">{% trans "Contatta" %}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endwith %}
+                {% endfor %}
+
+                {% include "../../common/_pagination.html" %}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+{% endblock %}
+
+{% block pagejs %}
+  <script>
+    $(document).ready(function () {
+      $(".reload-page").click(function () {
+        location.reload();
+      });
+    });
+
+    $(function () {
+      $("#message-form").validate({
+        lang: 'it',
+        rules: {
+          msg: {
+            rangelength: [10, 300]
+          }
+        },
+        errorElement: "span",
+      });
+    });
+  </script>
+{% endblock %}

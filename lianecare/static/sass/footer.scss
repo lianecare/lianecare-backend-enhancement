@@ -1,0 +1,72 @@
+////////////////////////////////
+// Footer
+footer {
+  $gray-footer: #717171;
+  border-top: 10px solid $primary;
+  background: $lighter-gray;
+  color: $gray-footer;
+  font-size: 0.875rem;
+  font-family: $poppins;
+
+  h3 {
+    font-size: 1rem;
+    line-height: 25px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color:$black;
+    margin-bottom: 1rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin-bottom: 0.675rem;
+      font-weight: 400;
+
+      a {
+        font-size: 0.875rem;
+        font-weight: 300;
+        font-family: $poppins;
+        color: $gray;
+        &:hover {
+          color: $primary;
+          text-decoration: none;
+        }
+      }
+      font-size: 0.875rem;
+    }
+  }
+  .blockquote {
+    font-size: 1rem;
+    font-weight: 400;
+    p {
+      padding-left: 1rem;
+      border-left: 3px solid $primary;
+      margin-bottom: 0.675rem;
+      line-height: 1.8rem;
+      font-style: italic;
+    }
+    .blockquote-footer {
+      font-weight: bold;
+      color:$dark-blue;
+      &:before {
+        color: $primary;
+      }
+    }
+  }
+  .bottom-footer {
+    display: flex;
+    li {
+      padding: 0 .625rem;
+      margin: 0;
+      border-right: 1px solid $primary;
+      &:first-child {
+        padding-left: 0;
+      }
+      a {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

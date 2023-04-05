@@ -1,0 +1,126 @@
+// BOOTSTRAP OVERRIDES BEFORE IMPORT >>>>>
+$font-family-sans-serif: 'Open Sans', sans-serif;
+
+$opensans: 'Open Sans', sans-serif;
+$poppins: 'Poppins', sans-serif;
+
+$grid-gutter-width: 2rem;
+
+$cyan: #05668D;
+$celeste: #0A66C2;
+$black: #141414;
+$blue: #264653;
+$dark-blue: #0B2027;
+$dark-green: #006130;
+$gray: #676d73;
+$light-gray: #dee2e6; // verso il blu
+//$lighter-gray: #F7F7F7;
+$lighter-gray: #FCFCFC;
+$light-pink: #eed3d7;
+$mint-green: #77AC2B;
+$pink: #cc3262;
+$red: #b94a48;
+$yellow: hsl(52,100%,50%);
+$yellow2: #ffe227;
+$orange: #f88f01;
+$orange-red: #fb743e;
+$white: #fff;
+$green: hsl(104,38%,42%);
+
+$primary: #77ac2b;
+//$primary: #55A630; //old
+$secondary: #007F5F;
+$danger: $pink;
+$light: $lighter-gray;
+$dark: $black;
+
+// Alert colors
+/*$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1250px,
+);*/
+
+$container-max-widths: (
+  sm: 100%,
+  md: 100%,
+  lg: 100%,
+  xl: 1440px,
+);
+$body-color: $black;
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.75;
+$display4-size: 3rem;
+$h1-font-size: $font-size-base * 2.375;
+$h2-font-size: $font-size-base * 2.25;
+$h3-font-size: $font-size-base * 1.5;
+$h4-font-size: $font-size-base * 1.25;
+$h5-font-size: $font-size-base * 1.125;
+$h6-font-size: $font-size-base * 1;
+$small-font-size: 75%;
+
+$headings-font-family: $poppins;
+$headings-font-weight: bold;
+//$display4-weight: bold;
+
+$btn-font-family: $poppins;
+$btn-font-size: .875rem;
+$btn-border-radius: 1.5rem;
+$btn-border-radius-lg: 1.5rem;
+$btn-border-radius-sm: 1.5rem;
+$btn-font-weight: 300;
+
+$btn-padding-x: 2rem;
+$btn-padding-x-lg: 2rem;
+$btn-padding-x-sm: 1.5rem;
+
+$table-head-bg: $secondary;
+$table-head-color: $dark;
+$table-border-color: $secondary;
+
+$custom-control-indicator-size: 1.125rem;
+$custom-control-indicator-bg-size: .75rem;
+
+$custom-checkbox-indicator-border-radius: 3px;
+//$custom-checkbox-indicator-icon-checked: none;
+//$custom-radio-indicator-icon-checked: none;
+$custom-control-indicator-checked-bg: $white;
+$custom-control-indicator-checked-color: $primary;
+$custom-control-indicator-checked-border-color: $light-gray;
+$custom-control-indicator-border-color: $light-gray;
+$custom-control-indicator-disabled-bg: $light-gray;
+$navbar-light-color: $body-color;
+$navbar-nav-link-padding-x: 1rem;
+
+$card-spacer-y: 1rem;
+$card-spacer-x: 1rem;
+
+$spacer: 1rem;
+$spacers: (
+  4: (
+    $spacer * 2,
+  ),
+);
+
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
+$input-border-radius: 4px;
+$input-border-radius-lg: 4px;
+$input-border-radius-sm: 4px;
+
+$modal-header-border-width: 0;
+
+$popover-bg: $dark;
+$popover-header-padding-y: 1.75rem;
+$popover-header-padding-x: 2rem;
+$popover-max-width: 380px;
+$popover-font-size: $font-size-base;
+
+$enable-responsive-font-sizes: true;
+
+// PROJECT VAR
+$height-nav: 70px;

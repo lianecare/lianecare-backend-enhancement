@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Checkout" %}{% endblock %}
+
+{% block content %}
+  <div id="checkout">
+    <div class="container py-3 py-lg-4">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="h2 font-weight-light pb-3 pb-lg-4">{% trans "Checkout" %}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <form action="{% url 'orders:charge' %}" method="post">
+          {% csrf_token %}
+          <h1>Orders page</h1>
+          <p>Buy for €39.00</p>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="{{ stripe_key }}"
+                  data-description="All Books"
+                  data-amount="3900"
+                  data-locale="auto">
+          </script>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

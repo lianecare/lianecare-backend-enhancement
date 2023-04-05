@@ -1,0 +1,251 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Caregiver PRO registrazione" %}{% endblock head_title %}
+
+{% block content %}
+  <div class="container pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 mt-4">
+        <h1>{% trans "Registrati come PRO" %}</h1>
+
+        <p>{% blocktrans %}Hai già un account da Caregiver PRO? Allora <a href="{{ login_url }}">esegui l'accesso</a>
+          .{% endblocktrans %}
+        </p>
+
+        <form class="mt-4" id="caregiver_signup_form" method="post" action="{% url 'solace:caregiver_signup' %}">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+              {{ form.first_name }}
+              {{ form.first_name.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+              {{ form.last_name }}
+              {{ form.last_name.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}</label>
+              <div class="form-select">
+                {{ form.gender }}
+              </div>
+              {{ form.gender.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.birthday.id_for_label }}">{{ form.birthday.label }}</label>
+              <div class="input-group">
+                <input id="{{ form.birthday.id_for_label }}" type="date" class="form-control" name="birthday"
+                       value="{{ field.birthday.value }}" aria-label="Birthday" aria-describedby="id_birthday"
+                       placeholder="gg/mm/aaaa">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                </div>
+              </div>
+              {{ form.birthday.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 mandatory">
+              <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+              {{ form.address }}
+              {{ form.address.errors }}
+            </div>
+            {{ form.latitude }}
+            {{ form.longitude }}
+            {{ form.region }}
+            {{ form.postcode }}
+            {{ form.country }}
+            {{ form.city }}
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 mandatory">
+              <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+              {{ form.password1 }}
+              {{ form.password1.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+              {{ form.password2 }}
+              {{ form.password2.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="{{ form.how_know_us.id_for_label }}">{{ form.how_know_us.label }}</label>
+              <div class="form-select">
+                {{ form.how_know_us }}
+              </div>
+              {{ form.how_know_us.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group mb-30">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="privacy" id="privacy" aria-required="true">
+                  <span class="important">Dichiaro di aver letto l'<a href="/informativa-privacy" target="_blank">Informativa Privacy</a> e
+                    acconsento al trattamento dei miei dati.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+            <button class="btn btn-primary" type="submit">{% trans "Sign Up" %}</button>
+          </div>
+        </form>
+        <br>
+        <div class="text-center">
+          <hr>
+          {% load socialaccount %}
+          {% providers_media_js %}
+          <a class="btn btn-outline-primary btn-block" href="{% provider_login_url "facebook" method="js_sdk" %}"><i
+                  class="fab fa-facebook-f"></i> Facebook Connect</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/8.2.2/css/autoComplete.min.css">
+{% endblock css %}
+
+{% block pagejs %}
+
+  <script type="application/javascript">
+    $(document).ready(function () {
+      $("#caregiver_signup_form").validate({
+        lang: 'it',
+        rules: {
+          privacy: "required",
+          password1: "required",
+          password2: {
+            equalTo: "#id_password1"
+          },
+          gender: "required",
+          personal_cf: "required",
+          email: {
+            email: true,
+          },
+          zip_code: {
+            number: true
+          },
+          birthday: {
+            minAge: 18
+          }
+        },
+        messages: {
+          birthday: {
+            minAge: "Devi avere almeno 18 anni!"
+          }
+        },
+        errorElement: "span",
+        errorPlacement: function (error, element) {
+          if (element.attr("name") == "privacy" || element.attr("name") == "birthday") {
+            var elem_parent = $(element).parent();
+            error.insertAfter(elem_parent);
+          } else {
+            error.insertAfter(element);
+          }
+        }
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      const autoCompleteJS = new autoComplete({
+        data: {                              // Data src [Array, Function, Async] | (REQUIRED)
+          src: async () => {
+            // API key token
+            const token = "pk.055e4f7cc2aa6aff9b9818a83ef7cca2";
+            // User search query
+            const query = document.querySelector("#id_address").value;
+            // Fetch External Data Source
+            const source = await fetch(`https://eu1.locationiq.com/v1/autocomplete.php?key=${token}&accept-language=it&q=${query}`);
+            // Format data into JSON
+            const data = await source.json();
+            console.log(data);
+            console.log(source.status);
+
+            // Return Fetched data
+            return data;
+
+          },
+          key: ["display_name"],
+          cache: false
+        },
+        /*trigger: {
+          condition: (query) => {
+            return query.lenght > this.threshold && query != " "
+          }
+        },*/
+        selector: "#id_address",           // Input field selector              | (Optional)
+        threshold: 7,                      // Min. Chars length to start Engine | (Optional)
+        searchEngine: "strict",           // Search Engine type/mode           | (Optional)
+        maxResults: 10,                         // Max. number of rendered results | (Optional)
+        debounce: 400,
+        highlight: true,                       // Highlight matching results      | (Optional)
+        resultItem: {                          // Rendered result item            | (Optional)
+          content: (data, source) => {
+            source.innerHTML = data.match;
+          },
+          element: "li"
+        },
+        noResults: (dataFeedback, generateList) => {
+          // Generate autoComplete List
+          generateList(autoCompleteJS, dataFeedback, dataFeedback.results);
+          // No Results List Item
+          const result = document.createElement("li");
+          result.setAttribute("class", "no_result autoComplete_result");
+          result.setAttribute("tabindex", "1");
+          result.innerHTML = `<span>Nessun indirizzo trovato</span>`;
+          document.querySelector(`#${autoCompleteJS.resultsList.idName}`).appendChild(result);
+        },
+        onSelection: feedback => {             // Action script onSelection event | (Optional)
+          console.log(feedback.selection.value);
+          setFieldForm(feedback.selection.value);
+        }
+      });
+
+      function clearFieldForm() {
+        document.querySelector("#id_address").value = '';
+        document.querySelector("#id_postcode").value = '';
+        document.querySelector("#id_city").value = '';
+        document.querySelector("#id_region").value = '';
+        document.querySelector("#id_country").value = '';
+        document.querySelector("#id_latitude").value = '';
+        document.querySelector("#id_longitude").value = '';
+      }
+
+      function setFieldForm(selection) {
+        document.querySelector("#id_address").value = selection.display_name;
+        document.querySelector("#id_postcode").value = selection.address.postcode;
+        document.querySelector("#id_city").value = selection.address.city;
+        document.querySelector("#id_region").value = selection.address.state;
+        document.querySelector("#id_country").value = selection.address.country;
+        document.querySelector("#id_latitude").value = selection.lat;
+        document.querySelector("#id_longitude").value = selection.lon;
+      }
+
+    });
+  </script>
+{% endblock pagejs %}

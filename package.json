@@ -1,0 +1,35 @@
+{
+  "name": "lianecare",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "gulp-sass": "^5.1.0",
+    "gulp-imagemin": "^6.1.1",
+    "gulp": "^4.0.0",
+    "postcss": "^8.4.20",
+    "browser-sync": "^2.27.10",
+    "gulp-concat": "^2.6.1",
+    "cssnano": "^5.1.14",
+    "pixrem": "^5.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify-es": "^1.0.4",
+    "sass": "^1.56.2",
+    "jquery-slim": "^3.0.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "bootstrap": "^5.2.3"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp generate-assets"
+  }
+}

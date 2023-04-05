@@ -1,0 +1,277 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load static crispy_forms_tags %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+        crossorigin="anonymous"/>
+{% endblock css %}
+
+{% block title %}{% trans "Caregiver PRO registrazione" %}{% endblock title %}
+{% block meta_description %}Registrati come Caregiver ed inizia a lavorare quando e come
+  vuoi.{% endblock meta_description %}
+{% block blockbots %}
+  <meta name="robots" content="index,follow">{% endblock %}
+
+{% block content %}
+  <div class="banner-signup">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="content-wrapper text-center">
+            <h1 class="title mb-3">{% trans "Diventa Caregiver PRO e trova lavoro con LianeCare" %}</h1>
+            <h3 class="subtitle mb-4">{% trans "Diventa Caregiver Pro ed entra subito in contatto con chi è in cerca di professionisti qualificati nel settore dell'assistenza familiare." %}</h3>
+            <i class="fas fa-arrow-down"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 mt-4">
+        <h2>
+          {% blocktrans %}Completa il form seguente per registrarti e diventare
+            <span class="text-primary">Caregiver PRO</span>{% endblocktrans %}</h2>
+
+        <form class="mt-4" id="caregiver_signup_form" method="post" action="{% url 'solace:caregiver_signup' %}">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+              {{ form.first_name }}
+              {{ form.first_name.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+              {{ form.last_name }}
+              {{ form.last_name.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}</label>
+              <div class="form-select">
+                {{ form.gender }}
+              </div>
+              {{ form.gender.errors }}
+            </div>
+
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.birthday.id_for_label }}">{{ form.birthday.label }}</label>
+              <div class="input-group cus_dWrp">
+                <input id="{{ form.birthday.id_for_label }}" type="text" class="form-control" name="birthday"
+                       value="{{request.POST.birthday}}" data-date-end-date="0d"
+                       placeholder="gg/mm/aaaa">
+                <!-- <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                </div> -->
+              </div>
+              {{ form.birthday.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <p class="small">Inizia a digitare il tuo indirizzo e poi selezionalo tra le <b>scelte proposte</b>. Se il
+              tuo indizzo non è mostrato nell'elenco, non preoccuparti, puoi inserirne uno vicino alla tua abitazione.
+            </p>
+            <div class="form-group col-md-8 mandatory">
+              <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+              {{ form.address }}
+              {{ form.address.errors }}
+            </div>
+            {{ form.latitude }}
+            {{ form.longitude }}
+            {{ form.region }}
+            {{ form.postcode }}
+            {{ form.country }}
+            {{ form.city }}
+
+            <div class="form-group col-md-4 mandatory">
+              <label for="{{ form.house_number.id_for_label }}">{{ form.house_number.label }}</label>
+              {{ form.house_number }}
+              {{ form.house_number.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                 title="Inserisci solo numeri <b>senza spazi</b> o altri caratteri speciali."></i>
+              <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+              {{ form.phone }}
+              {{ form.phone.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+              {{ form.password1 }}
+              {{ form.password1.errors }}
+            </div>
+            <div class="form-group col-md-6 mandatory">
+              <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+              {{ form.password2 }}
+              {{ form.password2.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="{{ form.how_know_us.id_for_label }}">{{ form.how_know_us.label }}</label>
+              <div class="form-select">
+                {{ form.how_know_us }}
+              </div>
+              {{ form.how_know_us.errors }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group mb-0">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="privacy" id="privacy" aria-required="true">
+                  <span class="important">Ho letto e compreso la <a class="text-dark" href="{% url "privacy-policy" %}" target="_blank">Privacy Policy</a> e presto il mio consenso.
+                    <a href="{% url "consenso-informato" %}"
+                       target="_blank"><i class="fas fa-external-link-alt"></i></a></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group mb-3">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="terms" id="terms" aria-required="true">
+                  <span class="important">Accetto i <a href="{% url "terms-conditions" %}" target="_blank">termini e le condizioni</a> di utilizzo del sito.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+            <button class="btn btn-primary" type="submit">{% trans "Registrati" %}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block pagejs %}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+          integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.it.min.js"
+          integrity="sha512-0MThRHKyDbl5nH553hVBJMo2Ma7c2c5jU2bENv92XM2SVQEcQ7vepANdKiU7DLiYH9RsqESRdDpCRVkIRGtKGQ=="
+          crossorigin="anonymous"></script>
+  
+
+  <script type="application/javascript">
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    $(document).ready(function () {
+      initAutocomplete(
+        "#id_address",
+        '#id_latitude',
+        '#id_longitude',
+        '#id_house_number',
+        '#id_postcode',
+        '#id_city',
+        '#id_region',
+        '#id_country',
+        '#id_address'
+      );
+
+
+      $("#id_birthday").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        format: "dd/mm/yyyy",
+        minDate: "-18Y",
+        language: "it"
+      });
+
+      $("#caregiver_signup_form").validate({
+        lang: 'it',
+        rules: {
+          birthday: "required",
+          privacy: "required",
+          terms: "required",
+          password1: {
+            check_password: true,
+          },
+          password2: {
+            equalTo: "#id_password1"
+          },
+          email: {
+            email: true,
+          },
+          zip_code: {
+            number: true
+          },
+          phone: {
+            number: true
+          },
+          address: {
+            check_address: true,
+          },
+          birthday: {
+            minAge: 18
+          }
+        },
+        messages: {
+          birthday: {
+            minAge: "Devi avere almeno 18 anni!"
+          },
+          phone: {
+            number: "Inserisci solo caratteri numerici"
+          },
+        },
+        errorElement: "span",
+        errorPlacement: function (error, element) {
+          if (element.attr("name") == "privacy" || element.attr("name") == "birthday" || element.attr("name") == "terms") {
+            var elem_parent = $(element).parent();
+            error.insertAfter(elem_parent);
+          } else {
+            error.insertAfter(element);
+          }
+        },
+        submitHandler: function(form) {
+            var result = fetch('{% url "solace:check_user_email_exists" %}', {
+              method: 'POST',
+              headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
+              },
+              mode: 'same-origin',
+              body: JSON.stringify({'email': $("#id_email").val()})
+            }).then((resp) => resp.json())
+                .then(payload => {
+                  if (payload == true){
+                      form.submit()
+                  }
+                  else{
+                      $.toast({
+                        type: 'error',
+                        title: '{% trans "Avviso" %}',
+                        subtitle: '{% trans "Proprio ora" %}',
+                        content: "questo indirizzo email risulta già registrato",
+                        delay: 3000,
+                      });
+                  }
+            })
+
+        }
+      });
+    });
+  </script>
+{% endblock pagejs %}

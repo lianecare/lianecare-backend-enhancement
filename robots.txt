@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+Allow: /index
+
+Sitemap: https://solace.lianecare.com/sitemap.xml

@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}{% trans 'Aggiornamento dati Caregiver PRO' %}{% endblock %}
+
+{% block content %}
+  <div class="bg-light">
+    <div id="breadcrumbs" class="d-none d-md-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="breadcrumbs">
+              <li class="item"><a
+                      href="{% url "solace:caregiver_detail" request.user.username %}">{% trans "Profilo" %}</a></li>
+              <li class="item active">{% trans "Dati personali" %}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container pb-3 py-md-4">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 mb-3">
+          {% include "./_menu_caregiver_profile.html" with active='profile' %}
+        </div>
+        <div class="col-md-8 col-lg-9">
+          <form id="caregiver-update-form" method="post" enctype="multipart/form-data"
+                action="{% url 'solace:caregiver_update' %}">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="box-border">
+              <h6 class="title"><i class="far fa-user"></i> {% trans "Profilo" %}</h6>
+              <div class="row justify-content-center mb-3">
+                <div class="col-lg-4">
+                  <p><b>{% trans "Nome e cognome" %}</b><br>{{ object.user.full_name }}</p>
+                </div>
+                <div class="col-lg-4">
+                  <p><b>{% trans "Email" %}</b><br>{{ object.user.email }}</p>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="form-group col-lg-6 mandatory">
+                  <i class="fas fa-info-circle text-primary" data-toggle="tooltip" data-html="true"
+                     title="Inserisci il tuo indirizzo e poi selezionalo tra le scelte proposte."></i>
+                  <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+                  {{ form.address }}
+                  {{ form.address.errors }}
+                </div>
+                {{ form.latitude }}
+                {{ form.longitude }}
+                {{ form.region }}
+                {{ form.postcode }}
+                {{ form.country }}
+                {{ form.city }}
+
+                <div class="form-group col-lg-2 mandatory">
+                  <label for="{{ form.house_number.id_for_label }}">{{ form.house_number.label }}</label>
+                  {{ form.house_number }}
+                  {{ form.house_number.errors }}
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="form-group col-lg-4">
+                  <label for="{{ form.nationality.id_for_label }}">{{ form.nationality.label }}</label>
+                  {{ form.nationality }}
+                  {{ form.nationality.errors }}
+                </div>
+                <div class="form-group col-lg-4 mandatory">
+                  <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+                  {{ form.phone }}
+                  {{ form.phone.errors }}
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="form-group col-lg-8">
+                  <label for="{{ form.bio.id_for_label }}">{{ form.bio.label }}</label>
+                  {{ form.bio }}
+                  {{ form.bio.errors }}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="box-border">
+              <h6 class="title"><i class="fas fa-portrait"></i> {% trans "Foto profilo" %}</h6>
+              <div class="d-flex flex-column flex-lg-row">
+                <div class="img-thumb mr-4 mb-3">
+                  {% if object.photo %}
+                    <img class="img-fluid preview-img" src="{{ object.photo|thumbnail_url:'profile' }}"
+                         alt="{{ object.photo.name }}"/>
+                  {% else %}
+                    <img src="{% static 'images/default-profile.png' %}" class="img-fluid preview-img"
+                         alt="{% trans 'Aggiungi una foto profilo' %}"/>
+                  {% endif %}
+                </div>
+
+                <div class="img-file">
+                  {{ form.photo.errors }}
+                  <input type="file" name="photo" accept="image/*" id="id_photo" onchange="readURLImage(this);">
+                </div>
+                <div class="img-delete ml-auto">
+                  {% if object.photo %}
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="photo-clear" id="photo-clear_id">
+                          <span class="important"><i class="far fa-trash-alt"></i> {% trans "Svuota" %}</span>
+                        </label>
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <div class="box-border">
+              <h6 class="title"><i class="fas fa-bahai"></i> {% trans "Qualità" %}</h6>
+              <div class="form-row justify-content-center align-items-end">
+                <div class="form-group col-lg-4">
+                  <label for="{{ form.is_graduate.id_for_label }}">{{ form.is_graduate.label }}</label>
+                  <div class="form-select">
+                    {{ form.is_graduate }}
+                  </div>
+                  {{ form.is_graduate.errors }}
+                </div>
+                <div class="form-group col-lg-4">
+                  <label for="{{ form.is_certificated.id_for_label }}">{{ form.is_certificated.label }}</label>
+                  <div class="form-select">
+                    {{ form.is_certificated }}
+                  </div>
+                  {{ form.is_certificated.errors }}
+                </div>
+              </div>
+              <div class="form-row justify-content-center align-items-end">
+                <div class="form-group col-lg-4">
+                  <label for="{{ form.driving_license.id_for_label }}">{{ form.driving_license.label }}</label>
+                  <div class="form-select">
+                    {{ form.driving_license }}
+                  </div>
+                  {{ form.driving_license.errors }}
+                </div>
+                <div class="form-group col-lg-4">
+                  <label for="{{ form.has_car.id_for_label }}">{{ form.has_car.label }}</label>
+                  <div class="form-select">
+                    {{ form.has_car }}
+                  </div>
+                  {{ form.has_car.errors }}
+                </div>
+              </div>
+
+              <div class="form-row justify-content-center align-items-end">
+                <div class="form-group col-lg-4">
+                  <label for="{{ form.first_aid.id_for_label }}">{{ form.first_aid.label }}</label>
+                  <div class="form-select">
+                    {{ form.first_aid }}
+                  </div>
+                  {{ form.first_aid.errors }}
+                </div>
+                <div class="form-group col-lg-4">
+                  <label for="{{ form.child_trainer.id_for_label }}">{{ form.child_trainer.label }}</label>
+                  <div class="form-select">
+                    {{ form.child_trainer }}
+                  </div>
+                  {{ form.child_trainer.errors }}
+                </div>
+              </div>
+
+              <div class="form-row justify-content-center align-items-end">
+                <div class="form-group col-lg-4">
+                  <label for="{{ form.is_smoker.id_for_label }}">{{ form.is_smoker.label }}</label>
+                  <div class="form-select">
+                    {{ form.is_smoker }}
+                  </div>
+                  {{ form.is_smoker.errors }}
+                </div>
+                <div class="form-group col-lg-4">
+                </div>
+              </div>
+            </div>
+            <div class="control-group text-right">
+              <div class="controls mt-5">
+                <a href="{% url 'solace:caregiver_detail' object.user.username %}"
+                   class="btn btn-danger">{% trans "Indietro" %}</a>
+                <button type="submit" class="btn btn-primary">{% trans "Aggiorna" %}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block pagejs %}
+  <script>
+   $(document).ready(function () {
+      initAutocomplete(
+        "#id_address",
+        '#id_latitude',
+        '#id_longitude',
+        '#id_house_number',
+        '#id_postcode',
+        '#id_city',
+        '#id_region',
+        '#id_country',
+        '#id_address'
+      );
+
+    });
+
+    // Preview uploaded images
+    function readURLImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('.img-thumb img').attr('src', e.target.result);
+          //$('.img-thumb').css('background-image', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    (function checkicon() {
+      if (jQuery("#id_address").value != '') {
+        jQuery('.ap-icon-pin').hide();
+        jQuery('.ap-icon-clear').show();
+      }
+    })();
+
+    $(document).ready(function () {
+
+      $("#id_{{ form.photo.name }}").change(function () {
+        readURLImage(this);
+      });
+
+      $("#caregiver-update-form").validate({
+        lang: 'it',
+        rules: {
+          address: {
+            check_address: true,
+          }
+        },
+        errorElement: "span",
+      });
+
+    });
+  </script>
+{% endblock pagejs %}

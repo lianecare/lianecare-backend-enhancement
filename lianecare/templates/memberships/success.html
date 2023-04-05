@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Thank you page" %}{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <p>You have successfully subscribed!</p>
+    <p><a href="{% url "memberships:home" %}">Return to the dashboard</a></p>
+  </div>
+{% endblock content %}
+

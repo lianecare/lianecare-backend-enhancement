@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load cache static i18n thumbnail %}
+
+{% block title %}{% trans "Corso: " %}{{ object.title }}{% endblock %}
+
+{% block content %}
+  <div id="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="breadcrumbs">
+            <li class="item"><a href="{% url "home" %}">Home</a></li>
+            <li class="item"><a href="{% url "courses:course_list" %}">{% trans "Corsi" %}</a></li>
+            <li class="item active">{{ object.title }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="corso">
+    <div class="container py-3 py-lg-4">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="font-weight-light ">{{ object.title }}</h2>
+          <h3 class="text-primary pb-3 pb-lg-4">{% if object.price > 0 %}{{ object.get_display_price }} €{% else %}
+            {% trans "Gratuito" %}{% endif %}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 mb-4">
+          {% if course.cover %}
+            <img class="img-fluid" src="{{ object.cover|thumbnail_url:'cover' }}"
+                 alt="{{ object.cover.name }}"/>
+          {% endif %}
+        </div>
+        <div class="col-md-7">
+          {% if object.overview %}
+            <div class="description mb-5">
+              {% autoescape off %}
+                {{ object.overview }}
+              {% endautoescape %}
+            </div>
+          {% endif %}
+          <div class="module-list">
+              {% for module in object.modules.all|dictsort:"order" %}
+                <div class="module">
+                  <div class="number">{{ forloop.counter }}</div>
+                  <div class="desc">
+                    <h6 class="title">{{ module.title }}</h6>
+                    {% if module.description %}
+                      <div class="description">{{ module.description }}</div>
+                    {% endif %}
+                  </div>
+                  <div class="time">
+                    <span class="float-right badge badge-pill badge-orange">{{ module.minutes_text }}</span>
+                  </div>
+                </div>
+              {% endfor %}
+          </div>
+          {% if object.price > 0 %}
+            {% csrf_token %}
+            <button class="btn btn-primary my-4" type="button" id="submitBtn"
+                    data-course-id="{{ object.id }}">{% trans "Acquista" %}</button>
+          {% else %}
+            <form method="post" action="{% url 'courses:free_enroll' %}">
+              {% csrf_token %}
+              <input hidden="hidden" name="course_id" value="{{ object.id }}">
+              <button type="submit" class="btn btn-primary my-4">{% trans "Partecipa gratis" %}</button>
+            </form>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block pagejs %}
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <script type="application/javascript">
+
+    // Get Stripe publishable key
+    fetch("{% url 'orders:stripe_config' %}").then((result) => {
+      return result.json();
+    }).then((data) => {
+      // Initialize Stripe.js
+      const stripe = Stripe(data.publicKey);
+
+      // Event handler
+      let submitBtn = document.getElementById("submitBtn");
+      if (submitBtn !== null) {
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        submitBtn.addEventListener("click", (evt) => {
+          const course_id = $("#submitBtn").data("course-id");
+          console.log(course_id);
+          // Get Checkout Session ID
+          fetch("{% url 'orders:course_checkout_session' %}", {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': csrftoken,
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify({'id_course': course_id})
+          }).then((result) => {
+            return result.json();
+          }).then((data) => {
+            console.log(data);
+            // Redirect to Stripe Checkout
+            return stripe.redirectToCheckout({sessionId: data.sessionId})
+          }).then((result) => {
+            // If redirectToCheckout fails due to a browser or network error
+            if (result.error) {
+              alert(result.error.message);
+              console.error("Error:", result.error.message);
+            }
+          }).catch(function (error) {
+            console.error("Error:", error.message);
+            alert(error.message);
+          });
+        });
+      }
+    });
+  </script>
+{% endblock pagejs %}

@@ -1,0 +1,38 @@
+{% load static i18n compress %}
+<footer class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-5">
+        <a class="d-block mb-3 ftr_logo" href="{% url 'home' %}">
+          <img src="{% static 'images/footer_logo.png' %}" alt="LianeCare_footer">
+        </a>
+        <p class="small mb-4">LianeCare è la piattaforma che fa incontrare i Caregivers in cerca di lavoro o
+          formazione con le
+          persone che hanno bisogno di ricevere assistenza qualificata adatta alle loro esigenze.</p>
+        <small>Liane Srl - P.IVA 14268291003</small>
+      </div>
+      <div class="col-md-3 offset-md-1 offset-lg-2">
+        <h3>{% trans "Menù" %}</h3>
+        <ul class="mb-4">
+          <li><a href="{% url "home" %}" title="Home">Home</a></li>
+          <li><a href="https://www.lianecare.com/chi-siamo/" title="Chi siamo" target="_blank">{% trans "Chi siamo" %}</a></li>
+          {% if not account.is_authenticated %}
+            <li><a href="{% url "solace:caregiver_signup" %}" title="Registrati">{% trans "Diventa caregiver" %}</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>{% trans "Legal" %}</h3>
+        <ul>
+          <li><a href="{% url "privacy-policy" %}" target="_blank"
+                 title="Privacy Policy">{% trans "Privacy Policy" %}</a></li>
+          <li><a href="{% url "cookie-policy" %}" target="_blank" title="Cookie Policy">{% trans "Cookie Policy" %}</a>
+          </li>
+          <li><a href="{% url "terms-conditions" %}" target="_blank"
+                 title="Termini e condizioni">{% trans "Termini e condizioni" %}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
